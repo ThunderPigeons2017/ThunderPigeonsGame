@@ -8,7 +8,7 @@ public class RotateFoward : MonoBehaviour
 	[SerializeField]
 	float maxRotation;
 
-	void LateUpdate ()
+	void FixedUpdate ()
 	{
 		float moveHorizontal = Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
