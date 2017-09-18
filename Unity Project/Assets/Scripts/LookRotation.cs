@@ -46,11 +46,11 @@ public class LookRotation : MonoBehaviour
             lookRotation.x = moveHorizontal;
             lookRotation.z = moveVertical;
         }
-        else
-        {
-            lookRotation = rb.velocity.normalized;
-            lookRotation.y = 0f;
-        }
+        //else
+        //{
+        //    lookRotation = rb.velocity.normalized;
+        //    lookRotation.y = 0f;
+        //}
 
         // Make the forward rotation
         Quaternion fowardRotation = Quaternion.LookRotation(lookRotation);
@@ -61,6 +61,6 @@ public class LookRotation : MonoBehaviour
         Quaternion targetRotation = tiltRotation * fowardRotation;
 
         // Apply the rotation smoothly
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10.0f * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5.0f * Time.deltaTime);
     }
 }

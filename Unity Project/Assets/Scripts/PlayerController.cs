@@ -25,9 +25,10 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controller);
         float moveVertical = XCI.GetAxis(XboxAxis.LeftStickY, controller);
 
+        // Create a vector 3 from the input axis'
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        rb.AddForce(movement * speed * 100.0f * Time.deltaTime);
-
+        // Add the movement as a force
+        rb.AddForce(movement * speed * 100.0f * Time.fixedDeltaTime);
     }
 }
