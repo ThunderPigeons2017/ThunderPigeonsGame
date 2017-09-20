@@ -11,12 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float speed;
 
-    private Rigidbody rb;
+    Rigidbody rb;
 
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
-        
     }
 
     void FixedUpdate ()

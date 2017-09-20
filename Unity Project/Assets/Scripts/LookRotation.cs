@@ -15,6 +15,11 @@ public class LookRotation : MonoBehaviour
     [Range(1, 90)]
     float maxTiltDegrees;
 
+    [SerializeField]
+    float minTiltingVelocity;
+    [SerializeField]
+    float maxTiltingVelocity;
+
     Vector3 lookRotation;
 
     Rigidbody rb;
@@ -46,17 +51,22 @@ public class LookRotation : MonoBehaviour
             lookRotation.x = moveHorizontal;
             lookRotation.z = moveVertical;
         }
-        //else
-        //{
-        //    lookRotation = rb.velocity.normalized;
-        //    lookRotation.y = 0f;
-        //}
 
         // Make the forward rotation
         Quaternion fowardRotation = Quaternion.LookRotation(lookRotation);
 
+        float tiltDegrees = 0.0f;
+        if (rb.velocity.magnitude >= maxTiltingVelocity)
+        {
+            tiltDegrees = maxTiltDegrees;
+        }
+        else if (rb.velocity.magnitude >= minTiltingVelocity)
+        {
+            tiltDegrees = rb.velocity.magnitude / maxTiltingVelocity * maxTiltDegrees;
+        }
+
         // Make the tilt rotation
-        Quaternion tiltRotation = Quaternion.Euler(moveVertical * maxTiltDegrees, 0.0f, -moveHorizontal * maxTiltDegrees);
+        Quaternion tiltRotation = Quaternion.Euler(moveVertical * tiltDegrees, 0.0f, -moveHorizontal * tiltDegrees);
 
         Quaternion targetRotation = tiltRotation * fowardRotation;
 

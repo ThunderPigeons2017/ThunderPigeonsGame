@@ -955,7 +955,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1309869461}
   - component: {fileID: 1309869463}
-  - component: {fileID: 1309869462}
   - component: {fileID: 1309869464}
   m_Layer: 0
   m_Name: RobotBody
@@ -981,17 +980,6 @@ Transform:
   m_Father: {fileID: 559432818}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1309869462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1309869460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b06eb1ea4bb694cb9b50788685b4f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1309869463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,7 +1004,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBall: {fileID: 178137854}
-  maxTiltDegrees: 21.1
+  maxTiltDegrees: 23
+  minTiltingVelocity: 2
+  maxTiltingVelocity: 10
 --- !u!1 &1405494703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,6 +1374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBall: {fileID: 1405494703}
   maxTiltDegrees: 21.1
+  minTiltingVelocity: 0
+  maxTiltingVelocity: 0
 --- !u!114 &1665601520
 MonoBehaviour:
   m_ObjectHideFlags: 0
