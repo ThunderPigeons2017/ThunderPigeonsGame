@@ -40,21 +40,26 @@ public class LookRotation : MonoBehaviour
         float xAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
         float yAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
-        // Only update if there is input
-        if (xAxis != 0f || yAxis != 0f)
+        // Only look rotation update if there is input
+        if (xAxis != 0f || yAxis != 0f) // Prioritise right stick for the rotation
         {
             lookRotation.x = xAxis;
             lookRotation.z = yAxis;
         }
-        else if (moveHorizontal != 0f || moveVertical != 0f)
+        else if (moveHorizontal != 0f || moveVertical != 0f) // Also use the right stick for rotation
         {
             lookRotation.x = moveHorizontal;
             lookRotation.z = moveVertical;
         }
 
         // Make the forward rotation
-        Quaternion fowardRotation = Quaternion.LookRotation(lookRotation);
+        Quaternion fowardRotation = Quaternion.identity;
+        if (lookRotation != Vector3.zero) // Only set if lookRotation isn't zero
+        { 
+            fowardRotation = Quaternion.LookRotation(lookRotation);
+        }
 
+        // Figure out the tilt degrees depending on the velocity magnitude
         float tiltDegrees = 0.0f;
         if (rb.velocity.magnitude >= maxTiltingVelocity)
         {
@@ -68,6 +73,7 @@ public class LookRotation : MonoBehaviour
         // Make the tilt rotation
         Quaternion tiltRotation = Quaternion.Euler(moveVertical * tiltDegrees, 0.0f, -moveHorizontal * tiltDegrees);
 
+        // Create the rotation my combining the tilt & foward correctly
         Quaternion targetRotation = tiltRotation * fowardRotation;
 
         // Apply the rotation smoothly

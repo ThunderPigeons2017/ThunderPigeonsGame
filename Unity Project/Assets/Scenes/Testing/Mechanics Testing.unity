@@ -245,7 +245,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 1309869463}
   - component: {fileID: 1309869464}
   m_Layer: 0
-  m_Name: RobotBody
+  m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   playerBall: {fileID: 178137854}
   maxTiltDegrees: 23
   minTiltingVelocity: 2
-  maxTiltingVelocity: 10
+  maxTiltingVelocity: 18
 --- !u!1 &1405494703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1351,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1665601517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -1.81, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1416116636}
