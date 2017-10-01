@@ -119,10 +119,12 @@
     <Compile Include="Assets\3rdPartyAssets\XInput\XboxCtrlrInputExample\MoveLaser.cs" />
     <Compile Include="Assets\3rdPartyAssets\XInput\XboxCtrlrInputExample\MovePlayer.cs" />
     <Compile Include="Assets\3rdPartyAssets\XInput\XInputDotNet\Examples\XInputTestCS.cs" />
-    <Compile Include="Assets\BumperCollision.cs" />
+    <Compile Include="Assets\Scripts\BumperCollision.cs" />
     <Compile Include="Assets\Scripts\FollowPosition.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LookRotation.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\ZoneControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rdPartyAssets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
