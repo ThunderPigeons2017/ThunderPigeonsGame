@@ -10,7 +10,7 @@ public class FollowPosition : MonoBehaviour
 
 	Vector3 offset;
 
-	void Start ()
+	void Awake ()
 	{
 		offset = transform.position - target.transform.position;
 	}

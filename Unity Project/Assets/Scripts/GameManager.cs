@@ -58,5 +58,7 @@ public class GameManager : MonoBehaviour
         // Set the controller number
         newPlayerController.controller = (XboxCtrlrInput.XboxController)playerNumber;
 
+        LookRotation newLookRotation = newPlayer.GetComponentInChildren<LookRotation>();
+        newLookRotation.StartUp();
     }
 }

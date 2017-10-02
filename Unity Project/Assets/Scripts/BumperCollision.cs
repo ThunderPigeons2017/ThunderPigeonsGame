@@ -9,7 +9,7 @@ public class BumperCollision : MonoBehaviour
     GameObject playerBall;
 
     Rigidbody playerBallrb;
-	void Start ()
+	void Awake ()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
 	}

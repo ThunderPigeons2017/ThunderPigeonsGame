@@ -24,7 +24,7 @@ public class LookRotation : MonoBehaviour
 
     Rigidbody rb;
 
-    void Awake()
+    public void StartUp()
     {
         controller = playerBall.GetComponent<PlayerController>().controller;
         rb = playerBall.GetComponent<Rigidbody>();
