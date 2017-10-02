@@ -51,9 +51,21 @@ public class GameManager : MonoBehaviour
         UpdateScoreBoard();
 
         // Temp player spawning
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SpawnPlayer(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SpawnPlayer(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SpawnPlayer(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SpawnPlayer(4);
         }
     }
 
