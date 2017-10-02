@@ -18,7 +18,7 @@ public class BumperCollision : MonoBehaviour
     {
         if (other.tag == "PlayerBody")
         {
-            Rigidbody otherRigid = other.GetComponent<Rigidbody>();
+            Rigidbody otherRigid = other.transform.parent.transform.parent.transform.GetChild(0).GetComponent<Rigidbody>();
 
             Vector3 vecBetween = playerBall.transform.position - other.transform.position;
             vecBetween.y = 0.0f;

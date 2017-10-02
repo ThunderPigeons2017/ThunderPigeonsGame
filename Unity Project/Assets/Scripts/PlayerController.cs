@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
 {
     public XboxController controller;
 
+    public bool isAlive;
+
+    public int playerNumber;
+
     [SerializeField]
     float speed;
 
