@@ -51,6 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9614e2764569d9647867ff2554ea6d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: {fileID: 1664090810363882, guid: a54f897e850f7e643b4e7c6c58277e35, type: 2}
+  zone: {fileID: 0}
   playerPrefab: {fileID: 1728849735607864, guid: 5971df59edabcc641bc7a429ee9e3924,
     type: 2}
+  player1Score: {fileID: 0}
+  player2Score: {fileID: 0}
+  player3Score: {fileID: 0}
+  player4Score: {fileID: 0}
