@@ -24,9 +24,6 @@ public class GameManager : MonoBehaviour
 
         // Spawn players
         SpawnPlayer(1);
-        SpawnPlayer(2);
-        SpawnPlayer(3);
-        SpawnPlayer(4);
 
         // Set the player count
         playerCount = players.Count;
@@ -41,6 +38,13 @@ public class GameManager : MonoBehaviour
         foreach ( GameObject player in zoneControl.playersInZone )
         {
             scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+        }
+
+        // Temp player spawning
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DestroyImmediate(players[0]);
+            SpawnPlayer(1);
         }
     }
 
