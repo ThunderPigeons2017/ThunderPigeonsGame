@@ -23,8 +23,10 @@ public class GameManager : MonoBehaviour
         zoneControl = zone.GetComponent<ZoneControl>();
 
         // Spawn players
-        SpawnPlayer(0, 0);
-        SpawnPlayer(1, 1);
+        SpawnPlayer(1);
+        SpawnPlayer(2);
+        SpawnPlayer(3);
+        SpawnPlayer(4);
 
         // Set the player count
         playerCount = players.Count;
@@ -38,16 +40,23 @@ public class GameManager : MonoBehaviour
 
         foreach ( GameObject player in zoneControl.playersInZone )
         {
-            scores[player.GetComponent<PlayerController>().playerNumber] += Time.deltaTime;
+            scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
         }
     }
 
-    void SpawnPlayer (int playerNumber, int controllerNumber)
+    void SpawnPlayer(int playerNumber)
     {
-        GameObject newPlayer = Instantiate(playerPrefab);
+        GameObject newPlayer;
+        newPlayer = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+
         // Add to the players list
         players.Add(newPlayer);
+
+        PlayerController newPlayerController = newPlayer.GetComponentInChildren<PlayerController>();
         // Set each players number
-        //newPlayer.GetComponent<PlayerController>().playerNumber = playerNumber;
+        newPlayerController.playerNumber = playerNumber;
+        // Set the controller number
+        newPlayerController.controller = (XboxCtrlrInput.XboxController)playerNumber;
+
     }
 }
