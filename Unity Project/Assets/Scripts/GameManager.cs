@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject playerPrefab;
 
+    [SerializeField]
+    Text player1Score;
+    [SerializeField]
+    Text player2Score;
+    [SerializeField]
+    Text player3Score;
+    [SerializeField]
+    Text player4Score;
+
     void Awake ()
     {
         zoneControl = zone.GetComponent<ZoneControl>();
@@ -27,8 +37,6 @@ public class GameManager : MonoBehaviour
 
         // Set the player count
         playerCount = players.Count;
-
-        // 
 	}
 
     void Update ()
@@ -40,10 +48,11 @@ public class GameManager : MonoBehaviour
             scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
         }
 
+        UpdateScoreBoard();
+
         // Temp player spawning
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DestroyImmediate(players[0]);
             SpawnPlayer(1);
         }
     }
@@ -64,5 +73,13 @@ public class GameManager : MonoBehaviour
 
         LookRotation newLookRotation = newPlayer.GetComponentInChildren<LookRotation>();
         newLookRotation.StartUp();
+    }
+
+    void UpdateScoreBoard()
+    {
+        player1Score.text = ((int)scores[0]).ToString();
+        player2Score.text = ((int)scores[1]).ToString();
+        player3Score.text = ((int)scores[2]).ToString();
+        player4Score.text = ((int)scores[3]).ToString();
     }
 }
