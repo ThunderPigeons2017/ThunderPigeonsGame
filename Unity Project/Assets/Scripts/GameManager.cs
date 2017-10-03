@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text player4Score;
 
+    [SerializeField]
+    bool allowContest;
+
     void Awake ()
     {
         zoneControl = zone.GetComponent<ZoneControl>();
@@ -43,9 +46,19 @@ public class GameManager : MonoBehaviour
     {
         // Every second give the players in the zoneControl.playersInZone a point
 
-        foreach ( GameObject player in zoneControl.playersInZone )
+        if (allowContest && zoneControl.playersInZone.Count == 1)
         {
-            scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+            foreach ( GameObject player in zoneControl.playersInZone )
+            {
+                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+            }
+        }
+        else if (!allowContest)
+        {
+            foreach (GameObject player in zoneControl.playersInZone)
+            {
+                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+            }
         }
 
         UpdateScoreBoard();

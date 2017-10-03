@@ -1679,6 +1679,11 @@ Prefab:
       propertyPath: player4Score
       value: 
       objectReference: {fileID: 48802716}
+    - target: {fileID: 114031619104171960, guid: 01a8393dfc65fe74c9af881cffbcce9f,
+        type: 2}
+      propertyPath: allowContest
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01a8393dfc65fe74c9af881cffbcce9f, type: 2}
   m_IsPrefabParent: 0
