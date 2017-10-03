@@ -40,6 +40,13 @@ public class LookRotation : MonoBehaviour
         float xAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
         float yAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
+        // If the player isn't on the ground don't use right stick for rotation/tilting
+        if (playerBall.GetComponent<PlayerController>().grounded == false)
+        {
+            moveHorizontal = 0f;
+            moveVertical = 0f;
+        }
+
         // Only look rotation update if there is input
         if (xAxis != 0f || yAxis != 0f) // Prioritise right stick for the rotation
         {
