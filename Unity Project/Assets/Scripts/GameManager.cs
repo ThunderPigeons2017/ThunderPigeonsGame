@@ -19,14 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject playerPrefab;
 
-    [SerializeField]
-    Text player1Score;
-    [SerializeField]
-    Text player2Score;
-    [SerializeField]
-    Text player3Score;
-    [SerializeField]
-    Text player4Score;
+    [SerializeField] // Each players score text
+    Text player1Score, player2Score, player3Score, player4Score;
+
+    [SerializeField] // Each players spawn pos
+    Transform player1Spawn, player2Spawn, player3Spawn, player4Spawn;
 
     [SerializeField]
     bool allowContest;
@@ -84,8 +81,26 @@ public class GameManager : MonoBehaviour
 
     void SpawnPlayer(int playerNumber)
     {
-        GameObject newPlayer;
-        newPlayer = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+        GameObject newPlayer = null;
+
+        // Switch on the different players to spawn them in different spots
+        switch (playerNumber)
+        {
+            case 1:
+                newPlayer = Instantiate(playerPrefab, player1Spawn) as GameObject;
+                break;
+            case 2:
+                newPlayer = Instantiate(playerPrefab, player2Spawn) as GameObject;
+                break;
+            case 3:
+                newPlayer = Instantiate(playerPrefab, player3Spawn) as GameObject;
+                break;
+            case 4:
+                newPlayer = Instantiate(playerPrefab, player4Spawn) as GameObject;
+                break;
+            default:
+                break;
+        }
 
         // Add to the players list
         players.Add(newPlayer);
