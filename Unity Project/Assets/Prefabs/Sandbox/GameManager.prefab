@@ -51,15 +51,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9614e2764569d9647867ff2554ea6d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: {fileID: 0}
-  playerPrefab: {fileID: 1728849735607864, guid: 5971df59edabcc641bc7a429ee9e3924,
+  zone: {fileID: 1664090810363882, guid: a54f897e850f7e643b4e7c6c58277e35, type: 2}
+  playerPrefab: {fileID: 1382614082967686, guid: 4f8b16fbe604bea4097da3a90635f41c,
     type: 2}
-  player1Score: {fileID: 0}
-  player2Score: {fileID: 0}
-  player3Score: {fileID: 0}
-  player4Score: {fileID: 0}
-  player1Spawn: {fileID: 0}
-  player2Spawn: {fileID: 0}
-  player3Spawn: {fileID: 0}
-  player4Spawn: {fileID: 0}
+  player1Score: {fileID: 114196003194614446, guid: fc91ff86698f6d94cab898a53e1ab810,
+    type: 2}
+  player2Score: {fileID: 114732905226019412, guid: fc91ff86698f6d94cab898a53e1ab810,
+    type: 2}
+  player3Score: {fileID: 114205422174036316, guid: fc91ff86698f6d94cab898a53e1ab810,
+    type: 2}
+  player4Score: {fileID: 114088825822284208, guid: fc91ff86698f6d94cab898a53e1ab810,
+    type: 2}
+  player1Spawn: {fileID: 4870253095186870, guid: 7d837dd47dd7b274b83c726f4dde9873,
+    type: 2}
+  player2Spawn: {fileID: 4315395554821568, guid: 7d837dd47dd7b274b83c726f4dde9873,
+    type: 2}
+  player3Spawn: {fileID: 4292046836228470, guid: 7d837dd47dd7b274b83c726f4dde9873,
+    type: 2}
+  player4Spawn: {fileID: 4844604921289196, guid: 7d837dd47dd7b274b83c726f4dde9873,
+    type: 2}
   allowContest: 0
