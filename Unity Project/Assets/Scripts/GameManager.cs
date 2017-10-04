@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     ZoneControl zoneControl;
 
     // Keep a list of each player in the game
-    List<GameObject> players = new List<GameObject>();
+    public GameObject[] players = new GameObject[4];
 
     [SerializeField]
     GameObject playerPrefab;
@@ -34,9 +34,6 @@ public class GameManager : MonoBehaviour
 
         // Spawn players
         SpawnPlayer(1);
-
-        // Set the player count
-        playerCount = players.Count;
 	}
 
     void Update ()
@@ -57,7 +54,7 @@ public class GameManager : MonoBehaviour
                 scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
             }
         }
-
+        // After the scores are added 
         UpdateScoreBoard();
 
         // Temp player spawning
@@ -81,6 +78,13 @@ public class GameManager : MonoBehaviour
 
     void SpawnPlayer(int playerNumber)
     {
+        // If we have a player in that spot, delete it
+        if (players[playerNumber - 1] != null)
+        {
+            Destroy(players[playerNumber - 1]);
+            players[playerNumber - 1] = null;
+        }
+
         GameObject newPlayer = null;
 
         // Switch on the different players to spawn them in different spots
@@ -88,22 +92,26 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 newPlayer = Instantiate(playerPrefab, player1Spawn.position, player1Spawn.rotation) as GameObject;
+                newPlayer.name = "Player 1";
                 break;
             case 2:
                 newPlayer = Instantiate(playerPrefab, player2Spawn.position, player2Spawn.rotation) as GameObject;
+                newPlayer.name = "Player 2";
                 break;
             case 3:
                 newPlayer = Instantiate(playerPrefab, player3Spawn.position, player3Spawn.rotation) as GameObject;
+                newPlayer.name = "Player 3";
                 break;
             case 4:
                 newPlayer = Instantiate(playerPrefab, player4Spawn.position, player4Spawn.rotation) as GameObject;
+                newPlayer.name = "Player 4";
                 break;
             default:
                 break;
         }
 
-        // Add to the players list
-        players.Add(newPlayer);
+        // Add to the player array in the correct spot
+        players[playerNumber - 1] = newPlayer;
 
         PlayerController newPlayerController = newPlayer.GetComponentInChildren<PlayerController>();
         // Set each players number
