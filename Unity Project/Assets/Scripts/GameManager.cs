@@ -13,24 +13,35 @@ public class GameManager : MonoBehaviour
     GameObject zone;
     ZoneControl zoneControl;
 
+    [SerializeField]
+    bool allowContest = false;
+
+    [SerializeField]
+    float startTime;
+    float timer;
+
     // Keep a list of each player in the game
     public GameObject[] players = new GameObject[4];
 
+    [Header("Prefabs:")]
     [SerializeField]
     GameObject playerPrefab;
 
     [SerializeField] // Each players score text
     Text player1Score, player2Score, player3Score, player4Score;
 
+    [SerializeField]
+    Text timeText;
+
     [SerializeField] // Each players spawn pos
     Transform player1Spawn, player2Spawn, player3Spawn, player4Spawn;
 
-    [SerializeField]
-    bool allowContest;
 
     void Awake ()
     {
         zoneControl = zone.GetComponent<ZoneControl>();
+
+        timer = startTime;
 
         // Spawn players
         SpawnPlayer(1);
@@ -38,22 +49,10 @@ public class GameManager : MonoBehaviour
 
     void Update ()
     {
-        // Every second give the players in the zoneControl.playersInZone a point
+        UpdateTimer();
 
-        if (allowContest && zoneControl.playersInZone.Count == 1)
-        {
-            foreach ( GameObject player in zoneControl.playersInZone )
-            {
-                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
-            }
-        }
-        else if (!allowContest)
-        {
-            foreach (GameObject player in zoneControl.playersInZone)
-            {
-                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
-            }
-        }
+        GivePoints();
+
         // After the scores are added 
         UpdateScoreBoard();
 
@@ -123,11 +122,48 @@ public class GameManager : MonoBehaviour
         newLookRotation.StartUp();
     }
 
+    void GivePoints()
+    {
+        // Every second give the players in the zoneControl.playersInZone a point
+        if (allowContest && zoneControl.playersInZone.Count == 1)
+        {
+            foreach (GameObject player in zoneControl.playersInZone)
+            {
+                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+            }
+        }
+        else if (!allowContest)
+        {
+            foreach (GameObject player in zoneControl.playersInZone)
+            {
+                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+            }
+        }
+    }
+
     void UpdateScoreBoard()
     {
         player1Score.text = ((int)scores[0]).ToString();
         player2Score.text = ((int)scores[1]).ToString();
         player3Score.text = ((int)scores[2]).ToString();
         player4Score.text = ((int)scores[3]).ToString();
+    }
+
+    void UpdateTimer()
+    {
+        // If there is still time left
+        if (timer > 0.0f)
+        {
+            timer -= Time.deltaTime; // Count down
+        }
+        else
+        {
+            // Timer Run out!
+        }
+
+        // Miniutes and seconds
+        //timeText.text = ((int)(timer / 60f)).ToString() + ":" + ((int)(timer % 60)).ToString();
+        // Timer in seconds
+        timeText.text = ((int)timer).ToString();
     }
 }
