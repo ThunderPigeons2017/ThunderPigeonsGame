@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.43693563, g: 0.4846043, b: 0.5648657, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -86,7 +86,8 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000142, guid: 8d18acb6dce09b447b53ede22193a604,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -5210,7 +5211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c503c437034f24089ac3b8099fe05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: 0
+  isAlive: 0
+  playerNumber: 0
   speed: 12
+  forceDown: 0
+  grounded: 0
 --- !u!54 &265514502
 Rigidbody:
   m_ObjectHideFlags: 0

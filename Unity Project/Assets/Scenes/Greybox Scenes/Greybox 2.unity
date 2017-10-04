@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300655, g: 0.49219406, b: 0.5719251, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -86,7 +86,8 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000142, guid: 03dddf63a2cd6624cbb9207c291457e8,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1094,7 +1095,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 2
+  isAlive: 0
+  playerNumber: 0
   speed: 12
+  forceDown: 0
+  grounded: 0
 --- !u!54 &93160118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13443,6 +13448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBall: {fileID: 690719907}
   maxTiltDegrees: 21.1
+  minTiltingVelocity: 0
+  maxTiltingVelocity: 0
 --- !u!114 &549809098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15607,7 +15614,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 2
+  isAlive: 0
+  playerNumber: 0
   speed: 12
+  forceDown: 0
+  grounded: 0
 --- !u!54 &690719909
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18476,6 +18487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBall: {fileID: 93160116}
   maxTiltDegrees: 21.1
+  minTiltingVelocity: 0
+  maxTiltingVelocity: 0
 --- !u!114 &797910021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26099,6 +26112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBall: {fileID: 2098621102}
   maxTiltDegrees: 21.1
+  minTiltingVelocity: 0
+  maxTiltingVelocity: 0
 --- !u!114 &1188821863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28988,7 +29003,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 1
+  isAlive: 0
+  playerNumber: 0
   speed: 12
+  forceDown: 0
+  grounded: 0
 --- !u!54 &1458911981
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37865,7 +37884,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 2
+  isAlive: 0
+  playerNumber: 0
   speed: 12
+  forceDown: 0
+  grounded: 0
 --- !u!54 &2098621104
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38062,6 +38085,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBall: {fileID: 1458911979}
   maxTiltDegrees: 21.1
+  minTiltingVelocity: 0
+  maxTiltingVelocity: 0
 --- !u!114 &2100774134
 MonoBehaviour:
   m_ObjectHideFlags: 0
