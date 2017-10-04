@@ -87,16 +87,16 @@ public class GameManager : MonoBehaviour
         switch (playerNumber)
         {
             case 1:
-                newPlayer = Instantiate(playerPrefab, player1Spawn) as GameObject;
+                newPlayer = Instantiate(playerPrefab, player1Spawn.position, player1Spawn.rotation) as GameObject;
                 break;
             case 2:
-                newPlayer = Instantiate(playerPrefab, player2Spawn) as GameObject;
+                newPlayer = Instantiate(playerPrefab, player2Spawn.position, player2Spawn.rotation) as GameObject;
                 break;
             case 3:
-                newPlayer = Instantiate(playerPrefab, player3Spawn) as GameObject;
+                newPlayer = Instantiate(playerPrefab, player3Spawn.position, player3Spawn.rotation) as GameObject;
                 break;
             case 4:
-                newPlayer = Instantiate(playerPrefab, player4Spawn) as GameObject;
+                newPlayer = Instantiate(playerPrefab, player4Spawn.position, player4Spawn.rotation) as GameObject;
                 break;
             default:
                 break;
