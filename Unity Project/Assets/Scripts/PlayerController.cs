@@ -54,6 +54,9 @@ public class PlayerController : MonoBehaviour
         // Add the movement as a force
         rb.AddForce(movement * speed * 100.0f * Time.fixedDeltaTime);
 
-
+        if (rb.velocity.magnitude >= 20f)
+        {
+            rb.AddForce((rb.velocity.magnitude - 20f) * -rb.velocity.normalized);
+        }
     }
 }
