@@ -24,9 +24,18 @@ public class LookRotation : MonoBehaviour
 
     Rigidbody rb;
 
+    PlayerController playerController;
+
+    public void LookTowards(Vector3 position)
+    {
+        Vector3 vecBetween = position - playerBall.transform.position;
+        lookRotation = vecBetween.normalized;
+    }
+
     public void StartUp()
     {
-        controller = playerBall.GetComponent<PlayerController>().controller;
+        playerController = playerBall.GetComponent<PlayerController>();
+        controller = playerController.controller;
         rb = playerBall.GetComponent<Rigidbody>();
     }
 
@@ -40,23 +49,26 @@ public class LookRotation : MonoBehaviour
         float xAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
         float yAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
-        // If the player isn't on the ground don't use right stick for rotation/tilting
-        if (playerBall.GetComponent<PlayerController>().grounded == false)
+        if (!playerController.punching) // If punching don't update rotation
         {
-            moveHorizontal = 0f;
-            moveVertical = 0f;
-        }
+            // If the player isn't on the ground don't use right stick for rotation/tilting
+            if (playerBall.GetComponent<PlayerController>().grounded == false)
+            {
+                moveHorizontal = 0f;
+                moveVertical = 0f;
+            }
 
-        // Only look rotation update if there is input
-        if (xAxis != 0f || yAxis != 0f) // Prioritise right stick for the rotation
-        {
-            lookRotation.x = xAxis;
-            lookRotation.z = yAxis;
-        }
-        else if (moveHorizontal != 0f || moveVertical != 0f) // Also use the right stick for rotation
-        {
-            lookRotation.x = moveHorizontal;
-            lookRotation.z = moveVertical;
+            // Only look rotation update if there is input
+            if (xAxis != 0f || yAxis != 0f) // Prioritise right stick for the rotation
+            {
+                lookRotation.x = xAxis;
+                lookRotation.z = yAxis;
+            }
+            else if (moveHorizontal != 0f || moveVertical != 0f) // Also use the right stick for rotation
+            {
+                lookRotation.x = moveHorizontal;
+                lookRotation.z = moveVertical;
+            }
         }
 
         // Make the forward rotation

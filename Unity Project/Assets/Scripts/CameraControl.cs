@@ -31,7 +31,7 @@ public class CameraControl : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        m_Camera = GetComponentInChildren<Camera>();	        //references camera and gets values
+        m_Camera = GetComponent<Camera>();	        //references camera and gets values
 
         m_gm = m_gmObject.GetComponent<GameManager>();
     }

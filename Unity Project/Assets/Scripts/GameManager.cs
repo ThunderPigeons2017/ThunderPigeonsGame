@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     float startTime;
     float timer;
 
+    [SerializeField]
+    float deathYLevel = -3f;
+
     // Keep a list of each player in the game
     public GameObject[] players = new GameObject[4];
 
@@ -36,7 +39,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] // Each players spawn pos
     Transform player1Spawn, player2Spawn, player3Spawn, player4Spawn;
 
-
     void Awake ()
     {
         zoneControl = zone.GetComponent<ZoneControl>();
@@ -49,6 +51,24 @@ public class GameManager : MonoBehaviour
 
     void Update ()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            if (players[i] != null)
+            {
+                PlayerController playerController = players[i].GetComponentInChildren<PlayerController>();
+                if (playerController.transform.position.y <= deathYLevel)
+                {
+                    playerController.isAlive = false;
+                }
+
+                if (playerController.isAlive == false)
+                {
+                    SpawnPlayer(playerController.playerNumber);
+                }
+            }
+        }
+
+
         UpdateTimer();
 
         GivePoints();
@@ -91,23 +111,22 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 newPlayer = Instantiate(playerPrefab, player1Spawn.position, player1Spawn.rotation) as GameObject;
-                newPlayer.name = "Player 1";
                 break;
             case 2:
                 newPlayer = Instantiate(playerPrefab, player2Spawn.position, player2Spawn.rotation) as GameObject;
-                newPlayer.name = "Player 2";
                 break;
             case 3:
                 newPlayer = Instantiate(playerPrefab, player3Spawn.position, player3Spawn.rotation) as GameObject;
-                newPlayer.name = "Player 3";
                 break;
             case 4:
                 newPlayer = Instantiate(playerPrefab, player4Spawn.position, player4Spawn.rotation) as GameObject;
-                newPlayer.name = "Player 4";
                 break;
             default:
                 break;
         }
+
+        // Set the gameObject name
+        newPlayer.name = "Player " + playerNumber.ToString();
 
         // Add to the player array in the correct spot
         players[playerNumber - 1] = newPlayer;
@@ -117,9 +136,12 @@ public class GameManager : MonoBehaviour
         newPlayerController.playerNumber = playerNumber;
         // Set the controller number
         newPlayerController.controller = (XboxCtrlrInput.XboxController)playerNumber;
+        // Set player as alive
+        newPlayerController.isAlive = true;
 
         LookRotation newLookRotation = newPlayer.GetComponentInChildren<LookRotation>();
         newLookRotation.StartUp();
+        newLookRotation.LookTowards(zone.transform.position);
     }
 
     void GivePoints()

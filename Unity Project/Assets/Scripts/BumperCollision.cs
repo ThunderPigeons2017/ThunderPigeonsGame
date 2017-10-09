@@ -10,6 +10,10 @@ public class BumperCollision : MonoBehaviour
 
     Rigidbody playerBallrb;
 
+    [Header("Minimum Velocity for a collision to occur")]
+    [SerializeField]
+    float minimumVelocity = 1f;
+
     [Header("Bounce force base value")]
     [SerializeField]
     float bounceForceBase = 4f;
@@ -35,7 +39,7 @@ public class BumperCollision : MonoBehaviour
         {
             if (other.gameObject != playerBall) // If its not colliding with this player
             {
-                if (playerBallrb.velocity.magnitude > 1f) // Only if the velocity is above a threshold 
+                if (playerBallrb.velocity.magnitude >= minimumVelocity) // Only if the velocity is above a threshold 
                 {
                     Vector3 vecBetween = other.transform.position - playerBall.transform.position; // Get a vector that points from this player to the one we hit
                     vecBetween.y = 0f;
@@ -44,8 +48,6 @@ public class BumperCollision : MonoBehaviour
 
                     if (Mathf.Abs(Vector3.AngleBetween(vecBetween, tempVelocity)) < 10f)
                     {
-                        Debug.Log("Hit - " + ((int)tempVelocity.magnitude).ToString(), gameObject);
-
                         // Bounce the other player away
                         other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * (bounceForceBase + tempVelocity.magnitude * bounceForceVelocityMultiplyer), ForceMode.Impulse);
                     
