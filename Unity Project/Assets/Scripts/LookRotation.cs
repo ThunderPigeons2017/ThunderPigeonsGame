@@ -28,6 +28,8 @@ public class LookRotation : MonoBehaviour
 
     public void LookTowards(Vector3 position)
     {
+        position.y = playerBall.transform.position.y;
+
         Vector3 vecBetween = position - playerBall.transform.position;
         lookRotation = vecBetween.normalized;
     }
