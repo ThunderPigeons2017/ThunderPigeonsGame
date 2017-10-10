@@ -57,7 +57,7 @@ public class CameraControl : MonoBehaviour
 
     private void Move()
     {
-        FindAveragePosition();                                //Function that tries to find all playerobjects target position
+        m_DesiredPosition = FindAveragePosition();                                //Function that tries to find all playerobjects target position
 
         float distance = FindDistance();
 
@@ -71,7 +71,7 @@ public class CameraControl : MonoBehaviour
         m_Camera.transform.position = Vector3.SmoothDamp(m_Camera.transform.position, m_DesiredPosition, ref m_MoveVelocity, m_DampTime);
     }
 
-    private void FindAveragePosition()
+    private Vector3 FindAveragePosition()
     {
         Vector3 averagePos = new Vector3();
         int numTargets = 0;
@@ -88,42 +88,51 @@ public class CameraControl : MonoBehaviour
         if (numTargets > 0)
             averagePos /= numTargets;
 
-        m_DesiredPosition = averagePos;
+        return averagePos;
     }
 
     public float FindDistance()
     {
         float distance = 0f;
 
-        Vector3 averagePos = new Vector3();
-        int numTargets = 0;
+        //Vector3 averagePos = FindAveragePosition();
 
+        //float targetDistanceToAverage = 0f;
+        //float temporaryContainer = 0f;
 
-        for (int i = 0; i < m_Targets.Length; i++)
-        {
-            if (m_Targets[i] == null || !m_Targets[i].isAlive)
-                continue;
+        //for (int i = 0; i < m_Targets.Length; i++)
+        //{
+        //    if (m_Targets[i] == null || !m_Targets[i].isAlive)
+        //        continue;
 
-            averagePos += m_Targets[i].gameObject.transform.position;
-            numTargets++;
-        }
-
-        if (numTargets > 0)
-            averagePos /= numTargets;
-
-        float targetDistanceToAverage = 0f;
-        float temporaryContainer = 0f;
+        //    temporaryContainer = Vector3.Distance(m_Targets[i].gameObject.transform.position, averagePos);
+        //    targetDistanceToAverage = Mathf.Max(temporaryContainer, targetDistanceToAverage);
+        //}
 
         for (int i = 0; i < m_Targets.Length; i++)
         {
             if (m_Targets[i] == null || !m_Targets[i].isAlive)
                 continue;
 
-            temporaryContainer = Vector3.Distance(m_Targets[i].gameObject.transform.position, averagePos);
-            targetDistanceToAverage = Mathf.Max(temporaryContainer, targetDistanceToAverage);
+            PlayerController playerA = m_Targets[i];
+
+            for (int j = i + 1; j < m_Targets.Length; j++)
+            {
+                if (m_Targets[j] == null || !m_Targets[j].isAlive)
+                    continue;
+
+                PlayerController playerB = m_Targets[j];
+
+                float currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
+                if (currentDistance > distance)
+                {
+                    distance = currentDistance;
+                }
+            }
+
         }
 
-        return distance = targetDistanceToAverage;
+        return distance;
     }
     
     public void SetStartPositionAndSize()
