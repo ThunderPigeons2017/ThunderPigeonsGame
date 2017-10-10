@@ -10,21 +10,21 @@ public class BumperCollision : MonoBehaviour
 
     Rigidbody playerBallrb;
 
-    [Header("Minimum Velocity for a collision to occur")]
+    [Tooltip("Minimum Velocity for a collision to occur")]
     [SerializeField]
     float minimumVelocity = 1f;
 
-    [Header("Bounce force base value")]
+    [Tooltip("Bounce force base value")]
     [SerializeField]
     float bounceForceBase = 4f;
-    [Header("Bounce force (velocity impact amount)")]
+    [Tooltip("Additional bounce force (how much the velocity impacts)")]
     [SerializeField]
     float bounceForceVelocityMultiplyer = 0.6f;
 
-    [Header("Jump force base value")]
+    [Tooltip("Jump force base value")]
     [SerializeField]
     float jumpForceBase = 4f;
-    [Header("Jump force (velocity impact amount)")]
+    [Tooltip("Additional jump force (how much the velocity impacts)")]
     [SerializeField]
     float jumpForceVelocityMultiplyer = 0.4f;
 

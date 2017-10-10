@@ -12,19 +12,28 @@ public class PlayerController : MonoBehaviour
 
     public int playerNumber;
 
+    public bool grounded;
+
+    public bool punching = false;
+
     [SerializeField]
     float speed;
     [SerializeField]
     float forceDown;
 
+    [SerializeField]
+    [Tooltip("The rigidbody drag value default")]
+    float normalDrag;
+    [SerializeField]
+    [Tooltip("The rigidbody drag value when slowing down")]
+    float slowDrag;
+
     Rigidbody rb;
 
-    public bool grounded;
     float distanceToGround;
 
     Animator animator;
 
-    public bool punching = false;
 
     void Awake ()
     {
@@ -35,7 +44,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate ()
     {
-
         // Raycast down to see if we are touching the ground
         grounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround);
 
@@ -55,27 +63,41 @@ public class PlayerController : MonoBehaviour
             movement += Vector3.down * forceDown; // Apply a force down to keep the player on the ground
         }
 
-        if (!punching) // Only move if not punching
+        if (!punching && !XCI.GetButton(XboxButton.RightBumper, controller)) // Only move if not punching
         {
             // Add the movement as a force
             rb.AddForce(movement * speed * 100.0f * Time.fixedDeltaTime);
         }
-
-        //GetComponent<Animator>().SetTrigger("Punch");
 
         // Trigger input
         //float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, controller);
         //float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, controller);
 
         // Bumper input
-        if (XCI.GetButtonDown(XboxButton.LeftBumper, controller))
+        if (XCI.GetButtonUp(XboxButton.LeftBumper, controller))
         {
             animator.SetTrigger("Punch");
         }
-        if (XCI.GetButtonDown(XboxButton.RightBumper, controller))
+        if (XCI.GetButtonUp(XboxButton.RightBumper, controller))
         {
             animator.SetTrigger("Punch");
         }
 
+
+        // Set drag to the normal value
+        rb.drag = normalDrag;
+
+        if (grounded)
+        {
+            if (punching)
+            {
+                rb.drag = slowDrag;
+            }
+
+            if (punching)
+            {
+                rb.drag = slowDrag;
+            }
+        }
     }
 }
