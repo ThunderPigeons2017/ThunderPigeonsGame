@@ -39,9 +39,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] // Each players spawn pos
     Transform player1Spawn, player2Spawn, player3Spawn, player4Spawn;
 
+    PlayerColourPicker playerColourPicker;
+
     void Awake ()
     {
         zoneControl = zone.GetComponent<ZoneControl>();
+        playerColourPicker = GetComponent<PlayerColourPicker>();
 
         timer = startTime;
 
@@ -142,6 +145,10 @@ public class GameManager : MonoBehaviour
         LookRotation newLookRotation = newPlayer.GetComponentInChildren<LookRotation>();
         newLookRotation.StartUp();
         newLookRotation.LookTowards(zone.transform.position);
+
+
+        //TODO do this is a better spot or a better way
+        playerColourPicker.SetUp(players);
     }
 
     void GivePoints()

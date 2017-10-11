@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4622686763134104}
   - component: {fileID: 114031619104171960}
+  - component: {fileID: 114456030260605858}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831834595290302}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -67,11 +68,26 @@ MonoBehaviour:
   player3Score: {fileID: 0}
   player4Score: {fileID: 0}
   timeText: {fileID: 0}
-  player1Spawn: {fileID: 4870253095186870, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
-  player2Spawn: {fileID: 4315395554821568, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
-  player3Spawn: {fileID: 4292046836228470, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
-  player4Spawn: {fileID: 4844604921289196, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
+  player1Spawn: {fileID: 0}
+  player2Spawn: {fileID: 0}
+  player3Spawn: {fileID: 0}
+  player4Spawn: {fileID: 0}
+--- !u!114 &114456030260605858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831834595290302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986cb4367fae162449fa4dd2ed0d05e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p1PrimaryColour: {r: 1, g: 0, b: 0, a: 0}
+  p1SecondaryColour: {r: 1, g: 0.49264705, b: 0.49264705, a: 0}
+  p2PrimaryColour: {r: 0.2827587, g: 0, b: 1, a: 0}
+  p2SecondaryColour: {r: 0.6262677, g: 0.5955882, b: 1, a: 0}
+  p3PrimaryColour: {r: 0.90344834, g: 1, b: 0, a: 0}
+  p3SecondaryColour: {r: 0.9691684, g: 1, b: 0.44117647, a: 0}
+  p4PrimaryColour: {r: 0, g: 0, b: 0, a: 0}
+  p4SecondaryColour: {r: 0.33823532, g: 0.33823532, b: 0.33823532, a: 0}
