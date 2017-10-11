@@ -51,7 +51,7 @@ public class LookRotation : MonoBehaviour
         float xAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
         float yAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
-        if (!playerController.punching) // If punching don't update rotation
+        if (!(playerController.animState == PlayerController.AnimState.Punch)) // If punching don't update rotation
         {
             // If the player isn't on the ground don't use right stick for rotation/tilting
             if (playerBall.GetComponent<PlayerController>().grounded == false)

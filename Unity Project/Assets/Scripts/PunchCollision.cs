@@ -32,7 +32,7 @@ public class PunchCollision : MonoBehaviour
     {
         if (other.tag == "Player") // If its colliding with a player
         {
-            if (playerBall.GetComponent<PlayerController>().punching) // If this player is doing the punch animation
+            if (playerBall.GetComponent<PlayerController>().animState == PlayerController.AnimState.Punch) // If this player is doing the punch animation
             {
                 if (other.gameObject != playerBall) // If its not colliding with this player
                 {

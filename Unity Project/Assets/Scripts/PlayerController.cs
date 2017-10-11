@@ -12,9 +12,8 @@ public class PlayerController : MonoBehaviour
 
     public int playerNumber;
 
+    [HideInInspector]
     public bool grounded;
-
-    public bool punching = false;
 
     [SerializeField]
     float speed;
@@ -34,6 +33,14 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
+    public enum AnimState
+    {
+        Idle,
+        WindUp,
+        Punch
+    }
+    [HideInInspector]
+    public AnimState animState = 0;
 
     void Awake ()
     {
@@ -63,7 +70,7 @@ public class PlayerController : MonoBehaviour
             movement += Vector3.down * forceDown; // Apply a force down to keep the player on the ground
         }
 
-        if (!punching && !XCI.GetButton(XboxButton.RightBumper, controller)) // Only move if not punching
+        if (animState != AnimState.Punch) // Only move if not punching
         {
             // Add the movement as a force
             rb.AddForce(movement * speed * 100.0f * Time.fixedDeltaTime);
@@ -73,29 +80,24 @@ public class PlayerController : MonoBehaviour
         //float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, controller);
         //float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, controller);
 
-        // Bumper input
-        if (XCI.GetButtonUp(XboxButton.RightBumper, controller))
-        {
-            animator.SetTrigger("Punch");
-        }
-
+        // If right bumper is pressed down, start windup animation
         if (XCI.GetButtonDown(XboxButton.RightBumper, controller))
         {
             animator.SetTrigger("WindUp");
         }
 
+        // If right bumper is released, start windup animation
+        if (XCI.GetButtonUp(XboxButton.RightBumper, controller))
+        {
+            animator.SetTrigger("Punch");
+        }
 
         // Set drag to the normal value
         rb.drag = normalDrag;
 
         if (grounded)
         {
-            if (punching)
-            {
-                rb.drag = slowDrag;
-            }
-
-            if (punching)
+            if (animState == AnimState.WindUp || animState == AnimState.Punch)
             {
                 rb.drag = slowDrag;
             }
