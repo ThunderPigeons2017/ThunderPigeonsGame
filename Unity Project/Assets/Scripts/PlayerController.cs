@@ -74,13 +74,14 @@ public class PlayerController : MonoBehaviour
         //float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, controller);
 
         // Bumper input
-        if (XCI.GetButtonUp(XboxButton.LeftBumper, controller))
-        {
-            animator.SetTrigger("Punch");
-        }
         if (XCI.GetButtonUp(XboxButton.RightBumper, controller))
         {
             animator.SetTrigger("Punch");
+        }
+
+        if (XCI.GetButtonDown(XboxButton.RightBumper, controller))
+        {
+            animator.SetTrigger("WindUp");
         }
 
 
