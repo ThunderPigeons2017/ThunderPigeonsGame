@@ -243,7 +243,7 @@ public class MovePlayer : MonoBehaviour
 	{
 		if(other.gameObject.CompareTag("KillField"))
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 	}
 	

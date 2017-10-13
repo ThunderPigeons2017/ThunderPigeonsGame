@@ -11,17 +11,15 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
 
-    public float m_DampTime = 0.2f;                             //approximate time for the camera to move to new location
-    public float m_ScreenEdgeBufer = 4f;                        //added to sides to ensure players don't go off camera
-    public float m_MinSize = 6.5f;                              //stops camera from zooming in
-    public float ceiling = 5f;
-    public float buffer = 2f;
+    public float m_DampTime = 0.2f;                                             //approximate time for the camera to move to new location
+    public float minimumDistance = 5f;
+    public float distanceScale = 2f;
 
-    private PlayerController[] m_Targets = new PlayerController[4];           //array of gaming objects that would be the targets for camera to adjust to
-    private Camera m_Camera;                                    //reference to the camera attached as child
-    private float m_ZoomSpeed;                                  //damps zooming, slows it down to make it less jarring
-    private Vector3 m_MoveVelocity;                             //damps camera movement and panning to avoid jarring camera movements
-    private Vector3 m_DesiredPosition;                          //position that camera is trying to reach
+    private PlayerController[] m_Targets = new PlayerController[4];             //array of gaming objects that would be the targets for camera to adjust to
+    private Camera m_Camera;                                                    //reference to the camera attached as child
+    private float m_ZoomSpeed;                                                  //damps zooming, slows it down to make it less jarring
+    private Vector3 m_MoveVelocity;                                             //damps camera movement and panning to avoid jarring camera movements
+    private Vector3 m_DesiredPosition;                                          //position that camera is trying to reach
     
 
     [SerializeField]
@@ -31,7 +29,7 @@ public class CameraControl : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        m_Camera = GetComponent<Camera>();	        //references camera and gets values
+        m_Camera = GetComponent<Camera>();	                                    //references camera and gets values
 
         m_gm = m_gmObject.GetComponent<GameManager>();
     }
@@ -51,7 +49,7 @@ public class CameraControl : MonoBehaviour
             }
         }
 
-        Move();                                                //calls move function to move camera
+        Move();                                                                 //calls move function to move camera
        
     }
 
@@ -61,12 +59,12 @@ public class CameraControl : MonoBehaviour
 
         float distance = FindDistance();
 
-        if (distance <= ceiling)
+        if (distance <= minimumDistance)
         {
-            distance = ceiling;
+            distance = minimumDistance;
         }
 
-        m_DesiredPosition += - m_Camera.transform.forward * distance * buffer;
+        m_DesiredPosition += - m_Camera.transform.forward * distance * distanceScale;
 
         m_Camera.transform.position = Vector3.SmoothDamp(m_Camera.transform.position, m_DesiredPosition, ref m_MoveVelocity, m_DampTime);
     }

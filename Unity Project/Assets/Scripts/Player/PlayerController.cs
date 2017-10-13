@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public int playerNumber;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool grounded;
 
     [SerializeField]
@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
     float distanceToGround;
 
+    [SerializeField]
+    float distanceToGroundOffset = 0.1f;
+
     Animator animator;
 
     public enum AnimState
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
     void Awake ()
     {
         rb = GetComponent<Rigidbody>();
-        distanceToGround = GetComponent<Collider>().bounds.extents.y + 0.1f;
+        distanceToGround = GetComponent<Collider>().bounds.extents.y + distanceToGroundOffset;
         animator = transform.parent.GetComponentInChildren<Animator>();
     }
 
