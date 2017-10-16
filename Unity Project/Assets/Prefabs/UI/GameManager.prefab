@@ -34,7 +34,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831834595290302}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -52,16 +52,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9614e2764569d9647867ff2554ea6d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: {fileID: 1664090810363882, guid: a54f897e850f7e643b4e7c6c58277e35, type: 2}
+  winScore: 1
   allowContest: 0
   startTime: 0
   deathYLevel: -3
+  zone: {fileID: 0}
   players:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  playerPrefab: {fileID: 1404366958894002, guid: 5971df59edabcc641bc7a429ee9e3924,
+  playerPrefab: {fileID: 1788647929654558, guid: 011cb6359296e7c48be437081774c5d4,
     type: 2}
   player1Score: {fileID: 0}
   player2Score: {fileID: 0}
@@ -72,6 +73,8 @@ MonoBehaviour:
   player2Spawn: {fileID: 0}
   player3Spawn: {fileID: 0}
   player4Spawn: {fileID: 0}
+  winMessageText: {fileID: 0}
+  winMessageString: Player x wins!
 --- !u!114 &114456030260605858
 MonoBehaviour:
   m_ObjectHideFlags: 1

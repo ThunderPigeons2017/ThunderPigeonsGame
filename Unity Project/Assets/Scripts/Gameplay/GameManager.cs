@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    int playerCount;
-
     float[] scores = new float[4];
 
     [SerializeField]
-    GameObject zone;
-    ZoneControl zoneControl;
+    int winScore;
 
     [SerializeField]
     bool allowContest = false;
@@ -22,6 +19,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     float deathYLevel = -3f;
+
+    [SerializeField]
+    GameObject zone;
+    ZoneControl zoneControl;
 
     // Keep a list of each player in the game
     public GameObject[] players = new GameObject[4];
@@ -39,7 +40,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] // Each players spawn pos
     Transform player1Spawn, player2Spawn, player3Spawn, player4Spawn;
 
+    [Header("")]
+    [SerializeField]
+    Text winMessageText;
+
+    [SerializeField]
+    string winMessageString;
+
     PlayerColourPicker playerColourPicker;
+
+    int winningPlayerNumber = 0;
 
     void Awake ()
     {
@@ -50,6 +60,8 @@ public class GameManager : MonoBehaviour
 
         // Spawn players
         SpawnPlayer(1);
+
+        winMessageText.enabled = false;
 	}
 
     void Update ()
@@ -78,6 +90,8 @@ public class GameManager : MonoBehaviour
 
         // After the scores are added 
         UpdateScoreBoard();
+
+        CheckForWinningPlayer();
 
         // Temp player spawning
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -195,4 +209,23 @@ public class GameManager : MonoBehaviour
         // Timer in seconds
         timeText.text = ((int)timer).ToString();
     }
+
+    void SetWinMessage()
+    {
+        winMessageText.text = winMessageString.Replace('x', winningPlayerNumber.ToString()[0]);
+    }
+
+    void CheckForWinningPlayer()
+    {
+        for (int i = 0; i < scores.Length; i++)
+        {
+            if (scores[i] >= winScore)
+            {
+                winningPlayerNumber = i + 1;
+                winMessageText.enabled = true;
+                SetWinMessage();
+            }
+        }
+    }
 }
+    
