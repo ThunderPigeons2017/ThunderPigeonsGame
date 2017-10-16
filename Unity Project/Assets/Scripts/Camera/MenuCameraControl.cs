@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuCameraControl : MonoBehaviour
 {
     [SerializeField]
-    Transform startTransfrom;
+    Transform mainMenuTransfrom;
     [SerializeField]
     Transform characterSelectTransform;
     [SerializeField]
@@ -21,7 +21,7 @@ public class MenuCameraControl : MonoBehaviour
     void Awake()
     {
         camera = GetComponent<Camera>();
-        targetTransform = startTransfrom;
+        targetTransform = mainMenuTransfrom;
 	}
 	
 	void LateUpdate()
@@ -39,9 +39,9 @@ public class MenuCameraControl : MonoBehaviour
         camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, targetTransform.rotation, fracJourney);
     }
 
-    public void MoveToStart()
+    public void MoveToMainMenu()
     {
-        targetTransform = startTransfrom;
+        targetTransform = mainMenuTransfrom;
 
         startTime = Time.time;
         journeyLength = Vector3.Distance(camera.transform.position, targetTransform.position);

@@ -83,17 +83,17 @@ public class PlayerController : MonoBehaviour
         //float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, controller);
         //float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, controller);
 
-        // If right bumper is pressed down, start windup animation
-        if (XCI.GetButtonDown(XboxButton.RightBumper, controller))
-        {
-            animator.SetTrigger("WindUp");
-        }
+        //// If right bumper is pressed down, start windup animation
+        //if (XCI.GetButtonDown(XboxButton.RightBumper, controller))
+        //{
+        //    animator.SetTrigger("WindUp");
+        //}
 
-        // If right bumper is released, start windup animation
-        if (XCI.GetButtonUp(XboxButton.RightBumper, controller))
-        {
-            animator.SetTrigger("Punch");
-        }
+        //// If right bumper is released, start windup animation
+        //if (XCI.GetButtonUp(XboxButton.RightBumper, controller))
+        //{
+        //    animator.SetTrigger("Punch");
+        //}
 
         // Set drag to the normal value
         rb.drag = normalDrag;

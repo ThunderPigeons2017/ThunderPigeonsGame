@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     Text winMessageText;
 
     [SerializeField]
+    [Tooltip("The message to display when a player has won (all lower case x are replaced with the winning player number)")]
     string winMessageString;
 
     PlayerColourPicker playerColourPicker;
