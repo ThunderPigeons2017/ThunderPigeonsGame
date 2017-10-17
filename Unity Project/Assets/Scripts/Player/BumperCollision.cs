@@ -35,7 +35,7 @@ public class BumperCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") // If its colliding with a player
+        if (other.tag == "PlayerBall") // If its colliding with a player
         {
             if (other.gameObject != playerBall) // If its not colliding with this player
             {

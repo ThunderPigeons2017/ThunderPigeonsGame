@@ -14,7 +14,7 @@ public class ZoneControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Add the player to the list
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBall")
         {
             playersInZone.Add(other.gameObject);
         }
@@ -23,7 +23,7 @@ public class ZoneControl : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // Remove the players from the list
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBall")
         {
             playersInZone.Remove(other.gameObject);
         }

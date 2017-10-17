@@ -159,9 +159,11 @@ public class GameManager : MonoBehaviour
                     break;
             }
 
+            // Set player as alive
+            players[playerNumber - 1].GetComponent<PlayerController>().isAlive = true;
+
             LookRotation lookRotation = players[playerNumber - 1].transform.parent.GetComponentInChildren<LookRotation>();
             lookRotation.LookTowards(zone.transform.position);
-
         }
 
         //// Set the gameObject name
