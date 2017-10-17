@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using XboxCtrlrInput;
@@ -19,6 +20,8 @@ public class MenuManager : MonoBehaviour
     Camera camera;
     MenuCameraControl cameraControl;
 
+    [SerializeField]
+    string gameSceneName;
 
     [Header("Prefabs:")]
     [SerializeField]
@@ -26,6 +29,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] // Each players spawn pos
     Transform player1Spawn, player2Spawn, player3Spawn, player4Spawn;
+
+    CSManager csManager;
 
     PlayerColourPicker playerColourPicker;
 
@@ -37,39 +42,25 @@ public class MenuManager : MonoBehaviour
 
     MenuStates menuState;
 
-    void Start()
-    {
-        StartMainMenu();
-    }
-
     void Awake()
     {
         playerColourPicker = GetComponent<PlayerColourPicker>();
 
         cameraControl = camera.GetComponent<MenuCameraControl>();
+
+        csManager = GetComponent<CSManager>();
     }
-	
-	void Update()
+
+    void Start()
+    {
+        StartMainMenu();
+    }
+
+    void Update()
     {
         if (menuState == MenuStates.CharacterSelection)
         {
-            XboxButton readyButton = XboxButton.A;
-            if (XCI.GetButtonDown(readyButton, XboxController.First))
-            {
-                SpawnPlayer(1);
-            }
-            if (XCI.GetButtonDown(readyButton, XboxController.Second))
-            {
-                SpawnPlayer(2);
-            }
-            if (XCI.GetButtonDown(readyButton, XboxController.Third))
-            {
-                SpawnPlayer(3);
-            }
-            if (XCI.GetButtonDown(readyButton, XboxController.Fourth))
-            {
-                SpawnPlayer(4);
-            }
+            csManager.UpdateLogic();
         }
     }
 
@@ -93,7 +84,12 @@ public class MenuManager : MonoBehaviour
         characterSelectUI.SetActive(true);
     }
 
-    void SpawnPlayer(int playerNumber)
+    public void StartGame()
+    {
+        SceneManager.LoadScene(gameSceneName);
+    }
+
+    public void SpawnPlayer(int playerNumber)
     {
         // If we have a player in that spot, delete it
         if (players[playerNumber - 1] != null)

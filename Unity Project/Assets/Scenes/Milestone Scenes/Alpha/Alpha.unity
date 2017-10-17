@@ -1713,6 +1713,12 @@ Prefab:
       propertyPath: winMessageText
       value: 
       objectReference: {fileID: 527830208}
+    - target: {fileID: 114031619104171960, guid: 01a8393dfc65fe74c9af881cffbcce9f,
+        type: 2}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 1277409853151848, guid: 011cb6359296e7c48be437081774c5d4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01a8393dfc65fe74c9af881cffbcce9f, type: 2}
   m_IsPrefabParent: 0

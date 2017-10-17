@@ -13,7 +13,7 @@ public class ColourSetter : MonoBehaviour
     Color primaryColour;
     Color secondaryColour;
 
-
+        
     void Awake()
     {
         primaryMaterials = new Material[meshRenderers.Count];
@@ -44,11 +44,17 @@ public class ColourSetter : MonoBehaviour
     {
         foreach (Material material in primaryMaterials)
         {
-            material.color = primaryColour;
+            if (material != null)
+            {
+                material.color = primaryColour;
+            }
         }
         foreach (Material material in secondaryMaterials)
         {
-            material.color = secondaryColour;
+            if (material != null)
+            {
+                material.color = secondaryColour;
+            }
         }
     }
 
