@@ -88,7 +88,10 @@ public class MenuManager : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-
+            if (players[i] != null)
+            {
+                DontDestroyOnLoad(players[i]);
+            }
         }
         SceneManager.LoadScene(gameSceneName);
     }

@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -27,10 +26,6 @@ public class GameManager : MonoBehaviour
     // Keep a list of each player in the game
     public GameObject[] players = new GameObject[4];
 
-    [Header("Prefabs:")]
-    [SerializeField]
-    GameObject playerPrefab;
-
     [SerializeField] // Each players score text
     Text player1Score, player2Score, player3Score, player4Score;
 
@@ -52,18 +47,47 @@ public class GameManager : MonoBehaviour
 
     int winningPlayerNumber = 0;
 
-    void Awake ()
+    void Awake()
     {
         zoneControl = zone.GetComponent<ZoneControl>();
         playerColourPicker = GetComponent<PlayerColourPicker>();
 
         timer = startTime;
 
-        // Spawn players
-        SpawnPlayer(1);
 
         winMessageText.enabled = false;
 	}
+
+    void OnEnable()
+    {
+        //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Search for players in the scene
+        GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("PlayerBall");
+        GameObject newObject = new GameObject("WHAT");
+        for (int i = 0; i < playersInScene.Length; i++)
+        {
+            //DontDestroyOnLoad(playersInScene[i]);
+            //playersInScene[i].transform.SetParent(newObject.transform);
+
+            PlayerController playerController = playersInScene[i].GetComponent<PlayerController>();
+
+            players[playerController.playerNumber - 1] = playersInScene[i];
+
+            RespawnPlayer(playerController.playerNumber);
+        }
+
+    }
 
     void Update ()
     {
@@ -71,7 +95,7 @@ public class GameManager : MonoBehaviour
         {
             if (players[i] != null)
             {
-                PlayerController playerController = players[i].GetComponentInChildren<PlayerController>();
+                PlayerController playerController = players[i].GetComponent<PlayerController>();
                 if (playerController.transform.position.y <= deathYLevel)
                 {
                     playerController.isAlive = false;
@@ -79,7 +103,7 @@ public class GameManager : MonoBehaviour
 
                 if (playerController.isAlive == false)
                 {
-                    SpawnPlayer(playerController.playerNumber);
+                    RespawnPlayer(playerController.playerNumber);
                 }
             }
         }
@@ -96,72 +120,70 @@ public class GameManager : MonoBehaviour
         // Temp player spawning
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SpawnPlayer(1);
+            RespawnPlayer(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SpawnPlayer(2);
+            RespawnPlayer(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SpawnPlayer(3);
+            RespawnPlayer(3);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            SpawnPlayer(4);
+            RespawnPlayer(4);
         }
     }
 
-    void SpawnPlayer(int playerNumber)
+    void RespawnPlayer(int playerNumber)
     {
-        // If we have a player in that spot, delete it
         if (players[playerNumber - 1] != null)
         {
-            Destroy(players[playerNumber - 1]);
-            players[playerNumber - 1] = null;
+            // Switch on the different players to spawn them in respective spots
+            switch (playerNumber)
+            {
+                case 1:
+                    players[playerNumber - 1].transform.position = player1Spawn.position;
+                    break;
+                case 2:
+                    players[playerNumber - 1].transform.position = player2Spawn.position;
+                    break;
+                case 3:
+                    players[playerNumber - 1].transform.position = player3Spawn.position;
+                    break;
+                case 4:
+                    players[playerNumber - 1].transform.position = player4Spawn.position;
+                    break;
+                default:
+                    break;
+            }
+
+            LookRotation lookRotation = players[playerNumber - 1].transform.parent.GetComponentInChildren<LookRotation>();
+            lookRotation.LookTowards(zone.transform.position);
+
         }
 
-        GameObject newPlayer = null;
+        //// Set the gameObject name
+        //newPlayer.name = "Player " + playerNumber.ToString();
 
-        // Switch on the different players to spawn them in different spots
-        switch (playerNumber)
-        {
-            case 1:
-                newPlayer = Instantiate(playerPrefab, player1Spawn.position, player1Spawn.rotation) as GameObject;
-                break;
-            case 2:
-                newPlayer = Instantiate(playerPrefab, player2Spawn.position, player2Spawn.rotation) as GameObject;
-                break;
-            case 3:
-                newPlayer = Instantiate(playerPrefab, player3Spawn.position, player3Spawn.rotation) as GameObject;
-                break;
-            case 4:
-                newPlayer = Instantiate(playerPrefab, player4Spawn.position, player4Spawn.rotation) as GameObject;
-                break;
-            default:
-                break;
-        }
+        //// Add to the player array in the correct spot
+        //players[playerNumber - 1] = newPlayer;
 
-        // Set the gameObject name
-        newPlayer.name = "Player " + playerNumber.ToString();
+        //PlayerController newPlayerController = newPlayer.GetComponentInChildren<PlayerController>();
+        //// Set each players number
+        //newPlayerController.playerNumber = playerNumber;
+        //// Set the controller number
+        //newPlayerController.controller = (XboxCtrlrInput.XboxController)playerNumber;
+        //// Set player as alive
+        //newPlayerController.isAlive = true;
 
-        // Add to the player array in the correct spot
-        players[playerNumber - 1] = newPlayer;
+        //LookRotation newLookRotation = newPlayer.GetComponentInChildren<LookRotation>();
+        //newLookRotation.StartUp();
+        //newLookRotation.LookTowards(zone.transform.position);
 
-        PlayerController newPlayerController = newPlayer.GetComponentInChildren<PlayerController>();
-        // Set each players number
-        newPlayerController.playerNumber = playerNumber;
-        // Set the controller number
-        newPlayerController.controller = (XboxCtrlrInput.XboxController)playerNumber;
-        // Set player as alive
-        newPlayerController.isAlive = true;
-
-        LookRotation newLookRotation = newPlayer.GetComponentInChildren<LookRotation>();
-        newLookRotation.StartUp();
-        newLookRotation.LookTowards(zone.transform.position);
-
-        //TODO do this is a better spot or a better way
-        playerColourPicker.SetUp(players);
+        ////TODO do this is a better spot or a better way
+        //playerColourPicker.SetUp(players);
     }
 
     void GivePoints()
