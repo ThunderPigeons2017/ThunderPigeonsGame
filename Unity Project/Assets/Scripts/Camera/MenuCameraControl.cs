@@ -22,8 +22,6 @@ public class MenuCameraControl : MonoBehaviour
     {
         camera = GetComponent<Camera>();
         targetTransform = mainMenuTransfrom;
-
-        FindObjectOfType<AudioManager>().Play("Music");
     }
 	
 	void LateUpdate()
