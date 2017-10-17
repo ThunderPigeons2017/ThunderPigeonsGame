@@ -86,6 +86,10 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        for (int i = 0; i < 4; i++)
+        {
+
+        }
         SceneManager.LoadScene(gameSceneName);
     }
 

@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
         UpdateTimer();
 
         GivePoints();
@@ -160,7 +159,6 @@ public class GameManager : MonoBehaviour
         LookRotation newLookRotation = newPlayer.GetComponentInChildren<LookRotation>();
         newLookRotation.StartUp();
         newLookRotation.LookTowards(zone.transform.position);
-
 
         //TODO do this is a better spot or a better way
         playerColourPicker.SetUp(players);
