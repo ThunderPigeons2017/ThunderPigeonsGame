@@ -18,8 +18,6 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
-
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -29,11 +27,6 @@ public class AudioManager : MonoBehaviour {
             s.source.loop = s.Loop;
         }		
 	}
-
-    void Start()
-    {
-        Play("Music");
-    }
 
     // Update is called once per frame
     public void Play(string name)
