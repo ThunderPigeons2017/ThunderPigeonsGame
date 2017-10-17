@@ -22,7 +22,9 @@ public class MenuCameraControl : MonoBehaviour
     {
         camera = GetComponent<Camera>();
         targetTransform = mainMenuTransfrom;
-	}
+
+        FindObjectOfType<AudioManager>().Play("Music");
+    }
 	
 	void LateUpdate()
     {
@@ -37,6 +39,9 @@ public class MenuCameraControl : MonoBehaviour
         camera.transform.position = Vector3.Lerp(camera.transform.position, targetTransform.position, fracJourney);
         // Lerp rotation
         camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, targetTransform.rotation, fracJourney);
+
+        
+
     }
 
     public void MoveToMainMenu()

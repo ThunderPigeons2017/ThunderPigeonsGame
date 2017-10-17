@@ -24,12 +24,15 @@ public class CameraControl : MonoBehaviour
 
     [SerializeField]
     private GameObject m_gmObject;
+    private GameObject m_Zone;
     private GameManager m_gm;
 
     // Use this for initialization
     private void Awake()
     {
         m_Camera = GetComponent<Camera>();	                                    //references camera and gets values
+
+        m_Zone = GameObject.FindGameObjectWithTag("Zone");
 
         m_gm = m_gmObject.GetComponent<GameManager>();
     }
@@ -72,7 +75,9 @@ public class CameraControl : MonoBehaviour
     private Vector3 FindAveragePosition()
     {
         Vector3 averagePos = new Vector3();
-        int numTargets = 0;
+        int numTargets = 1;
+
+        averagePos += m_Zone.transform.position;
 
         for (int i = 0; i < m_Targets.Length; i++)
         {
@@ -92,20 +97,7 @@ public class CameraControl : MonoBehaviour
     public float FindDistance()
     {
         float distance = 0f;
-
-        //Vector3 averagePos = FindAveragePosition();
-
-        //float targetDistanceToAverage = 0f;
-        //float temporaryContainer = 0f;
-
-        //for (int i = 0; i < m_Targets.Length; i++)
-        //{
-        //    if (m_Targets[i] == null || !m_Targets[i].isAlive)
-        //        continue;
-
-        //    temporaryContainer = Vector3.Distance(m_Targets[i].gameObject.transform.position, averagePos);
-        //    targetDistanceToAverage = Mathf.Max(temporaryContainer, targetDistanceToAverage);
-        //}
+        float currentDistance = 0f;
 
         for (int i = 0; i < m_Targets.Length; i++)
         {
@@ -121,14 +113,19 @@ public class CameraControl : MonoBehaviour
 
                 PlayerController playerB = m_Targets[j];
 
-                float currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
+                currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
                 if (currentDistance > distance)
                 {
                     distance = currentDistance;
                 }
             }
+            currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);
+            if (currentDistance > distance)
+            {
+                distance = currentDistance;
+            }
 
-        }
+    }
 
         return distance;
     }
