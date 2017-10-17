@@ -7,6 +7,9 @@ public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
 
     public static AudioManager instance;
+
+    int x = 0;
+
 	void Awake ()
     {
 
@@ -25,7 +28,12 @@ public class AudioManager : MonoBehaviour {
 
             s.source.volume = s.volume;
             s.source.loop = s.Loop;
-        }		
+
+            s.source.outputAudioMixerGroup = s.output;
+        }
+
+        Play("Music");
+        Play("Ocean");
 	}
 
     // Update is called once per frame
@@ -38,4 +46,16 @@ public class AudioManager : MonoBehaviour {
 
         s.source.Play();
     }
+
+    public void Update()
+    {
+        if (x == 1000000)
+        {
+            Play("Gulls");
+            x = 0;
+        }
+        else
+            x++;
+    }
+
 }
