@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4594946974855640}
   m_Layer: 0
-  m_Name: Player 1-Prototype
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1474,10 +1474,13 @@ MonoBehaviour:
   controller: 1
   isAlive: 1
   playerNumber: 0
+  grounded: 0
   speed: 12
   forceDown: 2
-  grounded: 0
-  punching: 0
+  normalDrag: 0
+  slowDrag: 0
+  distanceToGroundOffset: 0.1
+  animState: 0
 --- !u!114 &114528648722084242
 MonoBehaviour:
   m_ObjectHideFlags: 1
