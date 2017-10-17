@@ -138,9 +138,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4917324665096152}
   - component: {fileID: 65443252743165140}
-  - component: {fileID: 114660063812417628}
+  - component: {fileID: 114947426166769968}
   m_Layer: 0
-  m_Name: Bumper trigger Collider
+  m_Name: Punch Collider
   m_TagString: PlayerBumper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,6 +268,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1853539437436854
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4273954198172542}
+  - component: {fileID: 65018684905239600}
+  - component: {fileID: 114660063812417628}
+  m_Layer: 0
+  m_Name: Bumper trigger Collider
+  m_TagString: PlayerBumper
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1860953990019960
 GameObject:
   m_ObjectHideFlags: 1
@@ -325,6 +342,19 @@ Transform:
   m_Father: {fileID: 4652945154888576}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4273954198172542
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853539437436854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.016, z: 0.4924}
+  m_LocalScale: {x: 1.9923675, y: 2.8536985, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4909608463773964}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4286532849243350
 Transform:
   m_ObjectHideFlags: 1
@@ -332,7 +362,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277409853151848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.305296, y: 10.6971855, z: -1.8744777}
+  m_LocalPosition: {x: -24.907766, y: 10.44878, z: -1.8547723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4366436467665876}
@@ -463,8 +493,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4917324665096152}
+  - {fileID: 4273954198172542}
   - {fileID: 4652945154888576}
+  - {fileID: 4917324665096152}
   m_Father: {fileID: 4286532849243350}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -475,11 +506,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1492919092018340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.016, z: 0.4924}
-  m_LocalScale: {x: 3.1092205, y: 2.8536985, z: 1}
+  m_LocalPosition: {x: 0, y: 1.496, z: 1.014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4909608463773964}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4921976147163390
 Transform:
@@ -1033,6 +1064,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65018684905239600
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853539437436854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.3, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65443252743165140
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1043,7 +1086,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.1}
+  m_Size: {x: 1.15, y: 2.38, z: 1.52}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114151477804703322
 MonoBehaviour:
@@ -1107,7 +1150,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492919092018340}
+  m_GameObject: {fileID: 1853539437436854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4e290b39a6157649a9eb9f46c947f0d, type: 3}
@@ -1134,6 +1177,22 @@ MonoBehaviour:
   maxTiltDegrees: 23
   minTiltingVelocity: 2
   maxTiltingVelocity: 18
+--- !u!114 &114947426166769968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492919092018340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9370247d4b55a0f44b4645cf481701e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBall: {fileID: 1808627105021356}
+  punchForceBase: 4
+  punchForceTimeMultiplyer: 0.6
+  knockUpForceBase: 4
+  knockUpForceTimeMultiplyer: 0.4
 --- !u!135 &135276654782501604
 SphereCollider:
   m_ObjectHideFlags: 1

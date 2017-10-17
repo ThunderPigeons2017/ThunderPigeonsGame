@@ -2,12 +2,16 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using XboxCtrlrInput;
+
 public class GameManager : MonoBehaviour
 {
     float[] scores = new float[4];
 
     [SerializeField]
     int winScore;
+
+    bool gameWon = false;
 
     [SerializeField]
     bool allowContest = false;
@@ -54,9 +58,10 @@ public class GameManager : MonoBehaviour
 
         timer = startTime;
 
+        gameWon = false;
 
         winMessageText.enabled = false;
-	}
+    }
 
     void OnEnable()
     {
@@ -89,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void Update ()
+    void Update()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -117,23 +122,23 @@ public class GameManager : MonoBehaviour
 
         CheckForWinningPlayer();
 
-        // Temp player spawning
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            RespawnPlayer(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            RespawnPlayer(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            RespawnPlayer(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            RespawnPlayer(4);
-        }
+        //// Temp player spawning
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    RespawnPlayer(1);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    RespawnPlayer(2);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    RespawnPlayer(3);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    RespawnPlayer(4);
+        //}
     }
 
     void RespawnPlayer(int playerNumber)
@@ -190,19 +195,22 @@ public class GameManager : MonoBehaviour
 
     void GivePoints()
     {
-        // Every second give the players in the zoneControl.playersInZone a point
-        if (allowContest && zoneControl.playersInZone.Count == 1)
+        if (gameWon == false)
         {
-            foreach (GameObject player in zoneControl.playersInZone)
+            // Every second give the players in the zoneControl.playersInZone a point
+            if (allowContest && zoneControl.playersInZone.Count == 1)
             {
-                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+                foreach (GameObject player in zoneControl.playersInZone)
+                {
+                    scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+                }
             }
-        }
-        else if (!allowContest)
-        {
-            foreach (GameObject player in zoneControl.playersInZone)
+            else if (!allowContest)
             {
-                scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+                foreach (GameObject player in zoneControl.playersInZone)
+                {
+                    scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+                }
             }
         }
     }
@@ -244,11 +252,33 @@ public class GameManager : MonoBehaviour
         {
             if (scores[i] >= winScore)
             {
+                gameWon = true;
                 winningPlayerNumber = i + 1;
                 winMessageText.enabled = true;
                 SetWinMessage();
+
+                if (XCI.GetButtonDown(XboxButton.A, XboxController.All))
+                {
+                    SceneManager.LoadScene("Main Menu");
+                    for (int x = 0; x < 4; x++)
+                    {
+                        if (players[x] != null)
+                        {
+                            Destroy(players[x].transform.parent.gameObject);
+                        }
+                    }
+                }
+                if (XCI.GetButtonDown(XboxButton.B, XboxController.All))
+                {
+                    SceneManager.LoadScene("Alpha");
+
+                    for (int x = 0; x < 4; x++)
+                    {
+                        RespawnPlayer(i);
+                    }
+                }
             }
         }
     }
 }
-    
+

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using XboxCtrlrInput;
+
 public class PunchCollision : MonoBehaviour
 {
     [SerializeField]
@@ -30,9 +32,11 @@ public class PunchCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") // If its colliding with a player
+        if (other.tag == "PlayerBall") // If its colliding with a player
         {
-            if (playerBall.GetComponent<PlayerController>().animState == PlayerController.AnimState.Punch) // If this player is doing the punch animation
+            //if (playerBall.GetComponent<PlayerController>().animState == PlayerController.AnimState.Punch) // If this player is doing the punch animation
+
+            if (XCI.GetButton(XboxButton.RightBumper, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
             {
                 if (other.gameObject != playerBall) // If its not colliding with this player
                 {
