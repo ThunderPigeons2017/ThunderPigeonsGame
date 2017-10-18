@@ -15,7 +15,7 @@ public class MenuCameraControl : MonoBehaviour
 
     Camera camera;
 
-    private float startTime;
+    private float timeSinceStart;
     private float journeyLength;
 
     void Awake()
@@ -24,9 +24,10 @@ public class MenuCameraControl : MonoBehaviour
         targetTransform = mainMenuTransfrom;
     }
 	
-	void LateUpdate()
+	void FixedUpdate()
     {
-        float distCovered = (Time.time - startTime) * speed;
+        timeSinceStart += Time.fixedDeltaTime;
+        float distCovered = timeSinceStart * speed;
         float fracJourney = 0;
         if (journeyLength != 0) // Do not divide by zero
         {
@@ -36,17 +37,14 @@ public class MenuCameraControl : MonoBehaviour
         // Lerp position
         camera.transform.position = Vector3.Lerp(camera.transform.position, targetTransform.position, fracJourney);
         // Lerp rotation
-        camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, targetTransform.rotation, fracJourney);
-
-        
-
+        camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, targetTransform.rotation, fracJourney);
     }
 
     public void MoveToMainMenu()
     {
         targetTransform = mainMenuTransfrom;
 
-        startTime = Time.time;
+        timeSinceStart = 0;
         journeyLength = Vector3.Distance(camera.transform.position, targetTransform.position);
     }
 
@@ -54,7 +52,7 @@ public class MenuCameraControl : MonoBehaviour
     {
         targetTransform = characterSelectTransform;
 
-        startTime = Time.time;
+        timeSinceStart = 0;
         journeyLength = Vector3.Distance(camera.transform.position, targetTransform.position);
     }
 }
