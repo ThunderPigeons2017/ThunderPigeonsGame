@@ -12,6 +12,7 @@ public class MenuCameraControl : MonoBehaviour
     float speed;
 
     Transform targetTransform;
+    Transform previousTransform;
 
     Camera camera;
 
@@ -24,9 +25,9 @@ public class MenuCameraControl : MonoBehaviour
         targetTransform = mainMenuTransfrom;
     }
 	
-	void FixedUpdate()
+	void LateUpdate()
     {
-        timeSinceStart += Time.fixedDeltaTime;
+        timeSinceStart += Time.deltaTime;
         float distCovered = timeSinceStart * speed;
         float fracJourney = 0;
         if (journeyLength != 0) // Do not divide by zero
@@ -35,13 +36,14 @@ public class MenuCameraControl : MonoBehaviour
         }
 
         // Lerp position
-        camera.transform.position = Vector3.Lerp(camera.transform.position, targetTransform.position, fracJourney);
+        camera.transform.position = Vector3.Lerp(previousTransform.position, targetTransform.position, fracJourney);
         // Lerp rotation
-        camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, targetTransform.rotation, fracJourney);
+        camera.transform.rotation = Quaternion.Slerp(previousTransform.rotation, targetTransform.rotation, fracJourney);
     }
 
     public void MoveToMainMenu()
     {
+        previousTransform = targetTransform;
         targetTransform = mainMenuTransfrom;
 
         timeSinceStart = 0;
@@ -50,6 +52,7 @@ public class MenuCameraControl : MonoBehaviour
 
     public void MoveToCharacterSelection()
     {
+        previousTransform = targetTransform;
         targetTransform = characterSelectTransform;
 
         timeSinceStart = 0;
