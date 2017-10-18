@@ -14,7 +14,7 @@ public class CSManager : MonoBehaviour
     Text[] readyText = new Text[4];
 
     [SerializeField]
-    Text startText;
+	GameObject startText;
 
     MenuManager menuManager;
 
@@ -27,7 +27,7 @@ public class CSManager : MonoBehaviour
 
     void Start()
     {
-        startText.enabled = false;
+		startText.SetActive(false);
     }
 
     public void UpdateLogic()
@@ -78,7 +78,7 @@ public class CSManager : MonoBehaviour
 
         if (readyPlayerCount > 1)
         {
-            startText.enabled = true;
+			startText.SetActive(true);
             if (XCI.GetButtonDown(XboxButton.Start, XboxController.All)) // Player start input
             {
                 menuManager.StartGame();
@@ -86,7 +86,7 @@ public class CSManager : MonoBehaviour
         }
         else
         {
-            startText.enabled = false;
+			startText.SetActive(false);
         }
     }
 }
