@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
+    [SerializeField]
+    float drunkenness;
+
     public enum AnimState
     {
         Idle,
@@ -60,6 +63,10 @@ public class PlayerController : MonoBehaviour
         // Left stick
         float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controller);
         float moveVertical = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+
+        moveHorizontal += drunkenness;
+        moveVertical += drunkenness;
+
 
         Vector3 movement = Vector3.zero;
 

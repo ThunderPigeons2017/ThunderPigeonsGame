@@ -142,6 +142,34 @@ public class GameManager : MonoBehaviour
         //{
         //    RespawnPlayer(4);
         //}
+
+        if (gameWon)
+        {
+            restartMessage.enabled = true;
+            winMessageText.enabled = true;
+            SetWinMessage();
+
+            if (XCI.GetButtonDown(XboxButton.A, XboxController.All))
+            {
+                SceneManager.LoadScene("Main Menu");
+                for (int x = 0; x < 4; x++)
+                {
+                    if (players[x] != null)
+                    {
+                        Destroy(players[x].transform.parent.gameObject);
+                    }
+                }
+            }
+            if (XCI.GetButtonDown(XboxButton.B, XboxController.All))
+            {
+                SceneManager.LoadScene("Alpha");
+
+                for (int x = 0; x < 4; x++)
+                {
+                    RespawnPlayer(x);
+                }
+            }
+        }
     }
 
     void RespawnPlayer(int playerNumber)
@@ -236,6 +264,8 @@ public class GameManager : MonoBehaviour
         else
         {
             // Timer Run out!
+            SetHightestScorerAsWinner();
+            gameWon = true;
         }
 
         // Miniutes and seconds
@@ -246,7 +276,14 @@ public class GameManager : MonoBehaviour
 
     void SetWinMessage()
     {
-        winMessageText.text = winMessageString.Replace('x', winningPlayerNumber.ToString()[0]);
+        if (winningPlayerNumber == 0)
+        {
+            winMessageText.text = "It's a tie";
+        }
+        else
+        {
+            winMessageText.text = winMessageString.Replace('x', winningPlayerNumber.ToString()[0]);
+        }
     }
 
     void CheckForWinningPlayer()
@@ -257,32 +294,24 @@ public class GameManager : MonoBehaviour
             {
                 gameWon = true;
                 winningPlayerNumber = i + 1;
-				restartMessage.enabled = true;
-                winMessageText.enabled = true;
-                SetWinMessage();
-
-                if (XCI.GetButtonDown(XboxButton.A, XboxController.All))
-                {
-                    SceneManager.LoadScene("Main Menu");
-                    for (int x = 0; x < 4; x++)
-                    {
-                        if (players[x] != null)
-                        {
-                            Destroy(players[x].transform.parent.gameObject);
-                        }
-                    }
-                }
-                if (XCI.GetButtonDown(XboxButton.B, XboxController.All))
-                {
-                    SceneManager.LoadScene("Alpha");
-
-                    for (int x = 0; x < 4; x++)
-                    {
-                        RespawnPlayer(i);
-                    }
-                }
             }
         }
+    }
+
+    void SetHightestScorerAsWinner()
+    {
+        float highestScore = 0;
+        int playernum = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (scores[i] > highestScore)
+            {
+                highestScore = scores[i];
+                playernum = i + 1;
+            }
+        }
+
+        winningPlayerNumber = playernum;
     }
 }
 
