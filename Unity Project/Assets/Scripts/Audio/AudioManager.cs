@@ -1,18 +1,7 @@
-﻿/***********************************************
- * 
- * Thunder Pidgeon - Team 13
- * Audio Manager Script
- * 
- * by Rouie Ortega
- * 
- **********************************************/
-
-/* Unity Codes to make C# Script applicaple for Unity Game */
-using UnityEngine.Audio;                                                              //required for Audio Control
+﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-/*  */
 public class AudioManager : MonoBehaviour {
 
     public Sound[] sounds;
