@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4622686763134104}
   - component: {fileID: 114031619104171960}
   m_Layer: 0
-  m_Name: GameManager 1
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,17 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9614e2764569d9647867ff2554ea6d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: {fileID: 1664090810363882, guid: a54f897e850f7e643b4e7c6c58277e35, type: 2}
+  winScore: 0
   allowContest: 0
   startTime: 0
   deathYLevel: -3
+  zone: {fileID: 1664090810363882, guid: a54f897e850f7e643b4e7c6c58277e35, type: 2}
   players:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  playerPrefab: {fileID: 1404366958894002, guid: 5971df59edabcc641bc7a429ee9e3924,
-    type: 2}
   player1Score: {fileID: 0}
   player2Score: {fileID: 0}
   player3Score: {fileID: 0}
@@ -75,3 +74,6 @@ MonoBehaviour:
     type: 2}
   player4Spawn: {fileID: 4844604921289196, guid: 7d837dd47dd7b274b83c726f4dde9873,
     type: 2}
+  winMessageText: {fileID: 0}
+  restartMessage: {fileID: 0}
+  winMessageString: 
