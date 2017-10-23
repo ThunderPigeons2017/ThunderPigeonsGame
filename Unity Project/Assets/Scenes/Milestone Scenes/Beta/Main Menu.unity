@@ -2992,19 +2992,29 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114609904488154658, guid: 68df05ff27d7a734a8db19d52e8dc607,
         type: 2}
-      propertyPath: startText
+      propertyPath: meshPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 1817441229}
-    - target: {fileID: 114381548439191274, guid: 68df05ff27d7a734a8db19d52e8dc607,
+      objectReference: {fileID: 100002, guid: 5d98e96276fdd084f912591ba51ff344, type: 3}
+    - target: {fileID: 114609904488154658, guid: 68df05ff27d7a734a8db19d52e8dc607,
         type: 2}
-      propertyPath: gameSceneName
-      value: Beta
-      objectReference: {fileID: 0}
+      propertyPath: meshPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 100000, guid: f5639e7119d15ff4ca884cb6aff6bb1b, type: 3}
+    - target: {fileID: 114609904488154658, guid: 68df05ff27d7a734a8db19d52e8dc607,
+        type: 2}
+      propertyPath: meshPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 100048, guid: 8b6872d40f130dd4ab54cbebeb7d4ff2, type: 3}
+    - target: {fileID: 114609904488154658, guid: 68df05ff27d7a734a8db19d52e8dc607,
+        type: 2}
+      propertyPath: meshPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 100022, guid: 8d9a56542f6912c4b9668bb14e85893b, type: 3}
     - target: {fileID: 114381548439191274, guid: 68df05ff27d7a734a8db19d52e8dc607,
         type: 2}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 1787725151653330, guid: a05d4725d784c5544bb57746f4a8a0d2,
+      objectReference: {fileID: 1257403905393708, guid: 011cb6359296e7c48be437081774c5d4,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68df05ff27d7a734a8db19d52e8dc607, type: 2}
@@ -3967,11 +3977,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8531c584115a60d4ebb6b5e79a55d1fd, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1817441229 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1358575014657580, guid: 68df05ff27d7a734a8db19d52e8dc607,
-    type: 2}
-  m_PrefabInternal: {fileID: 1414148904}
 --- !u!1 &1820725980 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 8531c584115a60d4ebb6b5e79a55d1fd, type: 3}

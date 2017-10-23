@@ -1608,7 +1608,7 @@ MonoBehaviour:
   mainMenuUI: {fileID: 1976714977213488}
   characterSelectUI: {fileID: 1502091304936456}
   camera: {fileID: 20859330005531816}
-  gameSceneName: Alpha
+  gameSceneName: Beta
   playerPrefab: {fileID: 1277409853151848, guid: 011cb6359296e7c48be437081774c5d4,
     type: 2}
   player1Spawn: {fileID: 4338589078534452}
@@ -1945,7 +1945,12 @@ MonoBehaviour:
   - {fileID: 114228661388568198}
   - {fileID: 114183548330810290}
   - {fileID: 114604602217929038}
-  startText: {fileID: 0}
+  startText: {fileID: 1358575014657580}
+  meshPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114609998532368542
 MonoBehaviour:
   m_ObjectHideFlags: 1
