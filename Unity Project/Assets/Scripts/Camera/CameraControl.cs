@@ -13,7 +13,8 @@ public class CameraControl : MonoBehaviour
 
     public float m_DampTime = 0.2f;                                             //approximate time for the camera to move to new location
     public float minimumDistance = 5f;
-    public float distanceScale = 2f;
+    public float maximumDistance = 75f;
+    public float distanceScale = 1.5f;
 
     private PlayerController[] m_Targets = new PlayerController[4];             //array of gaming objects that would be the targets for camera to adjust to
     private Camera m_Camera;                                                    //reference to the camera attached as child
@@ -66,6 +67,11 @@ public class CameraControl : MonoBehaviour
         {
             distance = minimumDistance;
         }
+        else if (distance >= maximumDistance)
+        {
+            distance = maximumDistance;
+        }
+
 
         m_DesiredPosition += - m_Camera.transform.forward * distance * distanceScale;
 
