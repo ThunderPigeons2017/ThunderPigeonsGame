@@ -5,7 +5,9 @@ using UnityEngine;
 public class ColourSetter : MonoBehaviour
 {
     [SerializeField]
-    List<MeshRenderer> meshRenderers;
+    GameObject meshParent;
+
+    MeshRenderer[] meshRenderers;
 
     Material[] primaryMaterials;
     Material[] secondaryMaterials;
@@ -13,11 +15,16 @@ public class ColourSetter : MonoBehaviour
     Color primaryColour;
     Color secondaryColour;
 
-        
     void Awake()
     {
-        primaryMaterials = new Material[meshRenderers.Count];
-        secondaryMaterials = new Material[meshRenderers.Count];
+        FindMeshRenderers();
+        FindMaterials();
+    }
+
+    void FindMaterials()
+    {
+        primaryMaterials = new Material[meshRenderers.Length];
+        secondaryMaterials = new Material[meshRenderers.Length];
 
         int i = 0;
         foreach (MeshRenderer meshRenderer in meshRenderers)
@@ -38,6 +45,20 @@ public class ColourSetter : MonoBehaviour
             }
             ++i;
         }
+    }
+
+    void FindMeshRenderers()
+    {
+        meshRenderers = meshParent.GetComponentsInChildren<MeshRenderer>();
+    }
+
+    public void SetMeshParent(GameObject newMeshParent)
+    {
+        meshParent = newMeshParent;
+
+        FindMeshRenderers();
+        FindMaterials();
+        UpdateColours();
     }
 
     public void UpdateColours()

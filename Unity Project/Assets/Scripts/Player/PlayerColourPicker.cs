@@ -38,7 +38,7 @@ public class PlayerColourPicker : MonoBehaviour
         {
             if (players[i] != null)
             {
-                colourSetter[i] = players[i].GetComponent<ColourSetter>();
+                colourSetter[i] = players[i].GetComponentInChildren<ColourSetter>();
 
 
                 switch (i)

@@ -14,29 +14,29 @@ public class PunchCollision : MonoBehaviour
     [Tooltip("Punch force base value")]
     [SerializeField]
     float punchForceBase = 4f;
-    [Tooltip("Aditional punch force depending on wind up time")]
-    [SerializeField]
-    float punchForceTimeMultiplyer = 0.6f;
+    //[Tooltip("Aditional punch force depending on wind up time")]
+    //[SerializeField]
+    //float punchForceTimeMultiplyer = 0.6f;
 
     [Tooltip("Knock up force base value")]
     [SerializeField]
     float knockUpForceBase = 4f;
-    [Tooltip("Aditional Knock up force depending on wind up time")]
-    [SerializeField]
-    float knockUpForceTimeMultiplyer = 0.4f;
+    //[Tooltip("Aditional Knock up force depending on wind up time")]
+    //[SerializeField]
+    //float knockUpForceTimeMultiplyer = 0.4f;
 
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "PlayerBall") // If its colliding with a player
         {
             //if (playerBall.GetComponent<PlayerController>().animState == PlayerController.AnimState.Punch) // If this player is doing the punch animation
 
-            if (XCI.GetButton(XboxButton.RightBumper, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+            if (XCI.GetButtonDown(XboxButton.RightBumper, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
             {
                 if (other.gameObject != playerBall) // If its not colliding with this player
                 {
@@ -46,10 +46,10 @@ public class PunchCollision : MonoBehaviour
                     tempVelocity.y = 0f;
 
                     // Push the other player away
-                    other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * (punchForceBase + tempVelocity.magnitude * punchForceTimeMultiplyer), ForceMode.Impulse);
+                    other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * punchForceBase, ForceMode.Impulse);
 
                     // knock up the other player
-                    other.GetComponent<Rigidbody>().AddForce(Vector3.up * (knockUpForceBase + tempVelocity.magnitude * knockUpForceTimeMultiplyer), ForceMode.Impulse);
+                    other.GetComponent<Rigidbody>().AddForce(Vector3.up * knockUpForceBase, ForceMode.Impulse);
                 }
             }
         }

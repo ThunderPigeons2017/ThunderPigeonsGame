@@ -16,8 +16,10 @@ public class LookRotation : MonoBehaviour
     float maxTiltDegrees;
 
     [SerializeField]
+    [Tooltip("If the player is moving slower than this it wont tilt")]
     float minTiltingVelocity;
     [SerializeField]
+    [Tooltip("If the player is at this speed or faster it will be at the max tilting degrees")]
     float maxTiltingVelocity;
 
     Vector3 lookRotation;
