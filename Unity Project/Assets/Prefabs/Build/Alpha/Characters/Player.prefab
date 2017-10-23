@@ -277,8 +277,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4983825135092902}
-  - component: {fileID: 65470073667575140}
   - component: {fileID: 114235774922234020}
+  - component: {fileID: 135427547840177946}
   m_Layer: 0
   m_Name: Punch Collider
   m_TagString: PlayerBumper
@@ -344,7 +344,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795374301266968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.723723, y: 4.188859, z: 0.16002682}
+  m_LocalPosition: {x: 8.823672, y: 4.1887774, z: -5.4314346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4765424729677884}
@@ -596,7 +596,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820908868811722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.496, z: 1.014}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4283832317230988}
@@ -1217,18 +1217,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65470073667575140
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1820908868811722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.15, y: 2.38, z: 1.52}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114131009389659172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1265,8 +1253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBall: {fileID: 1379745328621770}
-  punchForceBase: 4
-  knockUpForceBase: 4
+  punchForceBase: 8
+  knockUpForceBase: 8
 --- !u!114 &114405870873963600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1335,6 +1323,18 @@ MonoBehaviour:
   meshParent: {fileID: 1428315204635128}
   meshPrefab: {fileID: 100002, guid: e98c101cc0ce7de40bb6effc45272ed2, type: 3}
   meshNumber: 0
+--- !u!135 &135427547840177946
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820908868811722}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!135 &135555028592013080
 SphereCollider:
   m_ObjectHideFlags: 1
