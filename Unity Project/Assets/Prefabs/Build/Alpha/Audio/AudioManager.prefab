@@ -57,10 +57,38 @@ MonoBehaviour:
     volume: 100
     pitch: 0.99
     Loop: 0
+    isNotPlaying: 0
+    output: {fileID: 243495021318841794, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
     source: {fileID: 0}
   - name: Music2
-    clip: {fileID: 8300000, guid: a62029bfd0cfb5247b82378176536f35, type: 3}
+    clip: {fileID: 8300000, guid: 8d75bffe2868b64459d865a8b3dd0a7b, type: 3}
     volume: 100
     pitch: 0.99
     Loop: 0
+    isNotPlaying: 0
+    output: {fileID: 243495021318841794, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
+    source: {fileID: 0}
+  - name: Ocean
+    clip: {fileID: 8300000, guid: b2c28f2eab7685a42bfe2449894ba21b, type: 3}
+    volume: 100
+    pitch: 0.99
+    Loop: 1
+    isNotPlaying: 0
+    output: {fileID: 243775753849725546, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
+    source: {fileID: 0}
+  - name: Gulls
+    clip: {fileID: 8300000, guid: f27d2bdc3a2c1f248bc7fec259b7f884, type: 3}
+    volume: 100
+    pitch: 0.99
+    Loop: 0
+    isNotPlaying: 0
+    output: {fileID: 243775753849725546, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
+    source: {fileID: 0}
+  - name: Effects
+    clip: {fileID: 8300000, guid: d1548062967270a4b87bbf22b61a0c19, type: 3}
+    volume: 100
+    pitch: 0.99
+    Loop: 0
+    isNotPlaying: 0
+    output: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
     source: {fileID: 0}
