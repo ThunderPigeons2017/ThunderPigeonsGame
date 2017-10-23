@@ -13,14 +13,19 @@ public class VolumeMixerControl : MonoBehaviour
         masterMixer.SetFloat("MasterVol", sound);
     }
 
-    public void MusicController(float sfx)
+    public void MusicController(float msfx)
     {
-        masterMixer.SetFloat("MusicVol", sfx);
+        masterMixer.SetFloat("MusicVol", msfx);
     }
 
-    public void AmbienceController(float msfx)
+    public void AmbienceController(float asfx)
     {
-        masterMixer.SetFloat("AmbienceVol", msfx);
+        masterMixer.SetFloat("AmbienceVol", asfx);
+    }
+
+    public void SFXController(float sfx)
+    {
+        masterMixer.SetFloat("FXVol", sfx);
     }
 
 }

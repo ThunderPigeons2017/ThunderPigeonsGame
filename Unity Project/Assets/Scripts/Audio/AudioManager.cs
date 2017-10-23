@@ -8,9 +8,9 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance;
 
-    int x = 0;
+     int x = 0;
 
-	void Awake ()
+     void Awake()
     {
 
         if (instance == null)
@@ -31,12 +31,14 @@ public class AudioManager : MonoBehaviour {
 
             s.source.outputAudioMixerGroup = s.output;
         }
+                
+        Play("Ocean");
 
         Play("Music");
-        Play("Ocean");
-	}
 
-    // Update is called once per frame
+    }
+
+
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -47,15 +49,34 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
     }
 
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+            return;
+
+        s.source.Stop();
+    }
+
+    // Update is called once per frame
     public void Update()
     {
-        if (x == 1000000)
+        if (x == 1000)
         {
             Play("Gulls");
             x = 0;
         }
         else
             x++;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Play("Effects");
+        }
+        
     }
+
+
 
 }

@@ -17,6 +17,8 @@ public class Sound
 
     public bool Loop;
 
+    public bool isNotPlaying;
+
     public AudioMixerGroup output;
 
     [HideInInspector]
