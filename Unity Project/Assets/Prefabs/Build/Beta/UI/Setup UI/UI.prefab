@@ -720,9 +720,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9614e2764569d9647867ff2554ea6d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winScore: 0
+  winScore: 10
   allowContest: 0
-  startTime: 0
+  startTime: 60
   deathYLevel: -3
   zone: {fileID: 1664090810363882, guid: a54f897e850f7e643b4e7c6c58277e35, type: 2}
   players:
@@ -824,9 +824,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DampTime: 0.1
-  minimumDistance: 5
+  minimumDistance: 10
   maximumDistance: 75
-  distanceScale: 2
+  distanceScale: 0.9
   m_gmObject: {fileID: 1984863805809796}
 --- !u!114 &114905716409657346
 MonoBehaviour:
