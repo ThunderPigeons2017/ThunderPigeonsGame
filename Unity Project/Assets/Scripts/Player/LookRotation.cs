@@ -22,6 +22,10 @@ public class LookRotation : MonoBehaviour
     [Tooltip("If the player is at this speed or faster it will be at the max tilting degrees")]
     float maxTiltingVelocity;
 
+    [SerializeField]
+    [Tooltip("How fast the current rotation will become the desired rotation (5 - 10 are good numbers)")]
+    float lerpSpeed = 8.0f;
+
     Vector3 lookRotation;
 
     Rigidbody rb;
@@ -100,6 +104,6 @@ public class LookRotation : MonoBehaviour
         Quaternion targetRotation = tiltRotation * fowardRotation;
 
         // Apply the rotation smoothly
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5.0f * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lerpSpeed * Time.deltaTime);
     }
 }

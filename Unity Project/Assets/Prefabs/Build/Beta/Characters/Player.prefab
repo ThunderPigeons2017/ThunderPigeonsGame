@@ -1255,6 +1255,7 @@ MonoBehaviour:
   playerBall: {fileID: 1379745328621770}
   punchForceBase: 8
   knockUpForceBase: 8
+  punchButton: 0
 --- !u!114 &114405870873963600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1309,6 +1310,7 @@ MonoBehaviour:
   maxTiltDegrees: 23
   minTiltingVelocity: 2
   maxTiltingVelocity: 18
+  lerpSpeed: 10
 --- !u!114 &114815454560187572
 MonoBehaviour:
   m_ObjectHideFlags: 1

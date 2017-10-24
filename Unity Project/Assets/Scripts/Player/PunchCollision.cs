@@ -37,8 +37,6 @@ public class PunchCollision : MonoBehaviour
     {
         if (other.tag == "PlayerBall") // If its colliding with a player
         {
-            //if (playerBall.GetComponent<PlayerController>().animState == PlayerController.AnimState.Punch) // If this player is doing the punch animation
-
             if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
             {
                 if (other.gameObject != playerBall) // If its not colliding with this player
