@@ -25,6 +25,9 @@ public class PunchCollision : MonoBehaviour
     //[SerializeField]
     //float knockUpForceTimeMultiplyer = 0.4f;
 
+    [SerializeField]
+    XboxButton punchButton = XboxButton.A;
+
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
@@ -36,7 +39,7 @@ public class PunchCollision : MonoBehaviour
         {
             //if (playerBall.GetComponent<PlayerController>().animState == PlayerController.AnimState.Punch) // If this player is doing the punch animation
 
-            if (XCI.GetButtonDown(XboxButton.RightBumper, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+            if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
             {
                 if (other.gameObject != playerBall) // If its not colliding with this player
                 {
