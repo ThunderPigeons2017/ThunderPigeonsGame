@@ -167,12 +167,15 @@ public class GameManager : MonoBehaviour
         //    RespawnPlayer(4);
         //}
 
+        // If the game has been won
         if (gameWon)
         {
+            // Turn on the messages
             restartMessage.enabled = true;
             winMessageText.enabled = true;
             SetWinMessage();
-
+            
+            // If a is pressed 
             if (XCI.GetButtonDown(XboxButton.A, XboxController.All))
             {
                 SceneManager.LoadScene("Main Menu");
@@ -184,6 +187,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            // If b is pressed restart the level
             if (XCI.GetButtonDown(XboxButton.B, XboxController.All))
             {
                 SceneManager.LoadScene("Beta");
