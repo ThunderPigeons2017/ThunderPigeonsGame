@@ -186,11 +186,11 @@ public class GameManager : MonoBehaviour
             }
             if (XCI.GetButtonDown(XboxButton.B, XboxController.All))
             {
-                SceneManager.LoadScene("Alpha");
+                SceneManager.LoadScene("Beta");
 
-                for (int x = 0; x < 4; x++)
+                for (int playerNum = 1; playerNum < 5; playerNum++)
                 {
-                    RespawnPlayer(x);
+                    RespawnPlayer(playerNum);
                 }
             }
         }
