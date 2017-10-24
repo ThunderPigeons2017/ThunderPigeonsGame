@@ -15,13 +15,14 @@ public class CameraControl : MonoBehaviour
     public float minimumDistance = 5f;
     public float maximumDistance = 75f;
     public float distanceScale = 1.5f;
+    public bool followZone = true;
 
     private PlayerController[] m_Targets = new PlayerController[4];             //array of gaming objects that would be the targets for camera to adjust to
     private Camera m_Camera;                                                    //reference to the camera attached as child
     private float m_ZoomSpeed;                                                  //damps zooming, slows it down to make it less jarring
     private Vector3 m_MoveVelocity;                                             //damps camera movement and panning to avoid jarring camera movements
     private Vector3 m_DesiredPosition;                                          //position that camera is trying to reach
-    
+
 
     [SerializeField]
     private GameObject m_gmObject;
@@ -54,7 +55,7 @@ public class CameraControl : MonoBehaviour
         }
 
         Move();                                                                 //calls move function to move camera
-       
+
     }
 
     private void Move()
@@ -73,7 +74,7 @@ public class CameraControl : MonoBehaviour
         }
 
 
-        m_DesiredPosition += - m_Camera.transform.forward * distance * distanceScale;
+        m_DesiredPosition += -m_Camera.transform.forward * distance * distanceScale;
 
         m_Camera.transform.position = Vector3.SmoothDamp(m_Camera.transform.position, m_DesiredPosition, ref m_MoveVelocity, m_DampTime);
     }
@@ -81,9 +82,14 @@ public class CameraControl : MonoBehaviour
     private Vector3 FindAveragePosition()
     {
         Vector3 averagePos = new Vector3();
-        int numTargets = 1;
+        int numTargets = 0;
 
-        averagePos += m_Zone.transform.position;
+        // Add the zone to the avg position if we are going to follow it
+        if (followZone)
+        {
+            averagePos += m_Zone.transform.position;
+            numTargets++;
+        }
 
         for (int i = 0; i < m_Targets.Length; i++)
         {
@@ -125,17 +131,23 @@ public class CameraControl : MonoBehaviour
                     distance = currentDistance;
                 }
             }
-            currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);
-            if (currentDistance > distance)
+
+            // Check the distance to the zone if we are following the zone
+            if (followZone)
             {
-                distance = currentDistance;
+                currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);
+                if (currentDistance > distance)
+                {
+                    distance = currentDistance;
+                }
             }
 
-    }
+        }
 
+        // Return the max distance we found
         return distance;
     }
-    
+
     public void SetStartPositionAndSize()
     {
         FindAveragePosition();
