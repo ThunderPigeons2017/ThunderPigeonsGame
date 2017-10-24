@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float deathYLevel = -3f;
 
-    [SerializeField]
     GameObject zone;
     ZoneControl zoneControl;
 
@@ -55,15 +54,23 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        zone = GameObject.FindGameObjectWithTag("Zone");
         zoneControl = zone.GetComponent<ZoneControl>();
         playerColourPicker = GetComponent<PlayerColourPicker>();
 
+    }
+
+    void Start()
+    {
         timer = startTime;
 
         gameWon = false;
 
-		winMessageText.enabled = false;
-		restartMessage.enabled = false;
+        winMessageText.enabled = false;
+        restartMessage.enabled = false;
+
+        // Choose a random zone postition
+        zone.transform.parent.GetComponent<ZoneManager>().MoveZone();
     }
 
     void OnEnable()

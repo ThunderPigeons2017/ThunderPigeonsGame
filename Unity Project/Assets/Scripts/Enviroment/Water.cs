@@ -65,16 +65,19 @@ public class Water : MonoBehaviour
         for (int i = 0; i < verts.Length; i++)
         {
             Vector3 v = verts[i];
-            v.y = 0;
+            v.y = 0; // Reset the y so we can add then new values
 
-            // Perlin noise wave 1
-            float xCoord = offsetX + v.x / 100 * 1;// scale;
-            float zCoord = offsetY + v.z / 100 * 1;// scale;
+            // Add position to make it relatice to world space
+            Vector3 worldPos = v + transform.position;
 
+            // Perlin noise wave 1 (bigger underlying wave)
+            float xCoord = offsetX + worldPos.x / 100 * 1;
+            float zCoord = offsetY + worldPos.z / 100 * 1;
             v.y += Remap(Mathf.PerlinNoise(xCoord, zCoord), 0, 1, 0, waveHeight) - waveHeight / 2;
 
-            xCoord = offsetX + v.x / 2 * 1;// scale;
-            zCoord = offsetY + v.z / 2 * 1;// scale;
+            // Perlin noise wave 2 (small more frequent waves to add choppyness to the top)
+            xCoord = offsetX + worldPos.x / 2 * 1;
+            zCoord = offsetY + worldPos.z / 2 * 1;
             v.y += Remap(Mathf.PerlinNoise(xCoord, zCoord), 0, 1, 0, triangulationHeight) - triangulationHeight / 2;
 
             //v.y += waveHeight3 / 5 * Mathf.Sin(Time.time * Mathf.PI * 2.0f * 0.1f);

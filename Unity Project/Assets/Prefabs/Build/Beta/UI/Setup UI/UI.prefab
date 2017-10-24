@@ -303,7 +303,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904349679512392}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 25, z: -25}
+  m_LocalPosition: {x: -7.5, y: 37.5, z: -55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4966444153858598}
@@ -724,7 +724,6 @@ MonoBehaviour:
   allowContest: 0
   startTime: 60
   deathYLevel: -3
-  zone: {fileID: 1664090810363882, guid: a54f897e850f7e643b4e7c6c58277e35, type: 2}
   players:
   - {fileID: 0}
   - {fileID: 0}
@@ -824,7 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DampTime: 0.1
-  minimumDistance: 10
+  minimumDistance: 20
   maximumDistance: 75
   distanceScale: 0.9
   m_gmObject: {fileID: 1984863805809796}
