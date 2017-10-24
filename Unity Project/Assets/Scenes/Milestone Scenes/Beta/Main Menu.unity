@@ -1657,21 +1657,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114264078706729686, guid: ec91b8e9018605f4c9c9c2490b02c52c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2107677501}
-    - target: {fileID: 114264078706729686, guid: ec91b8e9018605f4c9c9c2490b02c52c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 114264078706729686, guid: ec91b8e9018605f4c9c9c2490b02c52c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
   m_IsPrefabParent: 0
@@ -4753,12 +4738,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 24b2c39d9f4311b4086681e5aa8632b6, type: 3}
---- !u!114 &2107677501 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114842878292871598, guid: ec91b8e9018605f4c9c9c2490b02c52c,
-    type: 2}
-  m_PrefabInternal: {fileID: 741067640}
-  m_Script: {fileID: 11500000, guid: e7d2f031169cd4443ba03c039c04431b, type: 3}
 --- !u!1001 &2128869505
 Prefab:
   m_ObjectHideFlags: 0
