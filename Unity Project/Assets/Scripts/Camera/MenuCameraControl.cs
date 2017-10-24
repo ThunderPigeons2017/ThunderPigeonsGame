@@ -9,6 +9,9 @@ public class MenuCameraControl : MonoBehaviour
     [SerializeField]
     Transform characterSelectTransform;
     [SerializeField]
+    Transform optionsTransform;
+    
+    [SerializeField]
     float speed;
 
     Transform targetTransform;
@@ -43,17 +46,23 @@ public class MenuCameraControl : MonoBehaviour
 
     public void MoveToMainMenu()
     {
-        previousTransform = targetTransform;
-        targetTransform = mainMenuTransfrom;
-
-        timeSinceStart = 0;
-        journeyLength = Vector3.Distance(camera.transform.position, targetTransform.position);
+        MoveTo(mainMenuTransfrom);
     }
 
     public void MoveToCharacterSelection()
     {
+        MoveTo(characterSelectTransform);
+    }
+
+    public void MoveToOptions()
+    {
+        MoveTo(optionsTransform);
+    }
+
+    void MoveTo(Transform target)
+    {
         previousTransform = targetTransform;
-        targetTransform = characterSelectTransform;
+        targetTransform = target;
 
         timeSinceStart = 0;
         journeyLength = Vector3.Distance(camera.transform.position, targetTransform.position);

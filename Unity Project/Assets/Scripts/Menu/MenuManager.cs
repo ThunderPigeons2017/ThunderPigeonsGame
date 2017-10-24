@@ -15,6 +15,8 @@ public class MenuManager : MonoBehaviour
     GameObject mainMenuUI;
     [SerializeField]
     GameObject characterSelectUI;
+    [SerializeField]
+    GameObject optionsUI;
 
     [SerializeField]
     Camera camera;
@@ -37,7 +39,8 @@ public class MenuManager : MonoBehaviour
     enum MenuStates
     {
         MainMenu,
-        CharacterSelection
+        CharacterSelection,
+        Options
     }
 
     MenuStates menuState;
@@ -72,6 +75,7 @@ public class MenuManager : MonoBehaviour
 
         mainMenuUI.SetActive(true);
         characterSelectUI.SetActive(false);
+        optionsUI.SetActive(false);
     }
 
     public void StartCharacterSelect()
@@ -82,6 +86,18 @@ public class MenuManager : MonoBehaviour
 
         mainMenuUI.SetActive(false);
         characterSelectUI.SetActive(true);
+        optionsUI.SetActive(false);
+    }
+
+    public void StartOptions()
+    {
+        menuState = MenuStates.Options;
+
+        cameraControl.MoveToOptions();
+
+        mainMenuUI.SetActive(false);
+        characterSelectUI.SetActive(false);
+        optionsUI.SetActive(true);
     }
 
     public void StartGame()

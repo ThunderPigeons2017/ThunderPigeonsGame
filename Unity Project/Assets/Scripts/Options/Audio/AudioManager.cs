@@ -31,10 +31,6 @@ public class AudioManager : MonoBehaviour {
 
             s.source.outputAudioMixerGroup = s.output;
         }
-                
-        Play("Ocean");
-
-        Play("Music");
 
     }
 
