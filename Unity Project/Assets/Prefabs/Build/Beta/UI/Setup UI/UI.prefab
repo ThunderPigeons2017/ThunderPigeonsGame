@@ -720,6 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9614e2764569d9647867ff2554ea6d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnTime: 3
   winScore: 10
   allowContest: 0
   startTime: 60
@@ -734,14 +735,10 @@ MonoBehaviour:
   player3Score: {fileID: 114078452975798204}
   player4Score: {fileID: 114002913564680620}
   timeText: {fileID: 114905716409657346}
-  player1Spawn: {fileID: 4870253095186870, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
-  player2Spawn: {fileID: 4315395554821568, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
-  player3Spawn: {fileID: 4292046836228470, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
-  player4Spawn: {fileID: 4844604921289196, guid: 7d837dd47dd7b274b83c726f4dde9873,
-    type: 2}
+  player1Spawn: {fileID: 0}
+  player2Spawn: {fileID: 0}
+  player3Spawn: {fileID: 0}
+  player4Spawn: {fileID: 0}
   winMessageText: {fileID: 114033049246155738}
   restartMessage: {fileID: 114109904978098628}
   winMessageString: Player x Has Won!
@@ -826,6 +823,7 @@ MonoBehaviour:
   minimumDistance: 20
   maximumDistance: 75
   distanceScale: 0.9
+  followZone: 1
   m_gmObject: {fileID: 1984863805809796}
 --- !u!114 &114905716409657346
 MonoBehaviour:

@@ -7,6 +7,10 @@ using XboxCtrlrInput;
 public class GameManager : MonoBehaviour
 {
     float[] scores = new float[4];
+    float[] respawnTimer = new float[4];
+
+    [SerializeField]
+    float respawnTime;
 
     [SerializeField]
     int winScore;
@@ -110,15 +114,28 @@ public class GameManager : MonoBehaviour
         {
             if (players[i] != null)
             {
+                // Get the current player
                 PlayerController playerController = players[i].GetComponent<PlayerController>();
-                if (playerController.transform.position.y <= deathYLevel)
+
+                // If the player falls below a y level
+                if (playerController.transform.position.y <= deathYLevel && playerController.isAlive == true)
                 {
+                    // Kill the player
                     playerController.isAlive = false;
+                    respawnTimer[i] = respawnTime;
                 }
 
+                // If the player is dead
                 if (playerController.isAlive == false)
                 {
-                    RespawnPlayer(playerController.playerNumber);
+                    if (respawnTimer[i] <= 0)
+                    {
+                        RespawnPlayer(playerController.playerNumber);
+                    }
+                    else
+                    {
+                        respawnTimer[i] -= Time.deltaTime;
+                    }
                 }
             }
         }
@@ -204,6 +221,8 @@ public class GameManager : MonoBehaviour
 
             // Set player as alive
             players[playerNumber - 1].GetComponent<PlayerController>().isAlive = true;
+
+            players[playerNumber - 1].GetComponent<Rigidbody>().velocity = Vector3.zero;
 
             LookRotation lookRotation = players[playerNumber - 1].transform.parent.GetComponentInChildren<LookRotation>();
             lookRotation.LookTowards(zone.transform.position);
