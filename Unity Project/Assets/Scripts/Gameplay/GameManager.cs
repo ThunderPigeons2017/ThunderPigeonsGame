@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     GameObject zone;
     ZoneControl zoneControl;
+    ZoneManager zoneManager;
 
     // Keep a list of each player in the game
     public GameObject[] players = new GameObject[4];
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         zone = GameObject.FindGameObjectWithTag("Zone");
         zoneControl = zone.GetComponent<ZoneControl>();
+        zoneManager = zone.transform.parent.GetComponent<ZoneManager>();
         playerColourPicker = GetComponent<PlayerColourPicker>();
 
     }
@@ -72,9 +74,6 @@ public class GameManager : MonoBehaviour
 
         winMessageText.enabled = false;
         restartMessage.enabled = false;
-
-        // Choose a random zone postition
-        zone.transform.parent.GetComponent<ZoneManager>().MoveZone();
     }
 
     void OnEnable()
@@ -264,6 +263,7 @@ public class GameManager : MonoBehaviour
                 foreach (GameObject player in zoneControl.playersInZone)
                 {
                     scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+                    zoneManager.PointsGiven(Time.deltaTime);
                 }
             }
             else if (!allowContest)
@@ -271,6 +271,7 @@ public class GameManager : MonoBehaviour
                 foreach (GameObject player in zoneControl.playersInZone)
                 {
                     scores[player.GetComponent<PlayerController>().playerNumber - 1] += Time.deltaTime;
+                    zoneManager.PointsGiven(Time.deltaTime);
                 }
             }
         }
