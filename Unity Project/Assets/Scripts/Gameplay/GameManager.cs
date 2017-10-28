@@ -109,6 +109,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         for (int i = 0; i < 4; i++)
         {
             if (players[i] != null)
