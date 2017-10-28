@@ -360,12 +360,37 @@ Prefab:
     - target: {fileID: 114276639022472250, guid: 6f8b1159de380434189cb67e722a6141,
         type: 2}
       propertyPath: winScore
-      value: 50
+      value: 1354
       objectReference: {fileID: 0}
     - target: {fileID: 114276639022472250, guid: 6f8b1159de380434189cb67e722a6141,
         type: 2}
       propertyPath: allowContest
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338879294546146, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.2164396
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338879294546146, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338879294546146, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338879294546146, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.97629607
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338879294546146, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276639022472250, guid: 6f8b1159de380434189cb67e722a6141,
+        type: 2}
+      propertyPath: startTime
+      value: 401.37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
@@ -490,6 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6225852a3c5ce974aa1eb819088542dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsBeforeMoving: 10
   zonePostitions:
   - {fileID: 132250633}
   - {fileID: 212619497}
