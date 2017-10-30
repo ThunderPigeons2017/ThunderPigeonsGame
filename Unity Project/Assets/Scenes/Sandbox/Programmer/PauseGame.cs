@@ -8,7 +8,7 @@ public class PauseGame : MonoBehaviour
 {
 
     public Transform canvas;
-   // public Transform canvas2;
+    public Transform canvas2;
     public Transform optionsPanel;
     public Transform pauseMenu;
     public XboxController controller;
@@ -31,7 +31,7 @@ public class PauseGame : MonoBehaviour
         if (canvas.gameObject.activeInHierarchy == false)
         {
             canvas.gameObject.SetActive(true);
-            //canvas2.gameObject.SetActive(false);
+            canvas2.gameObject.SetActive(false);
             optionsPanel.gameObject.SetActive(false);
             pauseMenu.gameObject.SetActive(true);
             Time.timeScale = 0;
@@ -39,7 +39,7 @@ public class PauseGame : MonoBehaviour
         else
         {
             canvas.gameObject.SetActive(false);
-           // canvas2.gameObject.SetActive(true);
+            canvas2.gameObject.SetActive(true);
             optionsPanel.gameObject.SetActive(false);
             pauseMenu.gameObject.SetActive(true);
             Time.timeScale = 1;

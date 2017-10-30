@@ -53,6 +53,13 @@ public class GameManager : MonoBehaviour
     [Tooltip("The message to display when a player has won (all lower case x are replaced with the winning player number)")]
     string winMessageString;
 
+    [SerializeField]
+    [Tooltip("Pause Menu and ingame Options Panel")]
+    public Transform canvas;
+    public Transform canvas2;
+    public Transform optionsPanel;
+    public Transform pauseMenu;
+
     PlayerColourPicker playerColourPicker;
 
     int winningPlayerNumber = 0;
@@ -108,7 +115,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        //RJ codes pause
+        //waits for Start to press or escape then pauses game
+        if (XCI.GetButtonDown(XboxButton.Start, XboxController.All) || (Input.GetKeyDown(KeyCode.Escape)))
+        {
+            Pause();
+        }
+
+        //Gene codes continue
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -170,6 +185,30 @@ public class GameManager : MonoBehaviour
             {
                 RestartScene();
             }
+        }
+    }
+
+    /// <summary>
+    /// Pause function
+    /// </summary>
+    public void Pause()
+    {
+        //checks if Canvas is active/inactive
+        if (canvas.gameObject.activeInHierarchy == false)
+        {
+            canvas.gameObject.SetActive(true);
+            canvas2.gameObject.SetActive(false);
+            optionsPanel.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0; //pauses game
+        }
+        else
+        {
+            canvas.gameObject.SetActive(false);
+            canvas2.gameObject.SetActive(true); //optional ask Jordan
+            optionsPanel.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 1; //unpauses game
         }
     }
 
@@ -350,6 +389,16 @@ public class GameManager : MonoBehaviour
         }
 
         winningPlayerNumber = playernum;
+    }
+
+    //exit button
+    public void ExitButton()
+    {
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
     }
 }
 
