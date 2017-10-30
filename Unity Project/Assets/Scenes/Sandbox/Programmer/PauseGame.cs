@@ -13,21 +13,21 @@ public class PauseGame : MonoBehaviour
     public Transform pauseMenu;
     public XboxController controller;
 
-    void Start ()
+  	void Update ()
     {
-		
-	}
-	
-	void Update ()
-    {
+        //Waits for press start or escape key
         if (XCI.GetButtonDown(XboxButton.Start, controller)||(Input.GetKeyDown(KeyCode.Escape)))
         {
             Pause();
         }
 	}
 
+    /// <summary>
+    /// Pause function
+    /// </summary>
     public void Pause()
     {
+        //checks if Canvas is active/inactive
         if (canvas.gameObject.activeInHierarchy == false)
         {
             canvas.gameObject.SetActive(true);
