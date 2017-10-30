@@ -130,11 +130,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //Gene codes continue
+        // Restart scene
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        // Loop through players
         for (int i = 0; i < 4; i++)
         {
             if (players[i] != null)
