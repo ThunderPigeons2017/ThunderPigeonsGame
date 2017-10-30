@@ -6,13 +6,16 @@ public class BreakableObject : MonoBehaviour
 {
 
     [SerializeField]
+    [Tooltip("The object that will be instantiated when this is destroyed")]
     GameObject brokenPrefab;
 
     [SerializeField]
+    [Tooltip("The relative velocity on the impact needs to be over this amount for the object to break")]
     float relativeVelocityMinimum = 2;
 
     [SerializeField]
     [Range(0, 1)]
+    [Tooltip("How much of the impact force is added to the newly instantiated broken prefab")]
     float collisionForceScale = 1;
 
     private void OnCollisionEnter(Collision collision)

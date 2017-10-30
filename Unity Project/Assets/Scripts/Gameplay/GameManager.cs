@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour
     {
         // Search for players in the scene
         GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("PlayerBall");
-        GameObject newObject = new GameObject("WHAT");
         for (int i = 0; i < playersInScene.Length; i++)
         {
             //DontDestroyOnLoad(playersInScene[i]);
@@ -109,7 +108,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R)) {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         for (int i = 0; i < 4; i++)
@@ -145,11 +145,13 @@ public class GameManager : MonoBehaviour
         UpdateTimer();
 
         GivePoints();
+        SetPlayerDrunkenness();
 
         // After the scores are added 
         UpdateScoreBoard();
 
         CheckForWinningPlayer();
+
 
         //// Temp player spawning
         //if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -306,6 +308,17 @@ public class GameManager : MonoBehaviour
         //timeText.text = ((int)(timer / 60f)).ToString() + ":" + ((int)(timer % 60)).ToString();
         // Timer in seconds
         timeText.text = ((int)timer).ToString();
+    }
+
+    void SetPlayerDrunkenness()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (players[i] != null)
+            {
+                players[i].GetComponentInChildren<PlayerController>().drunkenness = scores[i] * 2;
+            }
+        }
     }
 
     void SetWinMessage()

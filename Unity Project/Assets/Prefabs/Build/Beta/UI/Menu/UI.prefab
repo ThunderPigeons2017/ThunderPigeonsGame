@@ -2104,8 +2104,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695921198134456}
-  m_LocalRotation: {x: -0.17264554, y: -0.50458694, z: 0.10376592, w: -0.8395346}
-  m_LocalPosition: {x: -29.735052, y: 27.188065, z: -7.2044554}
+  m_LocalRotation: {x: 0.0062384605, y: 0.6961792, z: 0.006050788, w: -0.71781546}
+  m_LocalPosition: {x: 59.41942, y: 16.609564, z: -0.5982821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4976914513255546}
@@ -5720,7 +5720,7 @@ MonoBehaviour:
   optionsUI: {fileID: 1415382915169740}
   camera: {fileID: 20092743777739838}
   gameSceneName: Beta
-  playerPrefab: {fileID: 1795374301266968, guid: 011cb6359296e7c48be437081774c5d4,
+  playerPrefab: {fileID: 1795374301266968, guid: 0d9fdc32ad6e43744a5e23c4914c54fb,
     type: 2}
   player1Spawn: {fileID: 4148353179934150}
   player2Spawn: {fileID: 4816620156012742}
@@ -5792,7 +5792,7 @@ MonoBehaviour:
   mainMenuTransfrom: {fileID: 4324243718990640}
   characterSelectTransform: {fileID: 4930468227859900}
   optionsTransform: {fileID: 4578227800949040}
-  speed: 40
+  speed: 60
 --- !u!114 &114872732517542548
 MonoBehaviour:
   m_ObjectHideFlags: 1

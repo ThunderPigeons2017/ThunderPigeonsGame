@@ -5,12 +5,15 @@ using System.Collections;
 
 public class Water : MonoBehaviour
 {
-
-    Vector3 waveSource1 = new Vector3(2.0f, 0.0f, 2.0f);
-    public float waveSpeed = 0.5f;
-    public float waveHeight = 0.48f;
-    public float triangulationHeight = 0.1f;
-    //public float waveHeight3 = 0.1f;
+    [SerializeField]
+    [Tooltip("The speed that the waves move")]
+    float waveSpeed = 0.5f;
+    [SerializeField]
+    [Tooltip("The +/- y height of the main waves")]
+    float waveHeight = 0.48f;
+    [SerializeField]
+    [Tooltip("The +/- y height of the triangulation (kinda like choppyness at sea)")]
+    float triangulationHeight = 0.1f;
 
     Mesh mesh;
     Vector3[] verts;
@@ -20,9 +23,8 @@ public class Water : MonoBehaviour
 
     void Awake()
     {
-        //Camera.main.depthTextureMode |= DepthTextureMode.Depth;
         MeshFilter mf = GetComponent<MeshFilter>();
-        makeMeshLowPoly(mf);
+        MakeMeshLowPoly(mf);
     }
 
     void Start()
@@ -33,9 +35,11 @@ public class Water : MonoBehaviour
         offsetY = offsetX;
     }
 
-    MeshFilter makeMeshLowPoly(MeshFilter mf)
+    MeshFilter MakeMeshLowPoly(MeshFilter mf)
     {
-        mesh = mf.sharedMesh;//Change to sharedmesh? 
+        // We want each tri to have its own unshared verts
+
+        mesh = mf.sharedMesh;
         Vector3[] oldVerts = mesh.vertices;
         int[] triangles = mesh.triangles;
         Vector3[] vertices = new Vector3[triangles.Length];
@@ -52,33 +56,32 @@ public class Water : MonoBehaviour
         return mf;
     }
 
-    // Update is called once per frame
     void Update()
     {
         CalcWave();
         offsetX += Time.deltaTime * waveSpeed;
-
     }
 
     void CalcWave()
     {
+        // Loop through every vert and change its y
         for (int i = 0; i < verts.Length; i++)
         {
             Vector3 v = verts[i];
-            v.y = 0; // Reset the y so we can add then new values
+            v.y = 0; // Reset the y so we can add the new values
 
             // Add position to make it relatice to world space
             Vector3 worldPos = v + transform.position;
 
             // Perlin noise wave 1 (bigger underlying wave)
-            float xCoord = offsetX + worldPos.x / 100 * 1;
-            float zCoord = offsetY + worldPos.z / 100 * 1;
-            v.y += Remap(Mathf.PerlinNoise(xCoord, zCoord), 0, 1, 0, waveHeight) - waveHeight / 2;
+            float xCoord = offsetX + worldPos.x / 100;
+            float zCoord = offsetY + worldPos.z / 100;
+            v.y += Helper.Remap(Mathf.PerlinNoise(xCoord, zCoord), 0, 1, 0, waveHeight) - waveHeight / 2;
 
             // Perlin noise wave 2 (small more frequent waves to add choppyness to the top)
-            xCoord = offsetX + worldPos.x / 2 * 1;
-            zCoord = offsetY + worldPos.z / 2 * 1;
-            v.y += Remap(Mathf.PerlinNoise(xCoord, zCoord), 0, 1, 0, triangulationHeight) - triangulationHeight / 2;
+            xCoord = offsetX + worldPos.x / 2;
+            zCoord = offsetY + worldPos.z / 2;
+            v.y += Helper.Remap(Mathf.PerlinNoise(xCoord, zCoord), 0, 1, 0, triangulationHeight) - triangulationHeight / 2;
 
             //v.y += waveHeight3 / 5 * Mathf.Sin(Time.time * Mathf.PI * 2.0f * 0.1f);
 
@@ -90,10 +93,4 @@ public class Water : MonoBehaviour
 
         GetComponent<MeshFilter>().mesh = mesh;
     }
-
-    float Remap(float value, float from1, float to1, float from2, float to2)
-    {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-    }
-
 }

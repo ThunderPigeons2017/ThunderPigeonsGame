@@ -82,23 +82,24 @@ public class LookRotation : MonoBehaviour
         // Make the forward rotation
         Quaternion fowardRotation = Quaternion.identity;
         if (lookRotation != Vector3.zero) // Only set if lookRotation isn't zero
-        { 
+        {
             fowardRotation = Quaternion.LookRotation(lookRotation);
         }
 
         // Figure out the tilt degrees depending on the velocity magnitude
         float tiltDegrees = 0.0f;
+        if (rb.velocity.magnitude >= minTiltingVelocity)
+        {
+            tiltDegrees = rb.velocity.magnitude / maxTiltingVelocity * maxTiltDegrees;
+        }
         if (rb.velocity.magnitude >= maxTiltingVelocity)
         {
             tiltDegrees = maxTiltDegrees;
         }
-        else if (rb.velocity.magnitude >= minTiltingVelocity)
-        {
-            tiltDegrees = rb.velocity.magnitude / maxTiltingVelocity * maxTiltDegrees;
-        }
 
         // Make the tilt rotation
-        Quaternion tiltRotation = Quaternion.Euler(moveVertical * tiltDegrees, 0.0f, -moveHorizontal * tiltDegrees);
+        Quaternion tiltRotation = Quaternion.Euler(moveVertical * tiltDegrees, 0.0f, -moveHorizontal * tiltDegrees) 
+            * Quaternion.Euler(playerController.drunkVertical * Mathf.Clamp(playerController.drunkenness, 0, maxTiltDegrees), 0.0f, -playerController.drunkHorizontal * Mathf.Clamp(playerController.drunkenness, 0, maxTiltDegrees));
 
         // Create the rotation my combining the tilt & foward correctly
         Quaternion targetRotation = tiltRotation * fowardRotation;

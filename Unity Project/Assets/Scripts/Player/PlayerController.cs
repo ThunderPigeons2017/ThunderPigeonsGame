@@ -36,8 +36,16 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
+    //[SerializeField]
+    //[Range(0, 100)]
+    [HideInInspector]
+    public float drunkenness = 0;
+
     [SerializeField]
-    float drunkenness;
+    [Range(0, 5)]
+    float drunkSpeed = 0.1f;
+
+    float drunkOffset;
 
     public enum AnimState
     {
@@ -48,25 +56,54 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public AnimState animState = 0;
 
-    void Awake ()
+    [HideInInspector]
+    public float drunkHorizontal;
+    [HideInInspector]
+    public float drunkVertical;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         distanceToGround = GetComponent<Collider>().bounds.extents.y + distanceToGroundOffset;
         animator = transform.parent.GetComponentInChildren<Animator>();
     }
 
+    //void Start()
+    //{
+    //}
+
     void FixedUpdate ()
     {
+        // Add time to the drunk offset
+        drunkOffset += Time.fixedDeltaTime * drunkSpeed;
+
+        drunkHorizontal = Helper.Remap(Mathf.PerlinNoise(0, drunkOffset), 0, 1, -1f, 1f) * drunkenness / 100;
+        drunkVertical = Helper.Remap(Mathf.PerlinNoise(drunkOffset, 0), 0, 1, -1f, 1f) * drunkenness / 100;
+
         // Raycast down to see if we are touching the ground
         grounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround);
 
         // Left stick
-        float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controller);
-        float moveVertical = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+        float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controller) + drunkHorizontal;
+        float moveVertical = XCI.GetAxis(XboxAxis.LeftStickY, controller) + drunkVertical;
 
-        moveHorizontal += drunkenness;
-        moveVertical += drunkenness;
+        if (moveHorizontal > 1)
+        {
+            moveHorizontal -= Mathf.Abs(moveHorizontal - 1);
+        }
+        else if (moveHorizontal < -1)
+        {
+            moveHorizontal += Mathf.Abs(moveHorizontal + 1);
+        }
 
+        if (moveVertical > 1)
+        {
+            moveVertical -= Mathf.Abs(moveVertical - 1);
+        }
+        else if (moveVertical < -1)
+        {
+            moveVertical += Mathf.Abs(moveVertical + 1);
+        }
 
         Vector3 movement = Vector3.zero;
 
@@ -112,5 +149,10 @@ public class PlayerController : MonoBehaviour
                 rb.drag = slowDrag;
             }
         }
+    }
+
+    float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 }
