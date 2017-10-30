@@ -120,9 +120,13 @@ public class GameManager : MonoBehaviour
         //waits for Start to press or escape then pauses game
         if (XCI.GetButtonDown(XboxButton.Start, XboxController.All) || (Input.GetKeyDown(KeyCode.Escape)))
         {
-            if (gamePaused)
+            if (!gamePaused)
             {
                 Pause();
+            }
+            else
+            {
+                Unpause();
             }
         }
 
@@ -206,7 +210,7 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
 
         optionsPanel.gameObject.SetActive(false);
-        pauseMenu.gameObject.SetActive(true);
+        pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1; //unpauses game
     }
 
