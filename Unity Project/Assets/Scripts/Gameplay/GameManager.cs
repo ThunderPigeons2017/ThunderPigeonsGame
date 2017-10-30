@@ -163,25 +163,35 @@ public class GameManager : MonoBehaviour
             // If a is pressed 
             if (XCI.GetButtonDown(XboxButton.A, XboxController.All))
             {
-                SceneManager.LoadScene("Main Menu");
-                for (int x = 0; x < 4; x++)
-                {
-                    if (players[x] != null)
-                    {
-                        Destroy(players[x].transform.parent.gameObject);
-                    }
-                }
+                GoToMainMenu();
             }
             // If b is pressed restart the level
             if (XCI.GetButtonDown(XboxButton.B, XboxController.All))
             {
-                SceneManager.LoadScene("Beta");
-
-                for (int playerNum = 1; playerNum < 5; playerNum++)
-                {
-                    RespawnPlayer(playerNum);
-                }
+                RestartScene();
             }
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+        for (int x = 0; x < 4; x++)
+        {
+            if (players[x] != null)
+            {
+                Destroy(players[x].transform.parent.gameObject);
+            }
+        }
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene("Beta");
+
+        for (int playerNum = 1; playerNum < 5; playerNum++)
+        {
+            RespawnPlayer(playerNum);
         }
     }
 

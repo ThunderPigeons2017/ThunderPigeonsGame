@@ -4,7 +4,8 @@ using UnityEngine;
 
 using XboxCtrlrInput;
 
-public class PauseGame : MonoBehaviour {
+public class PauseGame : MonoBehaviour
+{
 
     public Transform canvas;
    // public Transform canvas2;
@@ -12,13 +13,13 @@ public class PauseGame : MonoBehaviour {
     public Transform pauseMenu;
     public XboxController controller;
 
-    // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (XCI.GetButtonDown(XboxButton.Start, controller)||(Input.GetKeyDown(KeyCode.Escape)))
         {
             Pause();
