@@ -35,6 +35,8 @@ public class CSManager : MonoBehaviour
 
     public void UpdateLogic()
     {
+        bool canStart = true;
+
         int readyPlayerCount = 0;
 
         // Loop through each player number
@@ -51,6 +53,8 @@ public class CSManager : MonoBehaviour
                 readyText[playerNum - 1].text = "Press A Ready Up";
 
                 PlayerMeshSelectInput(playerNum);
+
+                canStart = false;
             }
             else // Player is ready
             {
@@ -59,7 +63,7 @@ public class CSManager : MonoBehaviour
             }
         }
 
-        if (readyPlayerCount > 1)
+        if (readyPlayerCount > 1 & canStart)
         {
 			startText.SetActive(true);
             if (XCI.GetButtonDown(XboxButton.Start, XboxController.All)) // Player start input

@@ -152,25 +152,6 @@ public class GameManager : MonoBehaviour
 
         CheckForWinningPlayer();
 
-
-        //// Temp player spawning
-        //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    RespawnPlayer(1);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    RespawnPlayer(2);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    RespawnPlayer(3);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    RespawnPlayer(4);
-        //}
-
         // If the game has been won
         if (gameWon)
         {
