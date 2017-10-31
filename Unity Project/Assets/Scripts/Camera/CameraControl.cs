@@ -135,34 +135,38 @@ public class CameraControl : MonoBehaviour
                 continue;
             
 
-            averagePos += m_Targets[i].gameObject.transform.position;
-            numTargets++;
+            averagePos += m_Targets[i].gameObject.transform.position;             //if player is alive, get player position
+            numTargets++;                                                         //add to numTarget counter
         }
 
-        if (numTargets <= 0)
-            followZone = true;
+        if (numTargets <= 0)                                                      //checks if there are no active players
+            followZone = true;                                                    //sets followzone to true
         else
-            followZone = false;
+            followZone = false;                                                   //else set followzone to false
 
 
-        // Add the zone to the avg position if we are going to follow it
+        // Add the defaultCamPos to the avg position if followzone is true
         if (followZone)
         {
-            //averagePos += (m_Zone.transform.position);
-            averagePos += defaultCamPos.transform.position;
+            //averagePos += (m_Zone.transform.position);                          //previous iteration follows zone if there are no players active
+            averagePos += defaultCamPos.transform.position;                       //now it follows a blank game objects position called defaultCamPos
             numTargets++;
         }
 
-        if (numTargets > 0)
+        if (numTargets > 0)                                                       //quick checker to ensure that numTargets is not zero, otherwise camera script crashes
             averagePos /= numTargets;
 
-        return averagePos;
+        return averagePos;                                                        //returns averagePos
     }
 
+    /// <summary>
+    /// Function Finds Distance between targets
+    /// </summary>
+    /// <returns> returns biggest distance between players or 0 if all players are notActive </returns>
     public float FindDistance()
     {
-        float distance = 0f;
-        float currentDistance = 0f;
+        float distance = 0f;                                                                               //distance to return
+        float currentDistance = 0f;                                                                        //distance current
 
         for (int i = 0; i < m_Targets.Length; i++)
         {
