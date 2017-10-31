@@ -117,12 +117,9 @@ public class PlayerController : MonoBehaviour
             movement += Vector3.down * forceDown; // Apply a force down to keep the player on the ground
         }
 
-        if (animState != AnimState.Punch) // Only move if not punching
-        {
-            // Add the movement as a force
-            rb.AddForce(movement * speed * 100.0f * Time.fixedDeltaTime);
-        }
-
+        // Add the movement as a force
+        rb.AddForce(movement * speed * 100.0f * Time.fixedDeltaTime);
+        
         // Trigger input
         //float leftTrigHeight = XCI.GetAxis(XboxAxis.LeftTrigger, controller);
         //float rightTrigHeight = XCI.GetAxis(XboxAxis.RightTrigger, controller);

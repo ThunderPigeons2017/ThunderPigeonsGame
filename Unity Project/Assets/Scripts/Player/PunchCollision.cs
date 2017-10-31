@@ -28,9 +28,37 @@ public class PunchCollision : MonoBehaviour
     [SerializeField]
     XboxButton punchButton = XboxButton.A;
 
+    [SerializeField]
+    GameObject punchVisual;
+
+    float timer;
+
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
+        punchVisual.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (timer <= 0)
+        {
+            punchVisual.SetActive(false);
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
+
+        if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+        {
+            punchVisual.SetActive(true);
+            timer = 0.1f;
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -39,6 +67,8 @@ public class PunchCollision : MonoBehaviour
         {
             if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
             {
+
+
                 if (other.gameObject != playerBall) // If its not colliding with this player
                 {
                     Vector3 vecBetween = other.transform.position - playerBall.transform.position; // Get a vector that points from this player to the one we hit
