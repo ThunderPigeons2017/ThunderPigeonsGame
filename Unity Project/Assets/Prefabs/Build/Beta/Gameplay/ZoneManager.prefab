@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4470838510759314}
-  - component: {fileID: 114297631133470838}
+  - component: {fileID: 114534450136974136}
   m_Layer: 0
   m_Name: ZoneManager
   m_TagString: ZoneManager
@@ -102,7 +102,7 @@ Transform:
   m_LocalScale: {x: 0, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 4470838510759314}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4380866679131448
 Transform:
@@ -123,13 +123,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800233499551286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4556046524092804}
-  - {fileID: 4583990647159860}
   - {fileID: 4078554291881726}
+  - {fileID: 4583990647159860}
   - {fileID: 4380866679131448}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -158,7 +158,7 @@ Transform:
   m_LocalScale: {x: 0, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 4470838510759314}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23815291051661052
 MeshRenderer:
@@ -199,7 +199,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1063161544059424}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114297631133470838
+--- !u!114 &114534450136974136
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -207,14 +207,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1800233499551286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6225852a3c5ce974aa1eb819088542dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 6676d2ea369ba1a4cbfe33af3608673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointsBeforeMoving: 10
-  zonePostitions:
-  - {fileID: 4556046524092804}
-  - {fileID: 4583990647159860}
-  - {fileID: 4078554291881726}
+  zoneCentre: {fileID: 4556046524092804}
+  zoneFront: {fileID: 4078554291881726}
+  zoneBack: {fileID: 4583990647159860}
+  zonePosition: 0
 --- !u!114 &114572630852953304
 MonoBehaviour:
   m_ObjectHideFlags: 1
