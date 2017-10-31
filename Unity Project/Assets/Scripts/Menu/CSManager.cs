@@ -50,7 +50,7 @@ public class CSManager : MonoBehaviour
             }
             else if (readyPlayers[playerNum - 1] == false) // Player exists but isnt ready
             {
-                readyText[playerNum - 1].text = "Press A Ready Up";
+                readyText[playerNum - 1].text = "Press A to Ready";
 
                 PlayerMeshSelectInput(playerNum);
 
