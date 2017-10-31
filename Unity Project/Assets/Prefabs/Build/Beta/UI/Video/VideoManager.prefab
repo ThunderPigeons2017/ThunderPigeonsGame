@@ -9,46 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1129780680308364}
+  m_RootGameObject: {fileID: 1978224599639822}
   m_IsPrefabParent: 1
---- !u!1 &1129780680308364
+--- !u!1 &1978224599639822
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4071004570317610}
-  - component: {fileID: 114077229638414054}
+  - component: {fileID: 4889465673165820}
+  - component: {fileID: 114451110501256850}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: VideoManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4071004570317610
+--- !u!4 &4889465673165820
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129780680308364}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1978224599639822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 220.923, y: 170.01001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114077229638414054
+--- !u!114 &114451110501256850
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129780680308364}
+  m_GameObject: {fileID: 1978224599639822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dabc4809d5b735489db7c8a8327dedf, type: 3}
+  m_Script: {fileID: 11500000, guid: 654e369cb1b5cbd41af466574d1a8747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
+  fullscreenToggle: {fileID: 0}
+  resolutionDropDown: {fileID: 0}
+  textureQualityDropdown: {fileID: 0}
+  applyButton: {fileID: 0}
