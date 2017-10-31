@@ -40,8 +40,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text timeText;
 
-    [SerializeField] // Each players spawn pos
-    Transform player1Spawn, player2Spawn, player3Spawn, player4Spawn;
+    [SerializeField]
+    GameObject outerSpawnParent;
+    [SerializeField]
+    GameObject centerSpawnParent;
+
+    Transform[] outerSpawns = new Transform[4];
+    Transform[] centreSpawns = new Transform[4];
 
     [Header("")]
     [SerializeField]
@@ -71,6 +76,12 @@ public class GameManager : MonoBehaviour
         zoneControl = zone.GetComponent<ZoneControl>();
         zoneManager = zone.transform.parent.GetComponent<ZoneManager>();
         playerColourPicker = GetComponent<PlayerColourPicker>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            outerSpawns[i] = outerSpawnParent.transform.GetChild(i);
+            centreSpawns[i] = centerSpawnParent.transform.GetChild(i);
+        }
 
     }
 
@@ -242,24 +253,33 @@ public class GameManager : MonoBehaviour
     {
         if (players[playerNumber - 1] != null)
         {
-            // Switch on the different players to spawn them in respective spots
-            switch (playerNumber)
+            if (zoneManager.zonePosition == ZoneManager.ZonePosition.Centre) // If the zone is in the centre
             {
-                case 1:
-                    players[playerNumber - 1].transform.position = player1Spawn.position;
-                    break;
-                case 2:
-                    players[playerNumber - 1].transform.position = player2Spawn.position;
-                    break;
-                case 3:
-                    players[playerNumber - 1].transform.position = player3Spawn.position;
-                    break;
-                case 4:
-                    players[playerNumber - 1].transform.position = player4Spawn.position;
-                    break;
-                default:
-                    break;
+                players[playerNumber - 1].transform.position = outerSpawns[playerNumber - 1].position; // Spawn on outer spawn
             }
+            else
+            {
+                players[playerNumber - 1].transform.position = centreSpawns[playerNumber - 1].position; // Spawn in the centre
+            }
+
+            //// Switch on the different players to spawn them in respective spots
+            //switch (playerNumber)
+            //{
+            //    case 1:
+            //        players[playerNumber - 1].transform.position = player1Spawn.position;
+            //        break;
+            //    case 2:
+            //        players[playerNumber - 1].transform.position = player2Spawn.position;
+            //        break;
+            //    case 3:
+            //        players[playerNumber - 1].transform.position = player3Spawn.position;
+            //        break;
+            //    case 4:
+            //        players[playerNumber - 1].transform.position = player4Spawn.position;
+            //        break;
+            //    default:
+            //        break;
+            //}
 
             // Set player as alive
             players[playerNumber - 1].GetComponent<PlayerController>().isAlive = true;

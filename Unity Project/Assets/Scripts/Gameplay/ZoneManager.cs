@@ -61,30 +61,36 @@ public class ZoneManager : MonoBehaviour
                 if (Random.Range(0, 2) == 0)
                 {
                     zone.transform.position = zoneFront.position; // Move the zone to front
+                    zonePosition = ZonePosition.Front;
                 }
                 else
                 {
                     zone.transform.position = zoneBack.position; // Move the zone to back
+                    zonePosition = ZonePosition.Back;
                 }
                 break;
             case ZonePosition.Front:
                 if (Random.Range(0, 2) == 0)
                 {
                     zone.transform.position = zoneCentre.position; // Move the zone to centre
+                    zonePosition = ZonePosition.Centre;
                 }
                 else
                 {
                     zone.transform.position = zoneBack.position; // Move the zone to back
+                    zonePosition = ZonePosition.Back;
                 }
                 break;
             case ZonePosition.Back:
                 if (Random.Range(0, 2) == 0)
                 {
                     zone.transform.position = zoneFront.position; // Move the zone to front
+                    zonePosition = ZonePosition.Front;
                 }
                 else
                 {
                     zone.transform.position = zoneCentre.position; // Move the zone to centre
+                    zonePosition = ZonePosition.Centre;
                 }
                 break;
             default:
