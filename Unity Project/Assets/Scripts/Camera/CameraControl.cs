@@ -87,7 +87,7 @@ public class CameraControl : MonoBehaviour
         // Add the zone to the avg position if we are going to follow it
         if (followZone)
         {
-            averagePos += m_Zone.transform.position;
+            averagePos += (m_Zone.transform.position / 2.0f);
             numTargets++;
         }
 
