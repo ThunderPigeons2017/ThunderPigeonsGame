@@ -229,6 +229,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        Unpause();
         SceneManager.LoadScene("Main Menu");
         for (int x = 0; x < 4; x++)
         {
