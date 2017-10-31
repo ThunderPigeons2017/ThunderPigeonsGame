@@ -1515,6 +1515,7 @@ GameObject:
   - component: {fileID: 92637931120112348}
   - component: {fileID: 81584240984343398}
   - component: {fileID: 114110493921782608}
+  - component: {fileID: 114864026356160582}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1569,6 +1570,21 @@ GameObject:
   - component: {fileID: 114506859234040422}
   m_Layer: 5
   m_Name: FullScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1922009665571772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4799167852157466}
+  m_Layer: 0
+  m_Name: DefaultCameraPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1873,6 +1889,19 @@ Transform:
   m_Father: {fileID: 4916357757257578}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+--- !u!4 &4799167852157466
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922009665571772}
+  m_LocalRotation: {x: 0.2164396, y: -0, z: -0, w: 0.97629607}
+  m_LocalPosition: {x: -7.5, y: 44.5, z: -55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4916357757257578}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4841173596737776
 Transform:
   m_ObjectHideFlags: 1
@@ -1917,6 +1946,7 @@ Transform:
   - {fileID: 4362803104600482}
   - {fileID: 4841173596737776}
   - {fileID: 4861244440065866}
+  - {fileID: 4799167852157466}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2050,9 +2080,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 3
-  winScore: 3432
+  winScore: 30
   allowContest: 1
-  startTime: 1411.1
+  startTime: 120
   deathYLevel: -3
   players:
   - {fileID: 0}
@@ -2570,9 +2600,16 @@ MonoBehaviour:
   distanceScale: 0.9
   followZone: 0
   m_gmObject: {fileID: 1009313773404028}
+<<<<<<< .mine
+  indicatorLeft: {fileID: 0}
+  indicatorRight: {fileID: 0}
+  defaultCamPos: {fileID: 1922009665571772}
+||||||| .r220
+=======
   indicatorLeft: {fileID: 1053633201029400}
   indicatorRight: {fileID: 1206305838275572}
   defaultCamPos: {fileID: 1660713389230588}
+>>>>>>> .r222
 --- !u!114 &114113085660254106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5281,6 +5318,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114864026356160582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829672331142290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: e8705a96f0ac31b4986df2d42d033a6e, type: 2}
 --- !u!114 &114869161879993714
 MonoBehaviour:
   m_ObjectHideFlags: 1
