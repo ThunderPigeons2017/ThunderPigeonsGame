@@ -56,6 +56,18 @@ public class CSManager : MonoBehaviour
 
                 canStart = false;
             }
+            /*
+            else if ((readyPlayers[playerNum - 1] == false) && XCI.GetButtonDown(unReadyButton, (XboxController)playerNum)) // Player exists but isnt ready and presses B to quit
+            {
+                for (int players = playerNum; players > 0; players--)
+                {
+                    GameObject.Destroy(menuManager.players[players - 1]);
+                    menuManager.players[players - 1] = null;
+                }
+                menuManager.StartMainMenu();
+                continue;
+            }
+            */
             else // Player is ready
             {
                 readyText[playerNum - 1].text = "Ready";
