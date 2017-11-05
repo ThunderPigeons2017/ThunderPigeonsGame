@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     //[SerializeField]
     //[Range(0, 100)]
-    [HideInInspector]
+    
     public float drunkenness = 0;
 
     [SerializeField]
