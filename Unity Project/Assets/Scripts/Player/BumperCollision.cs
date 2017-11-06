@@ -41,6 +41,7 @@ public class BumperCollision : MonoBehaviour
             {
                 if (playerBallrb.velocity.magnitude >= minimumVelocity) // Only if the velocity is above a threshold 
                 {
+                    FindObjectOfType<AudioManager>().Play("SFX-Bumping");
                     Vector3 vecBetween = other.transform.position - playerBall.transform.position; // Get a vector that points from this player to the one we hit
                     vecBetween.y = 0f;
                     Vector3 tempVelocity = playerBallrb.velocity;

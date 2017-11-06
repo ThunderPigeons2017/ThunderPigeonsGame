@@ -39,6 +39,7 @@ public class Sound
     public int maxDistance;
 
     public AudioMixerGroup output;
-    
+
+    [HideInInspector]
     public AudioSource source;
 }

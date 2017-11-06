@@ -57,6 +57,7 @@ public class PunchCollision : MonoBehaviour
         if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
         {
             punchVisual.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("SFX-SpinAttack");
             timer = 0.1f;
         }
     }

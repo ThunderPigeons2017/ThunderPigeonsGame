@@ -93,6 +93,9 @@ public class GameManager : MonoBehaviour
 
         winMessageText.enabled = false;
         restartMessage.enabled = false;
+
+        FindObjectOfType<AudioManager>().Play("Audio-Theme");
+        FindObjectOfType<AudioManager>().Play("SFX-Ocean");
     }
 
     void OnEnable()
@@ -159,6 +162,8 @@ public class GameManager : MonoBehaviour
                 if (playerController.transform.position.y <= deathYLevel && playerController.isAlive == true)
                 {
                     // Kill the player
+                    FindObjectOfType<AudioManager>().Play("SFX-Splash");
+                    FindObjectOfType<AudioManager>().Play("VO_Barry_Death");
                     playerController.isAlive = false;
                     respawnTimer[i] = respawnTime;
                 }
@@ -384,6 +389,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("VO_Barry_Win");
             winMessageText.text = winMessageString.Replace('x', winningPlayerNumber.ToString()[0]);
         }
     }

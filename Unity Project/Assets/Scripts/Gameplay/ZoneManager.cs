@@ -47,6 +47,7 @@ public class ZoneManager : MonoBehaviour
 
         if (pointsLeft <= 0)
         {
+            FindObjectOfType<AudioManager>().Play("SFX-ZoneChange");
             MoveZone();
             pointsLeft = pointsBeforeMoving;
         }
