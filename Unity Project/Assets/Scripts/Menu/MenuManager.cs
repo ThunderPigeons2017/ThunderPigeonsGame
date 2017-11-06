@@ -52,6 +52,8 @@ public class MenuManager : MonoBehaviour
         cameraControl = camera.GetComponent<MenuCameraControl>();
 
         csManager = GetComponent<CSManager>();
+
+        FindObjectOfType<AudioManager>().Play("Music");
     }
 
     void Start()

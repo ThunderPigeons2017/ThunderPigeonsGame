@@ -7,9 +7,7 @@ public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
 
     public static AudioManager instance;
-
-     int x = 0;
-
+         
      void Awake()
     {
 
@@ -28,10 +26,16 @@ public class AudioManager : MonoBehaviour {
 
             s.source.volume = s.volume;
             s.source.loop = s.Loop;
-
+            s.source.priority = s.priority;
+            s.source.pitch = s.pitch;
+            s.source.panStereo = s.StereoPan;
+            s.source.spatialBlend = s.SpatialBlend;
             s.source.outputAudioMixerGroup = s.output;
+            s.source.dopplerLevel = s.DopplerLevel;
+            s.source.spread = s.Spread;
+            s.source.minDistance = s.minDistance;
+            s.source.maxDistance = s.maxDistance;
         }
-
     }
 
 
@@ -40,7 +44,10 @@ public class AudioManager : MonoBehaviour {
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
         if (s == null)
+        {
+            Debug.LogWarning(name + " audio File Not Found.");
             return;
+        }
 
         s.source.Play();
     }
@@ -54,25 +61,5 @@ public class AudioManager : MonoBehaviour {
 
         s.source.Stop();
     }
-
-    // Update is called once per frame
-    public void Update()
-    {
-        if (x == 1000)
-        {
-            Play("Gulls");
-            x = 0;
-        }
-        else
-            x++;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Play("Effects");
-        }
-        
-    }
-
-
-
+    
 }
