@@ -48,14 +48,19 @@ public class CSManager : MonoBehaviour
             {
                 readyText[playerNum - 1].text = "Press A to Join";
 
-                if (XCI.GetButtonDown(XboxButton.B, (XboxController)playerNum) && (readyPlayers[playerNum] == false))
+                //added back button "B" to go back during character selection
+                if (XCI.GetButtonDown(unReadyButton, (XboxController)playerNum) && (menuManager.players[playerNum-1] == null))
                 {
-                    for (int players = playerNum; players > 0; players--)
+                    for (int players = 1; players < 5; players++)
                     {
-                        GameObject.Destroy(menuManager.players[players]);
-                        menuManager.players[players - 1] = null;
+                        if (menuManager.players[players - 1] != null)
+                        {
+                            GameObject.Destroy(menuManager.players[players - 1]);
+                            menuManager.players[players - 1] = null;
+                        }
                     }
                     menuManager.StartMainMenu();
+                    break;
                 }
 
             }
