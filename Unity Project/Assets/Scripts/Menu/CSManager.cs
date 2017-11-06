@@ -47,7 +47,19 @@ public class CSManager : MonoBehaviour
             if (menuManager.players[playerNum - 1] == null) // If the player doesnt exists
             {
                 readyText[playerNum - 1].text = "Press A to Join";
+
+                if (XCI.GetButtonDown(XboxButton.B, (XboxController)playerNum))
+                {
+                    for (int players = playerNum; players > 0; players--)
+                    {
+                        GameObject.Destroy(menuManager.players[players - 1]);
+                        menuManager.players[players - 1] = null;
+                    }
+                    menuManager.StartMainMenu();
+                }
+
             }
+
             else if (readyPlayers[playerNum - 1] == false) // Player exists but isnt ready
             {
                 readyText[playerNum - 1].text = "Press A to Ready";
@@ -55,25 +67,17 @@ public class CSManager : MonoBehaviour
                 PlayerMeshSelectInput(playerNum);
 
                 canStart = false;
-            }
 
-            else if ((readyPlayers[playerNum - 1] == false) && XCI.GetButtonDown(unReadyButton, (XboxController)playerNum)) // Player exists and isnt ready and presses B to quit
-            {
-                for (int players = playerNum; players > 0; players--)
-                {
-                    GameObject.Destroy(menuManager.players[players - 1]);
-                    menuManager.players[players - 1] = null;
-                }
-                menuManager.StartMainMenu();
-                break;
+                
             }
-
+            
             else // Player is ready
             {
                 readyText[playerNum - 1].text = "Ready";
                 readyPlayerCount++;
             }
         }
+           
 
         if (readyPlayerCount > 1 & canStart)
         {
