@@ -56,8 +56,8 @@ public class CSManager : MonoBehaviour
 
                 canStart = false;
             }
-            /*
-            else if ((readyPlayers[playerNum - 1] == false) && XCI.GetButtonDown(unReadyButton, (XboxController)playerNum)) // Player exists but isnt ready and presses B to quit
+
+            else if ((readyPlayers[playerNum - 1] == false) && XCI.GetButtonDown(unReadyButton, (XboxController)playerNum)) // Player exists and isnt ready and presses B to quit
             {
                 for (int players = playerNum; players > 0; players--)
                 {
@@ -65,9 +65,9 @@ public class CSManager : MonoBehaviour
                     menuManager.players[players - 1] = null;
                 }
                 menuManager.StartMainMenu();
-                continue;
+                break;
             }
-            */
+
             else // Player is ready
             {
                 readyText[playerNum - 1].text = "Ready";

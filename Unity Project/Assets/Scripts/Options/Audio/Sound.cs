@@ -40,6 +40,5 @@ public class Sound
 
     public AudioMixerGroup output;
     
-    [HideInInspector]
     public AudioSource source;
 }

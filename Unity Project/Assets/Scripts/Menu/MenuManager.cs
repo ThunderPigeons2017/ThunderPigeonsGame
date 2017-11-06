@@ -53,12 +53,12 @@ public class MenuManager : MonoBehaviour
 
         csManager = GetComponent<CSManager>();
 
-        FindObjectOfType<AudioManager>().Play("Music");
     }
 
     void Start()
     {
         StartMainMenu();
+        FindObjectOfType<AudioManager>().Play("Audio-Theme");
     }
 
     void Update()
