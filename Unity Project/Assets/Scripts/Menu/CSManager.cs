@@ -48,11 +48,11 @@ public class CSManager : MonoBehaviour
             {
                 readyText[playerNum - 1].text = "Press A to Join";
 
-                if (XCI.GetButtonDown(XboxButton.B, (XboxController)playerNum))
+                if (XCI.GetButtonDown(XboxButton.B, (XboxController)playerNum) && (readyPlayers[playerNum] == false))
                 {
                     for (int players = playerNum; players > 0; players--)
                     {
-                        GameObject.Destroy(menuManager.players[players - 1]);
+                        GameObject.Destroy(menuManager.players[players]);
                         menuManager.players[players - 1] = null;
                     }
                     menuManager.StartMainMenu();
