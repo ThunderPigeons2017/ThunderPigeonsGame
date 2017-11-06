@@ -109,6 +109,12 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &41714846 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+    type: 2}
+  m_PrefabInternal: {fileID: 731668658}
+  m_Script: {fileID: 11500000, guid: defa2797ce350ec448857628cf7532f5, type: 3}
 --- !u!1001 &83472344
 Prefab:
   m_ObjectHideFlags: 0
@@ -224,6 +230,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328981274197044, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4976914513255546, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -260,6 +276,191 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_FontSize
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].priority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].StereoPan
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a3f2082f4c857b44a78224ed9ce18cd, type: 3}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].name
+      value: Audio-Theme
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].output
+      value: 
+      objectReference: {fileID: 243495021318841794, guid: f85a90c8669661a46bfc4ef4770ccd52,
+        type: 2}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bd3505711d17e645823a66c2ffdeaa1, type: 3}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[1].name
+      value: SFX-Button-Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[1].output
+      value: 
+      objectReference: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52,
+        type: 2}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 777b4c15a08510b4b88a520a07e94dc6, type: 3}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[2].name
+      value: SFX-Button-Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[2].output
+      value: 
+      objectReference: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52,
+        type: 2}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e4dcd88b811defe40bd8c37835b1c229, type: 3}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[3].name
+      value: VO-Barry_Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[3].output
+      value: 
+      objectReference: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52,
+        type: 2}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 67ced96d1b0b9b34f8d1115feaed3419, type: 3}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[4].name
+      value: VO_Barry_Ready
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[4].output
+      value: 
+      objectReference: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52,
+        type: 2}
+    - target: {fileID: 1037705825152332, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328981274197044, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328981274197044, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328981274197044, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 41714846}
+    - target: {fileID: 114328981274197044, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328981274197044, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328981274197044, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: SFX-Button-Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].SpatialBlend
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].ReverbZoneMix
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].minDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].maxDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[0].DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[5].name
+      value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a3f2082f4c857b44a78224ed9ce18cd, type: 3}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[5].output
+      value: 
+      objectReference: {fileID: 243495021318841794, guid: f85a90c8669661a46bfc4ef4770ccd52,
+        type: 2}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[5].Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
@@ -378,115 +579,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a59c0e4949b9e240bf6e9fe4728e1a0, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1088879459
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1088879461}
-  - component: {fileID: 1088879460}
-  m_Layer: 0
-  m_Name: Audio-Theme
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &1088879460
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1088879459}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4a3f2082f4c857b44a78224ed9ce18cd, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 0
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!4 &1088879461
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1088879459}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1711958894
 Prefab:
   m_ObjectHideFlags: 0
