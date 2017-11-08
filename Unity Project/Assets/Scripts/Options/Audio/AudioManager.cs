@@ -27,7 +27,7 @@ public class AudioManager : MonoBehaviour {
             s.source.volume = s.volume;
             s.source.loop = s.Loop;
             s.source.priority = s.priority;
-            s.source.pitch = s.pitch;
+            s.source.pitch = s.speed;
             s.source.panStereo = s.StereoPan;
             s.source.spatialBlend = s.SpatialBlend;
             s.source.outputAudioMixerGroup = s.output;

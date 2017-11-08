@@ -12,7 +12,7 @@ public class Sound
     public float volume;
 
     [Range(0f,3f)]
-    public float pitch;
+    public float speed;
 
     [Range(256, 0)]
     public int priority;

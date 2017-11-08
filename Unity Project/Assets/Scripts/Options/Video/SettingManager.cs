@@ -36,6 +36,7 @@ public class SettingManager : MonoBehaviour
         {
             resolutionDropDown.options.Add(new Dropdown.OptionData(resolution.width.ToString() + " x " + resolution.height.ToString()));
         }
+        SaveSettings();
 
         LoadSettings();
     }

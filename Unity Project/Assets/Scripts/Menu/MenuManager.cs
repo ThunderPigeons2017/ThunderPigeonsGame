@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,6 +20,9 @@ public class MenuManager : MonoBehaviour
     GameObject optionsUI;
 
     [SerializeField]
+    EventSystem Event;
+
+    [SerializeField]
     Camera camera;
     MenuCameraControl cameraControl;
 
@@ -35,6 +39,20 @@ public class MenuManager : MonoBehaviour
     CSManager csManager;
 
     PlayerColourPicker playerColourPicker;
+    
+    XboxButton backButton = XboxButton.B;
+    XboxButton videoTab = XboxButton.LeftBumper;
+    XboxButton audioTab = XboxButton.RightBumper;
+
+    [Header("Option Tabs")]
+    [SerializeField]
+    GameObject pnl_Audio;
+    [SerializeField]
+    GameObject pnl_Video;
+    [SerializeField]
+    GameObject res_DropDown;
+    [SerializeField]
+    GameObject btn_Play;
 
     enum MenuStates
     {
@@ -68,6 +86,29 @@ public class MenuManager : MonoBehaviour
         {
             csManager.UpdateLogic();
         }
+
+        if (menuState == MenuStates.Options)
+        {
+            if (XCI.GetButtonDown(backButton, XboxController.All) || Input.GetKeyDown(KeyCode.B))
+            {
+                StartMainMenu();
+            }
+
+            if (XCI.GetButtonDown(videoTab, XboxController.All) || Input.GetKeyDown(KeyCode.C))
+            {
+                pnl_Video.gameObject.SetActive(true);
+                pnl_Audio.gameObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+            }
+
+            if (XCI.GetButtonDown(audioTab, XboxController.All) || Input.GetKeyDown(KeyCode.V))
+            {
+                pnl_Video.gameObject.SetActive(false);
+                pnl_Audio.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+            }
+
+        }
     }
 
     public void StartMainMenu()
@@ -79,6 +120,7 @@ public class MenuManager : MonoBehaviour
         mainMenuUI.SetActive(true);
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
+        Event.SetSelectedGameObject(btn_Play);
     }
 
     public void StartCharacterSelect()
@@ -101,6 +143,7 @@ public class MenuManager : MonoBehaviour
         mainMenuUI.SetActive(false);
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(true);
+        Event.SetSelectedGameObject(res_DropDown);
     }
 
     public void StartGame()
