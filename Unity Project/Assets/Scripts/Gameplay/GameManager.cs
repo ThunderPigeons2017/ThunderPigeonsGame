@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float deathYLevel = -3f;
 
+    [SerializeField]
+    [Range(0, 3)]
+    float drunknessScoreScale;
+
+    [SerializeField]
+    int maximumDrunkeness = 300;
+
     GameObject zone;
     ZoneControl zoneControl;
     ZoneManager zoneManager;
@@ -376,7 +383,14 @@ public class GameManager : MonoBehaviour
         {
             if (players[i] != null)
             {
-                players[i].GetComponentInChildren<PlayerController>().drunkenness = scores[i] * 2;
+                if (scores[i] * drunknessScoreScale > maximumDrunkeness)
+                {
+                    players[i].GetComponentInChildren<PlayerController>().drunkenness = maximumDrunkeness;
+                }
+                else
+                {
+                    players[i].GetComponentInChildren<PlayerController>().drunkenness = scores[i] * drunknessScoreScale;
+                }
             }
         }
     }
