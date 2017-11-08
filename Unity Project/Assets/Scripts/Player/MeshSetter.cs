@@ -12,13 +12,19 @@ public class MeshSetter : MonoBehaviour
 
     ColourSetter colourSetter;
 
-    // The index of the mesh prefabs array 
-    public int meshNumber;
+    public enum Character
+    {
+        BARRY,
+        LARRY,
+        SALLY,
+        GARRY
+    }
+
+    public Character currentCharacter = Character.BARRY;
 
     void Awake()
     {
         colourSetter = GetComponent<ColourSetter>();
-        meshNumber = 0;
     }
 
     void Start()

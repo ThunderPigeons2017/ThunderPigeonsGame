@@ -135,11 +135,11 @@ public class CSManager : MonoBehaviour
 
         if (XCI.GetButtonDown(XboxButton.RightBumper, (XboxController)playerNum)) // right input
         {
-            meshSetter.meshNumber++;
+            meshSetter.currentCharacter++;
 
-            if (meshSetter.meshNumber == 4) // Don't go out of index
+            if ((int)meshSetter.currentCharacter == 4) // Don't go out of index
             {
-                meshSetter.meshNumber = 0;
+                meshSetter.currentCharacter = (MeshSetter.Character)0;
             }
 
             changedMesh = true;
@@ -147,11 +147,11 @@ public class CSManager : MonoBehaviour
 
         if (XCI.GetButtonDown(XboxButton.LeftBumper, (XboxController)playerNum)) // left input
         {
-            meshSetter.meshNumber--;
+            meshSetter.currentCharacter--;
 
-            if (meshSetter.meshNumber == -1) // Don't go out of index
+            if ((int)meshSetter.currentCharacter == -1) // Don't go out of index
             {
-                meshSetter.meshNumber = 3;
+                meshSetter.currentCharacter = (MeshSetter.Character)3;
             }
 
             changedMesh = true;
@@ -159,7 +159,7 @@ public class CSManager : MonoBehaviour
 
         if (changedMesh == true)
         {
-            meshSetter.SetMeshPrefab(meshPrefabs[meshSetter.meshNumber]);
+            meshSetter.SetMeshPrefab(meshPrefabs[(int)meshSetter.currentCharacter]);
         }
     }
 }
