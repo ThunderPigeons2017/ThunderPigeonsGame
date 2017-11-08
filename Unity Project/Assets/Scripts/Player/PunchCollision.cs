@@ -14,51 +14,67 @@ public class PunchCollision : MonoBehaviour
     [Tooltip("Punch force base value")]
     [SerializeField]
     float punchForceBase = 4f;
-    //[Tooltip("Aditional punch force depending on wind up time")]
-    //[SerializeField]
-    //float punchForceTimeMultiplyer = 0.6f;
 
     [Tooltip("Knock up force base value")]
     [SerializeField]
     float knockUpForceBase = 4f;
-    //[Tooltip("Aditional Knock up force depending on wind up time")]
-    //[SerializeField]
-    //float knockUpForceTimeMultiplyer = 0.4f;
 
     [SerializeField]
-    XboxButton punchButton = XboxButton.A;
+    XboxButton spinButton = XboxButton.A;
 
     [SerializeField]
-    GameObject punchVisual;
+    GameObject spinVisual;
 
     float timer;
+
+    [SerializeField]
+    float spinTime = 0.5f;
+
+    bool spinning = false;
+
+    AudioManager audioManager;
+
+    List<GameObject> hitPlayers = new List<GameObject>();
 
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Start()
     {
-        punchVisual.SetActive(false);
+        spinVisual.SetActive(false);
     }
 
     void Update()
     {
-        if (timer <= 0)
+        if (spinning)
         {
-            punchVisual.SetActive(false);
+            spinVisual.SetActive(true);
         }
         else
         {
-            timer -= Time.deltaTime;
+            spinVisual.SetActive(false);
         }
 
-        if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+        if (timer >= 0)
         {
-            punchVisual.SetActive(true);
-            FindObjectOfType<AudioManager>().Play("SFX-SpinAttack");
-            timer = 0.1f;
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            spinning = false;
+
+            hitPlayers.Clear();
+        }
+
+        if (spinning == false && XCI.GetButtonDown(spinButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+        {
+            audioManager.Play("SFX-SpinAttack");
+
+            spinning = true;
+            timer = spinTime;
         }
     }
 
@@ -66,22 +82,26 @@ public class PunchCollision : MonoBehaviour
     {
         if (other.tag == "PlayerBall") // If its colliding with a player
         {
-            if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+            //if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+            if (spinning)
             {
-
-
                 if (other.gameObject != playerBall) // If its not colliding with this player
                 {
-                    Vector3 vecBetween = other.transform.position - playerBall.transform.position; // Get a vector that points from this player to the one we hit
-                    vecBetween.y = 0f;
-                    Vector3 tempVelocity = playerBallrb.velocity;
-                    tempVelocity.y = 0f;
+                    if (!hitPlayers.Contains(other.gameObject))
+                    {
+                        hitPlayers.Add(other.gameObject);
 
-                    // Push the other player away
-                    other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * punchForceBase, ForceMode.Impulse);
+                        Vector3 vecBetween = other.transform.position - playerBall.transform.position; // Get a vector that points from this player to the one we hit
+                        vecBetween.y = 0f;
+                        Vector3 tempVelocity = playerBallrb.velocity;
+                        tempVelocity.y = 0f;
 
-                    // knock up the other player
-                    other.GetComponent<Rigidbody>().AddForce(Vector3.up * knockUpForceBase, ForceMode.Impulse);
+                        // Push the other player away
+                        other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * punchForceBase, ForceMode.Impulse);
+
+                        // knock up the other player
+                        other.GetComponent<Rigidbody>().AddForce(Vector3.up * knockUpForceBase, ForceMode.Impulse);
+                    }
                 }
             }
         }

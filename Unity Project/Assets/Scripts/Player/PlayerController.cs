@@ -76,8 +76,24 @@ public class PlayerController : MonoBehaviour
         drunkHorizontal = Helper.Remap(Mathf.PerlinNoise(0, drunkOffset), 0, 1, -1f, 1f) * drunkenness / 100;
         drunkVertical = Helper.Remap(Mathf.PerlinNoise(drunkOffset, 0), 0, 1, -1f, 1f) * drunkenness / 100;
 
+        Vector3 movement = Vector3.zero;
+
         // Raycast down to see if we are touching the ground
-        grounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround);
+        RaycastHit hitInfo;
+        Ray downRay = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(downRay, out hitInfo, distanceToGround))
+        {
+            grounded = true;
+            
+            rb.AddForce(-hitInfo.normal * 9.81f * Time.fixedDeltaTime, ForceMode.Acceleration); // Apply gravity
+        }
+        else
+        {
+            grounded = false;
+            rb.AddForce(Vector3.down * 9.81f * Time.fixedDeltaTime, ForceMode.Acceleration); // Apply gravity
+            movement += Vector3.down * forceDown; // Apply a force down to keep the player on the ground
+        }
+
 
         // Left stick
         float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controller) + drunkHorizontal;
@@ -101,16 +117,11 @@ public class PlayerController : MonoBehaviour
             moveVertical += Mathf.Abs(moveVertical + 1);
         }
 
-        Vector3 movement = Vector3.zero;
 
         if (grounded && canMove) // Only allow the player to move if they're grounded and can move
         {
             // Create a vector 3 from the input axis'
             movement += new Vector3(moveHorizontal, 0.0f, moveVertical);
-        }
-        else
-        {
-            movement += Vector3.down * forceDown; // Apply a force down to keep the player on the ground
         }
 
         if (!canMove)
@@ -140,17 +151,6 @@ public class PlayerController : MonoBehaviour
         //{
         //    animator.SetTrigger("Punch");
         //}
-
-        // Set drag to the normal value
-        rb.drag = normalDrag;
-
-        if (grounded)
-        {
-            if (animState == AnimState.WindUp || animState == AnimState.Punch)
-            {
-                rb.drag = slowDrag;
-            }
-        }
     }
 
     float Remap(float value, float from1, float to1, float from2, float to2)

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33064128270567478}
   - component: {fileID: 23020217896046820}
   m_Layer: 0
-  m_Name: Punch visual
+  m_Name: Spin visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114235774922234020}
   - component: {fileID: 135427547840177946}
   m_Layer: 0
-  m_Name: Punch Collider
+  m_Name: Spin Collider
   m_TagString: PlayerBumper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795374301266968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.994423, y: 11.17, z: -2.2124214}
+  m_LocalPosition: {x: 18.895712, y: 16.569103, z: -9.921665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4765424729677884}
@@ -287,7 +287,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -342,8 +342,9 @@ MonoBehaviour:
   playerBall: {fileID: 1379745328621770}
   punchForceBase: 8
   knockUpForceBase: 8
-  punchButton: 0
-  punchVisual: {fileID: 1009337901675606}
+  spinButton: 0
+  spinVisual: {fileID: 1009337901675606}
+  spinTime: 0.5
 --- !u!114 &114405870873963600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,6 +360,7 @@ MonoBehaviour:
   isAlive: 1
   playerNumber: 0
   grounded: 0
+  canMove: 1
   speed: 12
   forceDown: 2
   normalDrag: 0.5
