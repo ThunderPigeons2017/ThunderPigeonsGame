@@ -15,11 +15,11 @@ public class ColourSetter : MonoBehaviour
     Color primaryColour;
     Color secondaryColour;
 
-    void Awake()
-    {
-        FindMeshRenderers();
-        FindMaterials();
-    }
+    //void Awake()
+    //{
+    //    FindMeshRenderers();
+    //    FindMaterials();
+    //}
 
     void FindMaterials()
     {
@@ -63,20 +63,23 @@ public class ColourSetter : MonoBehaviour
 
     public void UpdateColours()
     {
-        foreach (Material material in primaryMaterials)
-        {
-            if (material != null)
+        if (primaryMaterials != null)
+            foreach (Material material in primaryMaterials)
             {
-                material.color = primaryColour;
+                if (material != null)
+                {
+                    material.color = primaryColour;
+                }
             }
-        }
-        foreach (Material material in secondaryMaterials)
-        {
-            if (material != null)
+
+        if (secondaryMaterials != null)
+            foreach (Material material in secondaryMaterials)
             {
-                material.color = secondaryColour;
+                if (material != null)
+                {
+                    material.color = secondaryColour;
+                }
             }
-        }
     }
 
     public void SetColours(Color primary, Color secondary)

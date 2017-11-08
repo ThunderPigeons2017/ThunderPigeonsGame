@@ -126,7 +126,19 @@ namespace XboxCtrlrInput
 				return GetDPad(button.ToDPad(), controller);
 
 			if (controller == XboxController.All)
-				return GetButton(button);
+            {
+                // Force to check each controller number
+                if (GetButton(button, XboxController.First))
+                    return true;
+                if (GetButton(button, XboxController.Second))
+                    return true;
+                if (GetButton(button, XboxController.Third))
+                    return true;
+                if (GetButton(button, XboxController.Fourth))
+                    return true;
+
+                return false;
+            }
 
 			int controllerNumber = (int)controller;
 			
@@ -210,22 +222,12 @@ namespace XboxCtrlrInput
 		/// </param>
 		public static bool GetButtonDown(XboxButton button, XboxController controller)
 		{
-            if (controller == XboxController.All)
-            {
-                if (GetButtonDown(button, XboxController.First))
-                    return true;
-                if (GetButtonDown(button, XboxController.Second))
-                    return true;
-                if (GetButtonDown(button, XboxController.Third))
-                    return true;
-                if (GetButtonDown(button, XboxController.Fourth))
-                    return true;
-
-                return false;
-            }
-            if (button.IsDPad())
+			if (button.IsDPad())
 				return GetDPadDown(button.ToDPad(), controller);
-            
+
+			if (controller == XboxController.All)
+				return GetButtonDown(button);
+
 			int controllerNumber = (int)controller;
 
 			if(OnWindowsNative())

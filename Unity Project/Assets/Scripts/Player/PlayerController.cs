@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     //[HideInInspector]
     public bool grounded;
 
+    public bool canMove = true;
+
     [SerializeField]
     float speed;
     [SerializeField]
@@ -68,10 +70,6 @@ public class PlayerController : MonoBehaviour
         animator = transform.parent.GetComponentInChildren<Animator>();
     }
 
-    //void Start()
-    //{
-    //}
-
     void FixedUpdate ()
     {
         // Add time to the drunk offset
@@ -107,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = Vector3.zero;
 
-        if (grounded) // Only allow the player to move if they're grounded
+        if (grounded && canMove) // Only allow the player to move if they're grounded and can move
         {
             // Create a vector 3 from the input axis'
             movement += new Vector3(moveHorizontal, 0.0f, moveVertical);
@@ -115,6 +113,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             movement += Vector3.down * forceDown; // Apply a force down to keep the player on the ground
+        }
+
+        if (!canMove)
+        {
+            rb.drag = slowDrag;
+        }
+        else
+        {
+            rb.drag = normalDrag;
         }
 
         // Add the movement as a force

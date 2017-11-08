@@ -64,7 +64,6 @@ public class CSManager : MonoBehaviour
                 }
 
             }
-
             else if (readyPlayers[playerNum - 1] == false) // Player exists but isnt ready
             {
                 readyText[playerNum - 1].text = "Press A to Ready";
@@ -73,12 +72,12 @@ public class CSManager : MonoBehaviour
 
                 canStart = false;
 
-                
+                //menuManager.players[playerNum - 1].GetComponentInChildren<PlayerController>().canMove = true;
             }
-            
             else // Player is ready
             {
                 readyText[playerNum - 1].text = "Ready";
+                //menuManager.players[playerNum - 1].GetComponentInChildren<PlayerController>().canMove = false;
                 readyPlayerCount++;
             }
         }
