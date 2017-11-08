@@ -8,7 +8,12 @@ public class SettingManager : MonoBehaviour
     public Toggle fullscreenToggle;
     public Dropdown resolutionDropDown;
     public Dropdown textureQualityDropdown;
-    public Button applyButton;
+
+
+
+    private bool optionPanel;
+    private bool VideoPanel;
+    private bool AudioPanel;
 
     public Resolution[] resolution;
     public GameSetting gameSettings;
@@ -23,12 +28,13 @@ public class SettingManager : MonoBehaviour
 
         textureQualityDropdown.onValueChanged.AddListener(delegate { OnTextureChange(); });
 
-        applyButton.onClick.AddListener(delegate { OnApplyButtonClick(); });
-
         resolution = Screen.resolutions;
+
+        resolutionDropDown.captionText.text = (Screen.currentResolution.width.ToString() + " x " + Screen.currentResolution.height.ToString());
+
         foreach (Resolution resolution in resolution)
         {
-            resolutionDropDown.options.Add(new Dropdown.OptionData(resolution.ToString()));
+            resolutionDropDown.options.Add(new Dropdown.OptionData(resolution.width.ToString() + " x " + resolution.height.ToString()));
         }
 
         LoadSettings();
@@ -49,12 +55,7 @@ public class SettingManager : MonoBehaviour
         QualitySettings.masterTextureLimit = gameSettings.textureQuality = textureQualityDropdown.value;
         
     }
-
-    public void OnApplyButtonClick()
-    {
-        SaveSettings();
-    }
-
+    
     public void SaveSettings()
     {
         string Data = JsonUtility.ToJson(gameSettings,true);

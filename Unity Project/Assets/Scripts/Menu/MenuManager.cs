@@ -59,6 +59,7 @@ public class MenuManager : MonoBehaviour
     {
         StartMainMenu();
         FindObjectOfType<AudioManager>().Play("Audio-Theme");
+        FindObjectOfType<AudioManager>().Play("SFX-Ocean");
     }
 
     void Update()
