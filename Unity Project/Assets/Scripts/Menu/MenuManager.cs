@@ -52,6 +52,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     GameObject res_DropDown;
     [SerializeField]
+    GameObject sldr_Master;
+    [SerializeField]
     GameObject btn_Play;
 
     enum MenuStates
@@ -99,6 +101,7 @@ public class MenuManager : MonoBehaviour
                 pnl_Video.gameObject.SetActive(true);
                 pnl_Audio.gameObject.SetActive(false);
                 FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+                Event.SetSelectedGameObject(sldr_Master);
             }
 
             if (XCI.GetButtonDown(audioTab, XboxController.All) || Input.GetKeyDown(KeyCode.V))
@@ -106,6 +109,7 @@ public class MenuManager : MonoBehaviour
                 pnl_Video.gameObject.SetActive(false);
                 pnl_Audio.gameObject.SetActive(true);
                 FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+                Event.SetSelectedGameObject(res_DropDown);
             }
 
         }
