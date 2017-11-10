@@ -17,7 +17,7 @@ public class MeshSetter : MonoBehaviour
         BARRY,
         LARRY,
         SALLY,
-        GARRY
+        GARY
     }
 
     public Character currentCharacter = Character.BARRY;
