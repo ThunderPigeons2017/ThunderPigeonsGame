@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 using XboxCtrlrInput;
 
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     int winScore;
+
+    [SerializeField]
+    EventSystem Event;
 
     bool gameWon = false;
 
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
     string winMessageString;
 
     bool gamePaused = false;
+    bool options = false;
 
     [SerializeField]
     [Tooltip("Pause Menu and ingame Options Panel")]
@@ -76,6 +81,22 @@ public class GameManager : MonoBehaviour
     PlayerColourPicker playerColourPicker;
 
     int winningPlayerNumber = 0;
+
+    XboxButton backButton = XboxButton.B;
+    XboxButton videoTab = XboxButton.LeftBumper;
+    XboxButton audioTab = XboxButton.RightBumper;
+
+    [Header("Option Tabs")]
+    [SerializeField]
+    GameObject pnl_Audio;
+    [SerializeField]
+    GameObject pnl_Video;
+    [SerializeField]
+    GameObject res_DropDown;
+    [SerializeField]
+    GameObject Sldr_Master;
+    [SerializeField]
+    GameObject btn_Resume;
 
     void Awake()
     {
@@ -149,6 +170,11 @@ public class GameManager : MonoBehaviour
             {
                 Unpause();
             }
+        }
+
+        if (options)
+        {
+            StartOptions();
         }
 
         // Restart scene
@@ -227,6 +253,7 @@ public class GameManager : MonoBehaviour
 
         optionsPanel.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(true);
+        Event.SetSelectedGameObject(btn_Resume);
         Time.timeScale = 0; //pauses game
     }
 
@@ -237,6 +264,38 @@ public class GameManager : MonoBehaviour
         optionsPanel.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1; //unpauses game
+    }
+
+    public void StartOptions()
+    {
+        gamePaused = true;
+        options = true;
+        optionsPanel.gameObject.SetActive(true);
+        pauseMenu.gameObject.SetActive(false);
+        
+
+        if (XCI.GetButtonDown(backButton, XboxController.All) || Input.GetKeyDown(KeyCode.B))
+        {
+            options = false;
+            Pause();
+        }
+
+        if (XCI.GetButtonDown(videoTab, XboxController.All) || Input.GetKeyDown(KeyCode.C))
+        {
+            pnl_Video.gameObject.SetActive(true);
+            pnl_Audio.gameObject.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+            Event.SetSelectedGameObject(res_DropDown);
+        }
+
+        if (XCI.GetButtonDown(audioTab, XboxController.All) || Input.GetKeyDown(KeyCode.V))
+        {
+            pnl_Video.gameObject.SetActive(false);
+            pnl_Audio.gameObject.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+            Event.SetSelectedGameObject(Sldr_Master);
+        }
+
     }
 
     public void GoToMainMenu()

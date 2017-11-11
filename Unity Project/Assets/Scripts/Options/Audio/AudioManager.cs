@@ -7,8 +7,8 @@ public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
 
     public static AudioManager instance;
-         
-     void Awake()
+
+    void Awake()
     {
 
         if (instance == null)
@@ -37,8 +37,7 @@ public class AudioManager : MonoBehaviour {
             s.source.maxDistance = s.maxDistance;
         }
     }
-
-
+        
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);

@@ -8,9 +8,7 @@ public class SettingManager : MonoBehaviour
     public Toggle fullscreenToggle;
     public Dropdown resolutionDropDown;
     public Dropdown textureQualityDropdown;
-
-
-
+    
     private bool optionPanel;
     private bool VideoPanel;
     private bool AudioPanel;
@@ -36,24 +34,25 @@ public class SettingManager : MonoBehaviour
         {
             resolutionDropDown.options.Add(new Dropdown.OptionData(resolution.width.ToString() + " x " + resolution.height.ToString()));
         }
-        SaveSettings();
-
         LoadSettings();
     }
 
     public void OnFullScreenToggle()
     {
         gameSettings.Fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
+        SaveSettings();
     }
 
     public void OnResolutionChange()
     {
         Screen.SetResolution(resolution[resolutionDropDown.value].width, resolution[resolutionDropDown.value].height, Screen.fullScreen);
+        SaveSettings();
     }
 
     public void OnTextureChange()
     {
         QualitySettings.masterTextureLimit = gameSettings.textureQuality = textureQualityDropdown.value;
+        SaveSettings();
         
     }
     
