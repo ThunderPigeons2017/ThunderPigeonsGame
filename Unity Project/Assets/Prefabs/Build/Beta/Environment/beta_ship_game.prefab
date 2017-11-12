@@ -3442,7 +3442,7 @@ GameObject:
   - component: {fileID: 4132311640441134}
   m_Layer: 0
   m_Name: Ship Railings
-  m_TagString: Untagged
+  m_TagString: Railings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4782,7 +4782,7 @@ GameObject:
   - component: {fileID: 33764986203048860}
   - component: {fileID: 23210384140473016}
   m_Layer: 0
-  m_Name: ship_mast_rear2
+  m_Name: ship_mast_frontofship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5859,10 +5859,10 @@ Transform:
   - {fileID: 4046476080089000}
   - {fileID: 4374773299597016}
   - {fileID: 4871050520895458}
-  - {fileID: 4678689203969508}
   - {fileID: 4507949118262042}
   - {fileID: 4484907717042516}
   - {fileID: 4593426420502616}
+  - {fileID: 4678689203969508}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7664,7 +7664,7 @@ Transform:
   - {fileID: 4718607130054658}
   - {fileID: 4046679949209418}
   m_Father: {fileID: 4084009851323284}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4489138321276636
 Transform:
@@ -7779,7 +7779,7 @@ Transform:
   - {fileID: 4021441083495790}
   - {fileID: 4468881669454110}
   m_Father: {fileID: 4084009851323284}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4515016149097566
 Transform:
@@ -8119,7 +8119,7 @@ Transform:
   m_Children:
   - {fileID: 4243706330547244}
   m_Father: {fileID: 4084009851323284}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4593543597212528
 Transform:
@@ -8461,7 +8461,7 @@ Transform:
   - {fileID: 4118605962258406}
   - {fileID: 4812679832733960}
   m_Father: {fileID: 4084009851323284}
-  m_RootOrder: 14
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4682104606223000
 Transform:
@@ -22755,8 +22755,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.168448, y: 1.0000001, z: 0.9999999}
-  m_Center: {x: -1.0842245, y: -0.000012336213, z: -9.980799e-15}
+  m_Size: {x: 3.168448, y: 1.0000001, z: 1.0754809}
+  m_Center: {x: -1.0842245, y: -0.000014830985, z: -0.037740696}
 --- !u!65 &65469996682380158
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -23139,8 +23139,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1716416, y: 1.0000001, z: 0.9999999}
-  m_Center: {x: -1.0858157, y: -0.000004451076, z: -6.4701086e-15}
+  m_Size: {x: 3.1716416, y: 1.0000001, z: 1.1139907}
+  m_Center: {x: -1.0858154, y: -0.000004410971, z: 0.056995466}
 --- !u!65 &65709397899911294
 BoxCollider:
   m_ObjectHideFlags: 1

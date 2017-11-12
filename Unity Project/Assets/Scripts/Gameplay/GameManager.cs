@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         //RJ codes pause
         //waits for Start to press or escape then pauses game
-        if (XCI.GetButtonDown(XboxButton.Start, XboxController.All) || (Input.GetKeyDown(KeyCode.Escape)))
+        if ((XCI.GetButtonDown(XboxButton.Start, XboxController.All) || (Input.GetKeyDown(KeyCode.Escape)) && options == false))
         {
             if (!gamePaused)
             {
@@ -266,6 +266,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1; //unpauses game
     }
 
+    /// <summary>
+    /// options menu is opened
+    /// </summary>
     public void StartOptions()
     {
         gamePaused = true;
@@ -277,6 +280,8 @@ public class GameManager : MonoBehaviour
         if (XCI.GetButtonDown(backButton, XboxController.All) || Input.GetKeyDown(KeyCode.B))
         {
             options = false;
+            pnl_Video.gameObject.SetActive(true);
+            pnl_Audio.gameObject.SetActive(false);
             Pause();
         }
 
@@ -298,6 +303,9 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// goes back to main menu
+    /// </summary>
     public void GoToMainMenu()
     {
         Unpause();

@@ -32,14 +32,11 @@ public class PunchCollision : MonoBehaviour
 
     bool spinning = false;
 
-    AudioManager audioManager;
-
-    List<GameObject> hitPlayers = new List<GameObject>();
+   List<GameObject> hitPlayers = new List<GameObject>();
 
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
-        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Start()
@@ -71,7 +68,7 @@ public class PunchCollision : MonoBehaviour
 
         if (spinning == false && XCI.GetButtonDown(spinButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
         {
-            audioManager.Play("SFX-SpinAttack");
+            FindObjectOfType<AudioManager>().Play("SFX-SpinAttack");
 
             spinning = true;
             timer = spinTime;

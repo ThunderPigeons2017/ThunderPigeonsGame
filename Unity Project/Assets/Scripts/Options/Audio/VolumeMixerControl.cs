@@ -18,6 +18,11 @@ public class VolumeMixerControl : MonoBehaviour
         LoadSettings();
     }
 
+    private void Update()
+    {
+        LoadSettings();
+    }
+
     public void MasterController(float sound)
     {
         masterMixer.SetFloat("MasterVol", sound);

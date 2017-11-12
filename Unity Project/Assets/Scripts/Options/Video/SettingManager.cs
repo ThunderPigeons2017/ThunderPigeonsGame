@@ -37,6 +37,11 @@ public class SettingManager : MonoBehaviour
         LoadSettings();
     }
 
+    private void Update()
+    {
+        LoadSettings();
+    }
+
     public void OnFullScreenToggle()
     {
         gameSettings.Fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
