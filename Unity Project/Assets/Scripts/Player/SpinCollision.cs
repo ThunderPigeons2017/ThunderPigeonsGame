@@ -4,20 +4,24 @@ using UnityEngine;
 
 using XboxCtrlrInput;
 
-public class PunchCollision : MonoBehaviour
+public class SpinCollision : MonoBehaviour
 {
     [SerializeField]
     GameObject playerBall;
 
     Rigidbody playerBallrb;
 
-    [Tooltip("Punch force base value")]
+    [Tooltip("How much force to use for the initial dash/charge")]
     [SerializeField]
-    float punchForceBase = 4f;
+    float dashForce = 5;
 
-    [Tooltip("Knock up force base value")]
+    [Tooltip("How force to hit the other player away with")]
     [SerializeField]
-    float knockUpForceBase = 4f;
+    float spinForce = 4f;
+
+    [Tooltip("How force to hit the other player up with")]
+    [SerializeField]
+    float knockUpForce = 4f;
 
     [SerializeField]
     XboxButton spinButton = XboxButton.A;
@@ -32,11 +36,14 @@ public class PunchCollision : MonoBehaviour
 
     bool spinning = false;
 
-   List<GameObject> hitPlayers = new List<GameObject>();
+    List<GameObject> hitPlayers = new List<GameObject>();
+
+    PlayerController playerController;
 
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
+        playerController = playerBall.GetComponent<PlayerController>();
     }
 
     void Start()
@@ -66,9 +73,16 @@ public class PunchCollision : MonoBehaviour
             hitPlayers.Clear();
         }
 
-        if (spinning == false && XCI.GetButtonDown(spinButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
+        // Check for input and punch
+        if (spinning == false && XCI.GetButtonDown(spinButton, (XboxController)playerController.playerNumber))
         {
             FindObjectOfType<AudioManager>().Play("SFX-SpinAttack");
+
+            // Left stick
+            float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerController.playerNumber);
+            float moveVertical = XCI.GetAxis(XboxAxis.LeftStickY, (XboxController)playerController.playerNumber);
+
+            playerBallrb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * dashForce, ForceMode.Impulse);
 
             spinning = true;
             timer = spinTime;
@@ -94,10 +108,10 @@ public class PunchCollision : MonoBehaviour
                         tempVelocity.y = 0f;
 
                         // Push the other player away
-                        other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * punchForceBase, ForceMode.Impulse);
+                        other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * spinForce, ForceMode.Impulse);
 
                         // knock up the other player
-                        other.GetComponent<Rigidbody>().AddForce(Vector3.up * knockUpForceBase, ForceMode.Impulse);
+                        other.GetComponent<Rigidbody>().AddForce(Vector3.up * knockUpForce, ForceMode.Impulse);
                     }
                 }
             }

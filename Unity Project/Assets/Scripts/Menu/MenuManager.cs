@@ -162,8 +162,31 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(gameSceneName);
     }
 
-    public void SpawnPlayer(int playerNumber)
+    public void SpawnPlayer(int playerNumber, bool recreateGameObject = true)
     {
+        if (recreateGameObject == false)
+        {
+            switch (playerNumber)
+            {
+                case 1:
+                    players[playerNumber - 1].GetComponentInChildren<PlayerController>().transform.position = player1Spawn.position;
+                    break;
+                case 2:
+                    players[playerNumber - 1].GetComponentInChildren<PlayerController>().transform.position = player2Spawn.position;
+                    break;
+                case 3:
+                    players[playerNumber - 1].GetComponentInChildren<PlayerController>().transform.position = player3Spawn.position;
+                    break;
+                case 4:
+                    players[playerNumber - 1].GetComponentInChildren<PlayerController>().transform.position = player4Spawn.position;
+                    break;
+                default:
+                    break;
+            }
+
+            return;
+        }
+
         // If we have a player in that spot, delete it
         if (players[playerNumber - 1] != null)
         {
@@ -210,7 +233,6 @@ public class MenuManager : MonoBehaviour
         newLookRotation.StartUp();
         newLookRotation.LookTowards(Vector3.back * 1000);
 
-        //TODO do this is a better spot or a better way
         playerColourPicker.SetUp(players);
     }
 

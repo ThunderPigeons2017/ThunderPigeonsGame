@@ -7,8 +7,13 @@ using XboxCtrlrInput;
 
 public class CSManager : MonoBehaviour
 {
+    [SerializeField]
     XboxButton readyButton = XboxButton.A;
+    [SerializeField]
     XboxButton unReadyButton = XboxButton.B;
+
+    [SerializeField]
+    float yDeathLevel = -4;
 
     [SerializeField] // The text for each players readyness
     Text[] readyText = new Text[4];
@@ -22,6 +27,7 @@ public class CSManager : MonoBehaviour
     MenuManager menuManager;
 
     bool[] readyPlayers = new bool[4];
+
 
     private void Awake()
     {
@@ -44,18 +50,18 @@ public class CSManager : MonoBehaviour
         {
             PlayerReadyInput(playerNum);
 
-            if (menuManager.players[playerNum - 1] == null) // If the player doesnt exists
+            if (menuManager.players[playerNum - 1] == null) // If the player doesn't exist
             {
                 readyText[playerNum - 1].text = "Press A to Join";
 
-                //added back button "B" to go back during character selection
-                if (XCI.GetButtonDown(unReadyButton, (XboxController)playerNum) && (menuManager.players[playerNum-1] == null))
-                {
+                // Added back button to go back during character selection
+                if (XCI.GetButtonDown(unReadyButton, (XboxController)playerNum))
+                { 
                     for (int players = 1; players < 5; players++)
                     {
                         if (menuManager.players[players - 1] != null)
                         {
-                            GameObject.Destroy(menuManager.players[players - 1]);
+                            Destroy(menuManager.players[players - 1]);
                             menuManager.players[players - 1] = null;
                         }
                     }
@@ -64,21 +70,33 @@ public class CSManager : MonoBehaviour
                 }
 
             }
-            else if (readyPlayers[playerNum - 1] == false) // Player exists but isnt ready
+            else // The player exists
             {
-                readyText[playerNum - 1].text = "Press A to Ready";
+                PlayerController playerController = menuManager.players[playerNum - 1].GetComponentInChildren<PlayerController>();
+                // If the player fallsoff the ship respawn them
+                if (playerController.transform.position.y <= yDeathLevel)
+                {
+                    menuManager.SpawnPlayer(playerNum, false);
+                }
 
-                PlayerMeshSelectInput(playerNum);
+                if (readyPlayers[playerNum - 1] == false) // Player exists but isnt ready
+                {
+                    readyText[playerNum - 1].text = "Press A to Ready";
 
-                canStart = false;
+                    PlayerMeshSelectInput(playerNum);
 
-                //menuManager.players[playerNum - 1].GetComponentInChildren<PlayerController>().canMove = true;
-            }
-            else // Player is ready
-            {
-                readyText[playerNum - 1].text = "Ready";
-                //menuManager.players[playerNum - 1].GetComponentInChildren<PlayerController>().canMove = false;
-                readyPlayerCount++;
+                    canStart = false;
+
+                    //menuManager.SpawnPlayer(playerNum, false); // Constantly respawn the player
+                    //playerController.canMove = false;
+                }
+                else // Player is ready
+                {
+
+                    readyText[playerNum - 1].text = "Ready";
+                    //playerController.canMove = true;
+                    readyPlayerCount++;
+                }
             }
         }
            
