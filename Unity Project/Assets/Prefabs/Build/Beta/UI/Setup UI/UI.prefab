@@ -1400,7 +1400,7 @@ GameObject:
   - component: {fileID: 4328702395825018}
   - component: {fileID: 108524620216045350}
   m_Layer: 0
-  m_Name: Directional Light (1)
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1813,22 +1813,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1941455513500774
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4492153578824894}
-  - component: {fileID: 108391680018782276}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &1954758543102908
 GameObject:
   m_ObjectHideFlags: 1
@@ -1939,7 +1923,6 @@ Transform:
   m_LocalPosition: {x: 17.352467, y: 14.9892025, z: 13.27544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4492153578824894}
   - {fileID: 224721419638813922}
   - {fileID: 4088574685505246}
   - {fileID: 4188440257134664}
@@ -1960,7 +1943,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4043618265248836}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!4 &4188440257134664
 Transform:
@@ -1973,7 +1956,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4043618265248836}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4328702395825018
 Transform:
@@ -1986,21 +1969,8 @@ Transform:
   m_LocalScale: {x: 1.0000002, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4043618265248836}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 39.007, y: -40.872, z: 54.492004}
---- !u!4 &4492153578824894
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941455513500774}
-  m_LocalRotation: {x: 0.33295056, y: -0.07997222, z: 0.4043237, w: 0.84809834}
-  m_LocalPosition: {x: 0, y: 124.44, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4043618265248836}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 39.007, y: 9.899, z: 54.492004}
 --- !u!4 &4579353414636544
 Transform:
   m_ObjectHideFlags: 1
@@ -2012,7 +1982,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4043618265248836}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 25, y: 1.6550001, z: 0}
 --- !u!4 &4857086206152744
 Transform:
@@ -2025,7 +1995,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4043618265248836}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20188408280600904
 Camera:
@@ -2077,56 +2047,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1105532584487054}
   m_Enabled: 1
---- !u!108 &108391680018782276
-Light:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941455513500774}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!108 &108524620216045350
 Light:
   m_ObjectHideFlags: 1
@@ -2517,7 +2437,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114855758527908426}
+      - m_Target: {fileID: 114692996152995798}
         m_MethodName: SFXController
         m_Mode: 0
         m_Arguments:
@@ -2528,7 +2448,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114796552576976654}
         m_MethodName: Play
         m_Mode: 5
         m_Arguments:
@@ -2536,7 +2456,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: VO_Barry_Chosen
+          m_StringArgument: VO_Barry_Win
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3059,8 +2979,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114855758527908426}
-        m_MethodName: MusicController
+      - m_Target: {fileID: 114692996152995798}
+        m_MethodName: MasterController
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3661,7 +3581,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114855758527908426}
+      - m_Target: {fileID: 114692996152995798}
         m_MethodName: MasterController
         m_Mode: 0
         m_Arguments:
@@ -4030,9 +3950,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1210458853140110}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 114726730483891372}
+        m_MethodName: StartOptions
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4160,9 +4091,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654e369cb1b5cbd41af466574d1a8747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullscreenToggle: {fileID: 0}
-  resolutionDropDown: {fileID: 0}
-  textureQualityDropdown: {fileID: 0}
+  fullscreenToggle: {fileID: 114785710680625838}
+  resolutionDropDown: {fileID: 114159073202042512}
+  textureQualityDropdown: {fileID: 114657963156584020}
 --- !u!114 &114617120014996438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4572,7 +4503,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1486652122385176}
+      - m_Target: {fileID: 1581463582779928}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -4583,7 +4514,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114796552576976654}
         m_MethodName: Play
         m_Mode: 5
         m_Arguments:
@@ -4884,6 +4815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTime: 3
   winScore: 30
+  Event: {fileID: 114645897530461050}
   allowContest: 1
   startTime: 120
   deathYLevel: -3
@@ -4906,6 +4838,11 @@ MonoBehaviour:
   winMessageString: Player x Has Won!
   optionsPanel: {fileID: 224945172224951722}
   pauseMenu: {fileID: 224989434807759116}
+  pnl_Audio: {fileID: 1486652122385176}
+  pnl_Video: {fileID: 1460703854949888}
+  res_DropDown: {fileID: 1792697923691902}
+  Sldr_Master: {fileID: 1763574069102690}
+  btn_Resume: {fileID: 1924075052123978}
 --- !u!114 &114760070722896850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5012,7 +4949,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114855758527908426}
+      - m_Target: {fileID: 114692996152995798}
         m_MethodName: AmbienceController
         m_Mode: 0
         m_Arguments:
@@ -5172,7 +5109,7 @@ MonoBehaviour:
   - name: Audio-Theme
     clip: {fileID: 8300000, guid: 4a3f2082f4c857b44a78224ed9ce18cd, type: 3}
     volume: 30
-    speed: 0
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5187,7 +5124,7 @@ MonoBehaviour:
   - name: VO_Barry_Death
     clip: {fileID: 8300000, guid: 710fdcf6ae4f6634ca002cbbf949f716, type: 3}
     volume: 50
-    speed: 0
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5202,7 +5139,7 @@ MonoBehaviour:
   - name: SFX-Ocean
     clip: {fileID: 8300000, guid: 287f9439d2f31a54a9dcbf23076731ed, type: 3}
     volume: 50
-    speed: 0
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5217,7 +5154,7 @@ MonoBehaviour:
   - name: SFX-Bumping
     clip: {fileID: 8300000, guid: 57b8b739168e7794bae1c2bdd4b6f85a, type: 3}
     volume: 100
-    speed: 0
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5232,7 +5169,7 @@ MonoBehaviour:
   - name: SFX-Splash
     clip: {fileID: 8300000, guid: 8cfac20b4f0720c48bef44b55b39ceb8, type: 3}
     volume: 50
-    speed: 0
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5247,7 +5184,7 @@ MonoBehaviour:
   - name: VO_Barry_Win
     clip: {fileID: 8300000, guid: 760cdeb86a397e744949f54afcbecd4e, type: 3}
     volume: 50
-    speed: 0
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5262,7 +5199,7 @@ MonoBehaviour:
   - name: SFX-ZoneChange
     clip: {fileID: 8300000, guid: 88d57fd590656f841bc79b4c4a0cb0e0, type: 3}
     volume: 50
-    speed: 0
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5277,7 +5214,37 @@ MonoBehaviour:
   - name: SFX-SpinAttack
     clip: {fileID: 8300000, guid: c015d9e38822b7c4ab614a774e9f92b6, type: 3}
     volume: 50
-    speed: 0
+    speed: 1
+    priority: 256
+    StereoPan: 0
+    SpatialBlend: 0
+    ReverbZoneMix: 1
+    Loop: 0
+    DopplerLevel: 0
+    Spread: 1
+    minDistance: 1
+    maxDistance: 500
+    output: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
+    source: {fileID: 0}
+  - name: SFX-Button-Click
+    clip: {fileID: 8300000, guid: 5bd3505711d17e645823a66c2ffdeaa1, type: 3}
+    volume: 50
+    speed: 1
+    priority: 256
+    StereoPan: 0
+    SpatialBlend: 0
+    ReverbZoneMix: 1
+    Loop: 0
+    DopplerLevel: 0
+    Spread: 1
+    minDistance: 1
+    maxDistance: 500
+    output: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
+    source: {fileID: 0}
+  - name: SFX-Railing-Breaking
+    clip: {fileID: 8300000, guid: 440f148806c4dca44b70261ff7053715, type: 3}
+    volume: 50
+    speed: 1
     priority: 256
     StereoPan: 0
     SpatialBlend: 0
@@ -5661,7 +5628,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Test Build
 
-    V 0.13'
+    V 0.15'
 --- !u!114 &114897101106716890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5831,7 +5798,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114796552576976654}
         m_MethodName: Play
         m_Mode: 5
         m_Arguments:
@@ -7788,7 +7755,7 @@ RectTransform:
   - {fileID: 224945172224951722}
   - {fileID: 224798144097559570}
   m_Father: {fileID: 4043618265248836}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
