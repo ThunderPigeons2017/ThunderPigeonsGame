@@ -21,7 +21,7 @@ public class BreakableObject : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // If colliding with a player
-        if (collision.gameObject.tag == "PlayerBall")
+        //if (collision.gameObject.tag == "PlayerBall")
         {
             // If we are above the velocity threshold
             if (collision.relativeVelocity.magnitude > relativeVelocityMinimum)
