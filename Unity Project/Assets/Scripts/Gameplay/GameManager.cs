@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int maximumDrunkeness = 300;
 
+    [SerializeField]
+    XboxButton goToMainMenuButton = XboxButton.B;
+    [SerializeField]
+    XboxButton restartGameButton = XboxButton.A;
+
     GameObject zone;
     ZoneControl zoneControl;
     ZoneManager zoneManager;
@@ -235,12 +240,12 @@ public class GameManager : MonoBehaviour
             SetWinMessage();
             
             // If a is pressed 
-            if (XCI.GetButtonDown(XboxButton.A, XboxController.All))
+            if (XCI.GetButtonDown(goToMainMenuButton, XboxController.All))
             {
                 GoToMainMenu();
             }
             // If b is pressed restart the level
-            if (XCI.GetButtonDown(XboxButton.B, XboxController.All))
+            if (XCI.GetButtonDown(restartGameButton, XboxController.All))
             {
                 RestartScene();
             }
