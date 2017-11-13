@@ -7,10 +7,9 @@ public class ColourSetter : MonoBehaviour
     [SerializeField]
     GameObject meshParent;
 
-    MeshRenderer[] meshRenderers;
+    Renderer[] meshRenderers;
 
-    Material[] primaryMaterials;
-    Material[] secondaryMaterials;
+    List<Material> materials = new List<Material>();
 
     Color primaryColour;
     Color secondaryColour;
@@ -23,33 +22,20 @@ public class ColourSetter : MonoBehaviour
 
     void FindMaterials()
     {
-        primaryMaterials = new Material[meshRenderers.Length];
-        secondaryMaterials = new Material[meshRenderers.Length];
+        materials.Clear();
 
-        int i = 0;
-        foreach (MeshRenderer meshRenderer in meshRenderers)
+        foreach (Renderer meshRenderer in meshRenderers)
         {
             foreach (Material material in meshRenderer.materials)
             {
-                if (material.name.Contains("Primary"))
-                {
-                    primaryMaterials[i] = material;
-                    continue;
-                }
-                if (material.name.Contains("Secondary"))
-                {
-                    secondaryMaterials[i] = material;
-                    continue;
-                }
-
+                materials.Add(material);
             }
-            ++i;
         }
     }
 
     void FindMeshRenderers()
     {
-        meshRenderers = meshParent.GetComponentsInChildren<MeshRenderer>();
+        meshRenderers = meshParent.GetComponentsInChildren<Renderer>();
     }
 
     public void SetMeshParent(GameObject newMeshParent)
@@ -63,23 +49,11 @@ public class ColourSetter : MonoBehaviour
 
     public void UpdateColours()
     {
-        if (primaryMaterials != null)
-            foreach (Material material in primaryMaterials)
-            {
-                if (material != null)
-                {
-                    material.color = primaryColour;
-                }
-            }
-
-        if (secondaryMaterials != null)
-            foreach (Material material in secondaryMaterials)
-            {
-                if (material != null)
-                {
-                    material.color = secondaryColour;
-                }
-            }
+        foreach (Material material in materials)
+        {
+            material.SetColor("_Primary", primaryColour);
+            material.SetColor("_Secondary", secondaryColour);
+        }
     }
 
     public void SetColours(Color primary, Color secondary)
