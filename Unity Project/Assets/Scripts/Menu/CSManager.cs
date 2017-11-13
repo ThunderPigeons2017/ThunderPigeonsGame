@@ -15,8 +15,18 @@ public class CSManager : MonoBehaviour
     [SerializeField]
     float yDeathLevel = -4;
 
+    [SerializeField]
+    string joinString = "to Join";
+    [SerializeField]
+    string readyUpString = "to Ready";
+    [SerializeField]
+    string readyString = "Ready";
+
     [SerializeField] // The text for each players readyness
     Text[] readyText = new Text[4];
+
+    [SerializeField]
+    GameObject[] canvasReadyButton = new GameObject[4];
 
     [SerializeField]
 	GameObject startText;
@@ -27,7 +37,6 @@ public class CSManager : MonoBehaviour
     MenuManager menuManager;
 
     bool[] readyPlayers = new bool[4];
-
 
     private void Awake()
     {
@@ -52,7 +61,8 @@ public class CSManager : MonoBehaviour
 
             if (menuManager.players[playerNum - 1] == null) // If the player doesn't exist
             {
-                readyText[playerNum - 1].text = "Press A to Join";
+                readyText[playerNum - 1].text = joinString;
+                canvasReadyButton[playerNum - 1].SetActive(true);
 
                 // Added back button to go back during character selection
                 if (XCI.GetButtonDown(unReadyButton, (XboxController)playerNum))
@@ -81,7 +91,8 @@ public class CSManager : MonoBehaviour
 
                 if (readyPlayers[playerNum - 1] == false) // Player exists but isnt ready
                 {
-                    readyText[playerNum - 1].text = "Press A to Ready";
+                    readyText[playerNum - 1].text = readyUpString;
+                    canvasReadyButton[playerNum - 1].SetActive(true);
 
                     PlayerMeshSelectInput(playerNum);
 
@@ -93,7 +104,9 @@ public class CSManager : MonoBehaviour
                 else // Player is ready
                 {
 
-                    readyText[playerNum - 1].text = "Ready";
+                    readyText[playerNum - 1].text = readyString;
+                    canvasReadyButton[playerNum - 1].SetActive(false);
+
                     //playerController.canMove = true;
                     readyPlayerCount++;
                 }
