@@ -6139,10 +6139,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  player1Score: {fileID: 114421217191593898}
-  player2Score: {fileID: 114461055935866114}
-  player3Score: {fileID: 114325700298694136}
-  player4Score: {fileID: 114972343472374554}
+  sliderMaxValue: 1
+  scoreObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   timeText: {fileID: 114012219548350320}
   outerSpawnParent: {fileID: 0}
   centerSpawnParent: {fileID: 0}
