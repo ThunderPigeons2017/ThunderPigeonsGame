@@ -123,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795374301266968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.414529, y: 14.052259, z: 3.6939464}
+  m_LocalPosition: {x: 6.380435, y: 11.669999, z: 5.51971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4765424729677884}
@@ -316,6 +316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshParent: {fileID: 0}
+  primaryColour: {r: 0, g: 0, b: 0, a: 0}
+  secondaryColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114214316990039554
 MonoBehaviour:
   m_ObjectHideFlags: 1
