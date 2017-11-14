@@ -11,8 +11,10 @@ public class ColourSetter : MonoBehaviour
 
     List<Material> materials = new List<Material>();
 
-    Color primaryColour;
-    Color secondaryColour;
+    [HideInInspector]
+    public Color primaryColour;
+    [HideInInspector]
+    public Color secondaryColour;
 
     //void Awake()
     //{

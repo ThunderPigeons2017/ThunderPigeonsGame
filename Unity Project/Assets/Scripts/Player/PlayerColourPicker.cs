@@ -22,16 +22,6 @@ public class PlayerColourPicker : MonoBehaviour
     public Color p4PrimaryColour;
     public Color p4SecondaryColour;
 
-    //   void Awake ()
-    //   {
-
-    //}
-
-    //   void Update ()
-    //   {
-
-    //}
-
     public void SetUp(GameObject[] players)
     {
         for (int i = 0; i < 4; i++)
@@ -39,7 +29,6 @@ public class PlayerColourPicker : MonoBehaviour
             if (players[i] != null)
             {
                 colourSetter[i] = players[i].GetComponentInChildren<ColourSetter>();
-
 
                 switch (i)
                 {

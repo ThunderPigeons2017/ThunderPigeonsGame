@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4225805887086876}
+  - component: {fileID: 114772318514618692}
   - component: {fileID: 198973794624873644}
   - component: {fileID: 199576703626244590}
   m_Layer: 0
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114772318514618692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649075820073992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432c4921322f4284e8b8e6d0c571b36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0, g: 1, b: 1, a: 1}
 --- !u!198 &198973794624873644
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -51,7 +64,7 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -100,7 +113,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1133068909
+  randomSeed: 1903076293
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -660,7 +673,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 207.9
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -994,7 +1007,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 3
@@ -3317,8 +3330,8 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9442b285e8b520b4b9b15da62d3b4fa7, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 3a92b9ffcba69f44bb0197bc0d2a60c6, type: 2}
+  - {fileID: 2100000, guid: 3a92b9ffcba69f44bb0197bc0d2a60c6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
