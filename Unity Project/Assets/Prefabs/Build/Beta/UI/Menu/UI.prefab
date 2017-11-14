@@ -5139,7 +5139,7 @@ MonoBehaviour:
   p2PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
   p2SecondaryColour: {r: 0.62099415, g: 0.25735295, b: 1, a: 1}
   p3PrimaryColour: {r: 0.9019608, g: 1, b: 0, a: 1}
-  p3SecondaryColour: {r: 0.47843137, g: 0.47843137, b: 0.47843137, a: 0}
+  p3SecondaryColour: {r: 0.47843137, g: 0.47843137, b: 0.47843137, a: 1}
   p4PrimaryColour: {r: 0.5294118, g: 0, b: 1, a: 1}
   p4SecondaryColour: {r: 0.18431373, g: 0.18431373, b: 0.18431373, a: 1}
 --- !u!114 &114616054991228222
@@ -5249,7 +5249,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Test Build
 
-    V 0.19'
+    V 0.20'
 --- !u!114 &114644053853465670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5828,7 +5828,7 @@ MonoBehaviour:
   Event: {fileID: 114943003293758246}
   camera: {fileID: 20092743777739838}
   gameSceneName: Beta
-  playerPrefab: {fileID: 1795374301266968, guid: 0d9fdc32ad6e43744a5e23c4914c54fb,
+  playerPrefab: {fileID: 1795374301266968, guid: 02c0be52965b610409d81ad4d88b7315,
     type: 2}
   player1Spawn: {fileID: 4148353179934150}
   player2Spawn: {fileID: 4816620156012742}
