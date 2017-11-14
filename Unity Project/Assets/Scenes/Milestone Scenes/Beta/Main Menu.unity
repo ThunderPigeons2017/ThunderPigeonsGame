@@ -171,7 +171,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a89d684cda2af3459e0cd414b213f0f, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1385299783
+--- !u!1001 &376439473
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -434,7 +434,29 @@ Prefab:
     - target: {fileID: 114615755093664104, guid: ec91b8e9018605f4c9c9c2490b02c52c,
         type: 2}
       propertyPath: p3SecondaryColour.a
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615755093664104, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: p1SecondaryColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615755093664104, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: p2SecondaryColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615755093664104, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: p4SecondaryColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114634485291267650, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Test Build
+
+        V 0.20'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
