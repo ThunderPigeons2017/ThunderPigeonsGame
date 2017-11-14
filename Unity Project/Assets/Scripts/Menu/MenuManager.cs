@@ -157,6 +157,7 @@ public class MenuManager : MonoBehaviour
             if (players[i] != null)
             {
                 DontDestroyOnLoad(players[i]);
+                players[i].GetComponentInChildren<Animator>().SetBool("Chosen", false);
             }
         }
         SceneManager.LoadScene(gameSceneName);

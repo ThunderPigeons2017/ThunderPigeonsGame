@@ -11,6 +11,8 @@ public class SpinCollision : MonoBehaviour
 
     Rigidbody playerBallrb;
 
+    Animator animator;
+
     [Tooltip("How much force to use for the initial dash/charge")]
     [SerializeField]
     float dashForce = 5;
@@ -25,9 +27,6 @@ public class SpinCollision : MonoBehaviour
 
     [SerializeField]
     XboxButton spinButton = XboxButton.A;
-
-    [SerializeField]
-    GameObject spinVisual;
 
     float timer;
 
@@ -48,18 +47,17 @@ public class SpinCollision : MonoBehaviour
 
     void Start()
     {
-        spinVisual.SetActive(false);
+
+        animator = playerBall.transform.parent.GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
         if (spinning)
         {
-            spinVisual.SetActive(true);
         }
         else
         {
-            spinVisual.SetActive(false);
         }
 
         if (timer >= 0)
@@ -85,6 +83,7 @@ public class SpinCollision : MonoBehaviour
             playerBallrb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * dashForce, ForceMode.Impulse);
 
             spinning = true;
+            playerBall.transform.parent.GetComponentInChildren<Animator>().SetTrigger("SpinAttack");
             timer = spinTime;
         }
     }

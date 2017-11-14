@@ -50,8 +50,15 @@ public class GameManager : MonoBehaviour
     // Keep a list of each player in the game
     public GameObject[] players = new GameObject[4];
 
-    [SerializeField] // Each players score text
-    Text player1Score, player2Score, player3Score, player4Score;
+    [SerializeField]
+    [Range(0, 1)]
+    float sliderMaxValue = 1f;
+
+    [SerializeField] // Each players score objects
+    GameObject[] scoreObjects = new GameObject[4];
+
+
+    Slider[] sliders = new Slider[4];
 
     [SerializeField]
     Text timeText;
@@ -114,6 +121,7 @@ public class GameManager : MonoBehaviour
         {
             outerSpawns[i] = outerSpawnParent.transform.GetChild(i);
             centreSpawns[i] = centerSpawnParent.transform.GetChild(i);
+            sliders[i] = scoreObjects[i].GetComponentInChildren<Slider>();
         }
 
     }
@@ -129,6 +137,14 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<AudioManager>().Play("Audio-Theme");
         FindObjectOfType<AudioManager>().Play("SFX-Ocean");
+
+        for (int playerNum = 1; playerNum < 5; playerNum++)
+        {
+            if (players[playerNum - 1] == null)
+            {
+                scoreObjects[playerNum - 1].SetActive(false);
+            }
+        }
     }
 
     void OnEnable()
@@ -423,10 +439,10 @@ public class GameManager : MonoBehaviour
 
     void UpdateScoreBoard()
     {
-        player1Score.text = ((int)scores[0]).ToString();
-        player2Score.text = ((int)scores[1]).ToString();
-        player3Score.text = ((int)scores[2]).ToString();
-        player4Score.text = ((int)scores[3]).ToString();
+        for (int playerNum = 1; playerNum < 5; playerNum++)
+        {
+            sliders[playerNum - 1].value = Helper.Remap(scores[playerNum - 1], 0, winScore, 0, sliderMaxValue);
+        }
     }
 
     void UpdateTimer()

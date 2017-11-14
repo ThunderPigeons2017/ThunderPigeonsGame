@@ -112,7 +112,6 @@ public class CSManager : MonoBehaviour
                 }
             }
         }
-           
 
         if (readyPlayerCount > 1 & canStart)
         {
@@ -139,6 +138,7 @@ public class CSManager : MonoBehaviour
             else
             {
                 readyPlayers[playerNum - 1] = true;
+                menuManager.players[playerNum - 1].GetComponentInChildren<Animator>().SetBool("Chosen", true);
             }
         }
 
@@ -147,6 +147,8 @@ public class CSManager : MonoBehaviour
             if (readyPlayers[playerNum - 1] == true)
             {
                 readyPlayers[playerNum - 1] = false;
+                menuManager.players[playerNum - 1].GetComponentInChildren<Animator>().SetBool("Chosen", false);
+
             }
             else
             {

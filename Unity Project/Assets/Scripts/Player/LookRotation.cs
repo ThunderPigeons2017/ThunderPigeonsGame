@@ -57,26 +57,23 @@ public class LookRotation : MonoBehaviour
         float xAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
         float yAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
-        if (!(playerController.animState == PlayerController.AnimState.Punch)) // If punching don't update rotation
+        // If the player isn't on the ground don't use right stick for rotation/tilting
+        if (playerBall.GetComponent<PlayerController>().grounded == false)
         {
-            // If the player isn't on the ground don't use right stick for rotation/tilting
-            if (playerBall.GetComponent<PlayerController>().grounded == false)
-            {
-                moveHorizontal = 0f;
-                moveVertical = 0f;
-            }
+            moveHorizontal = 0f;
+            moveVertical = 0f;
+        }
 
-            // Only look rotation update if there is input
-            if (xAxis != 0f || yAxis != 0f) // Prioritise right stick for the rotation
-            {
-                lookRotation.x = xAxis;
-                lookRotation.z = yAxis;
-            }
-            else if (moveHorizontal != 0f || moveVertical != 0f) // Also use the right stick for rotation
-            {
-                lookRotation.x = moveHorizontal;
-                lookRotation.z = moveVertical;
-            }
+        // Only look rotation update if there is input
+        if (xAxis != 0f || yAxis != 0f) // Prioritise right stick for the rotation
+        {
+            lookRotation.x = xAxis;
+            lookRotation.z = yAxis;
+        }
+        else if (moveHorizontal != 0f || moveVertical != 0f) // Also use the right stick for rotation
+        {
+            lookRotation.x = moveHorizontal;
+            lookRotation.z = moveVertical;
         }
 
         // Make the forward rotation
