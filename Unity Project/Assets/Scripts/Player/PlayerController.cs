@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
 
     float drunkOffset;
 
+    [SerializeField]
+    ParticleSystem damageParticle;
+
     public enum AnimState
     {
         Idle,
@@ -151,5 +154,10 @@ public class PlayerController : MonoBehaviour
         //{
         //    animator.SetTrigger("Punch");
         //}
+    }
+
+    public void TakeDamage()
+    {
+        damageParticle.Play();
     }
 }

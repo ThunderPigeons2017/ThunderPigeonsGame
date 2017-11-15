@@ -114,11 +114,15 @@ public class SpinCollision : MonoBehaviour
                         Vector3 tempVelocity = playerBallrb.velocity;
                         tempVelocity.y = 0f;
 
+                        Rigidbody otherRB = other.GetComponent<Rigidbody>();
                         // Push the other player away
-                        other.GetComponent<Rigidbody>().AddForce(vecBetween.normalized * spinForce, ForceMode.Impulse);
+                        otherRB.AddForce(vecBetween.normalized * spinForce, ForceMode.Impulse);
 
                         // knock up the other player
-                        other.GetComponent<Rigidbody>().AddForce(Vector3.up * knockUpForce, ForceMode.Impulse);
+                        otherRB.AddForce(Vector3.up * knockUpForce, ForceMode.Impulse);
+
+                        // Let the other player know its been hit
+                        other.GetComponent<PlayerController>().TakeDamage();
                     }
                 }
             }
