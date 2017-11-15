@@ -73,9 +73,11 @@ public class GameManager : MonoBehaviour
 
     [Header("")]
     [SerializeField]
+    GameObject winMessage;
+
+    [SerializeField]
     Text winMessageText;
-	[SerializeField]
-	Text restartMessage;
+
 
     [SerializeField]
     [Tooltip("The message to display when a player has won (all lower case x are replaced with the winning player number)")]
@@ -132,8 +134,7 @@ public class GameManager : MonoBehaviour
 
         gameWon = false;
 
-        winMessageText.enabled = false;
-        restartMessage.enabled = false;
+        winMessage.SetActive(false);
 
         FindObjectOfType<AudioManager>().Play("Audio-Theme");
         FindObjectOfType<AudioManager>().Play("SFX-Ocean");
@@ -251,8 +252,8 @@ public class GameManager : MonoBehaviour
         if (gameWon)
         {
             // Turn on the messages
-            restartMessage.enabled = true;
-            winMessageText.enabled = true;
+            winMessage.SetActive(true);
+
             SetWinMessage();
             
             // If a is pressed 

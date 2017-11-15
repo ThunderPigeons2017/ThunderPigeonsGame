@@ -1650,7 +1650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1695400875336060
 GameObject:
   m_ObjectHideFlags: 1
@@ -1822,7 +1822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1736572210286406
 GameObject:
   m_ObjectHideFlags: 1
@@ -2392,7 +2392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1976082015017412
 GameObject:
   m_ObjectHideFlags: 1
@@ -6141,10 +6141,10 @@ MonoBehaviour:
   - {fileID: 0}
   sliderMaxValue: 1
   scoreObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1530161851701888}
+  - {fileID: 1726803448792912}
+  - {fileID: 1574272805297574}
+  - {fileID: 1352342840524748}
   timeText: {fileID: 114012219548350320}
   outerSpawnParent: {fileID: 0}
   centerSpawnParent: {fileID: 0}
