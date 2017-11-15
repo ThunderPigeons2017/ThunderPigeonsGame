@@ -9,6 +9,9 @@ public class SpinCollision : MonoBehaviour
     [SerializeField]
     GameObject playerBall;
 
+    [SerializeField]
+    ParticleSystem spinParticle;
+
     Rigidbody playerBallrb;
 
     Animator animator;
@@ -67,7 +70,7 @@ public class SpinCollision : MonoBehaviour
         else
         {
             spinning = false;
-
+            spinParticle.Stop();
             hitPlayers.Clear();
         }
 
@@ -83,6 +86,11 @@ public class SpinCollision : MonoBehaviour
             playerBallrb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * dashForce, ForceMode.Impulse);
 
             spinning = true;
+
+            // Play the spin particles
+            spinParticle.Play();
+
+            // Start the animation
             playerBall.transform.parent.GetComponentInChildren<Animator>().SetTrigger("SpinAttack");
             timer = spinTime;
         }

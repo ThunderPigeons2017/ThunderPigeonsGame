@@ -271,6 +271,11 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
+        if (gameWon)
+        {
+            return;
+        }
+
         gamePaused = true;
 
         optionsPanel.gameObject.SetActive(false);
