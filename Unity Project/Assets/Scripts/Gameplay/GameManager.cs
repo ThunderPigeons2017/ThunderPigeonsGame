@@ -348,7 +348,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadScene("Beta");
+        SceneManager.LoadScene("Gold");
 
         for (int playerNum = 1; playerNum < 5; playerNum++)
         {
