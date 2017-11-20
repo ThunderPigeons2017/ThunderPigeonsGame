@@ -64,5 +64,7 @@ public class BumperCollision : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("SFX-Railing-Breaking");
         }
+
+        Debug.LogWarning(other.tag);
     }
 }

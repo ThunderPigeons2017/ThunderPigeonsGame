@@ -122,10 +122,11 @@ namespace XboxCtrlrInput
 		/// </param>
 		public static bool GetButton(XboxButton button, XboxController controller)
 		{
-			if (button.IsDPad())
+            
+            if (button.IsDPad())
 				return GetDPad(button.ToDPad(), controller);
 
-			if (controller == XboxController.All)
+            if (controller == XboxController.All)
             {
                 // Force to check each controller number
                 if (GetButton(button, XboxController.First))
@@ -140,7 +141,7 @@ namespace XboxCtrlrInput
                 return false;
             }
 
-			int controllerNumber = (int)controller;
+            int controllerNumber = (int)controller;
 			
 			if(OnWindowsNative())
 			{
@@ -181,7 +182,8 @@ namespace XboxCtrlrInput
 			if (button.IsDPad())
 				return GetDPadDown(button.ToDPad());
 
-			if(OnWindowsNative())
+
+            if (OnWindowsNative())
 			{
 				if(!XInputStillInCurrFrame())
 				{
@@ -225,7 +227,22 @@ namespace XboxCtrlrInput
 			if (button.IsDPad())
 				return GetDPadDown(button.ToDPad(), controller);
 
-			if (controller == XboxController.All)
+            if (controller == XboxController.All)
+            {
+                // Force to check each controller number
+                if (GetButton(button, XboxController.First))
+                    return true;
+                if (GetButton(button, XboxController.Second))
+                    return true;
+                if (GetButton(button, XboxController.Third))
+                    return true;
+                if (GetButton(button, XboxController.Fourth))
+                    return true;
+
+                return false;
+            }
+
+            if (controller == XboxController.All)
 				return GetButtonDown(button);
 
 			int controllerNumber = (int)controller;
@@ -320,7 +337,22 @@ namespace XboxCtrlrInput
 			if (button.IsDPad())
 				return GetDPadUp(button.ToDPad(), controller);
 
-			if (controller == XboxController.All)
+            if (controller == XboxController.All)
+            {
+                // Force to check each controller number
+                if (GetButton(button, XboxController.First))
+                    return true;
+                if (GetButton(button, XboxController.Second))
+                    return true;
+                if (GetButton(button, XboxController.Third))
+                    return true;
+                if (GetButton(button, XboxController.Fourth))
+                    return true;
+
+                return false;
+            }
+
+            if (controller == XboxController.All)
 				return GetButtonUp(button);
 
 			int controllerNumber = (int)controller;
@@ -434,7 +466,22 @@ namespace XboxCtrlrInput
 			if (controller == XboxController.All)
 				return GetDPad(padDirection);
 
-			int controllerNumber = (int)controller;
+            if (controller == XboxController.All)
+            {
+                // Force to check each controller number
+                if (GetDPad(padDirection, XboxController.First))
+                    return true;
+                if (GetDPad(padDirection, XboxController.Second))
+                    return true;
+                if (GetDPad(padDirection, XboxController.Third))
+                    return true;
+                if (GetDPad(padDirection, XboxController.Fourth))
+                    return true;
+
+                return false;
+            }
+
+            int controllerNumber = (int)controller;
 
 			bool r = false;
 			
@@ -561,7 +608,22 @@ namespace XboxCtrlrInput
 			if (controller == XboxController.All)
 				return GetDPadUp(padDirection);
 
-			int controllerNumber = (int)controller;
+            if (controller == XboxController.All)
+            {
+                // Force to check each controller number
+                if (GetDPadUp(padDirection, XboxController.First))
+                    return true;
+                if (GetDPadUp(padDirection, XboxController.Second))
+                    return true;
+                if (GetDPadUp(padDirection, XboxController.Third))
+                    return true;
+                if (GetDPadUp(padDirection, XboxController.Fourth))
+                    return true;
+
+                return false;
+            }
+
+            int controllerNumber = (int)controller;
 
 			bool r = false;
 			

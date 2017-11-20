@@ -48,6 +48,19 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
+        s.source.Play();
+    }
+
+    public void PlayOneShot(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+        {
+            Debug.LogWarning(name + " audio File Not Found.");
+            return;
+        }
+
         s.source.PlayOneShot(s.source.clip);
     }
 
