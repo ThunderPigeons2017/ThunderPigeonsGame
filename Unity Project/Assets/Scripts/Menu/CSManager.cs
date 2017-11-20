@@ -16,17 +16,11 @@ public class CSManager : MonoBehaviour
     float yDeathLevel = -4;
 
     [SerializeField]
-    string joinString = "to Join";
+    GameObject[] gameNotJoined = new GameObject[4];
     [SerializeField]
-    string readyUpString = "to Ready";
+    GameObject[] gameJoined = new GameObject[4];
     [SerializeField]
-    string readyString = "Ready";
-
-    [SerializeField] // The text for each players readyness
-    Text[] readyText = new Text[4];
-
-    [SerializeField]
-    GameObject[] canvasReadyButton = new GameObject[4];
+    GameObject[] gameReady = new GameObject[4];
 
     [SerializeField]
 	GameObject startText;
@@ -53,6 +47,27 @@ public class CSManager : MonoBehaviour
         bool[] readyPlayers = new bool[4];
     }
 
+    void SetPlayerNotJoined(int playerNum)
+    {
+        gameNotJoined[playerNum - 1].SetActive(true);
+        gameJoined[playerNum - 1].SetActive(false);
+        gameReady[playerNum - 1].SetActive(false);
+    }
+
+    void SetPlayerJoined(int playerNum)
+    {
+        gameNotJoined[playerNum - 1].SetActive(false);
+        gameJoined[playerNum - 1].SetActive(true);
+        gameReady[playerNum - 1].SetActive(false);
+    }
+
+    void SetPlayerReady(int playerNum)
+    {
+        gameNotJoined[playerNum - 1].SetActive(false);
+        gameJoined[playerNum - 1].SetActive(false);
+        gameReady[playerNum - 1].SetActive(true);
+    }
+
     public void UpdateLogic()
     {
         bool canStart = true;
@@ -66,8 +81,7 @@ public class CSManager : MonoBehaviour
 
             if (menuManager.players[playerNum - 1] == null) // If the player doesn't exist
             {
-                readyText[playerNum - 1].text = joinString;
-                canvasReadyButton[playerNum - 1].SetActive(true);
+                SetPlayerNotJoined(playerNum); // Set the UI
 
                 // Added back button to go back during character selection
                 if (XCI.GetButtonDown(unReadyButton, (XboxController)playerNum))
@@ -96,8 +110,7 @@ public class CSManager : MonoBehaviour
 
                 if (readyPlayers[playerNum - 1] == false) // Player exists but isnt ready
                 {
-                    readyText[playerNum - 1].text = readyUpString;
-                    canvasReadyButton[playerNum - 1].SetActive(true);
+                    SetPlayerJoined(playerNum);
 
                     PlayerMeshSelectInput(playerNum);
 
@@ -111,8 +124,7 @@ public class CSManager : MonoBehaviour
                 {
                     menuManager.players[playerNum - 1].GetComponentInChildren<Rigidbody>().useGravity = true;
 
-                    readyText[playerNum - 1].text = readyString;
-                    canvasReadyButton[playerNum - 1].SetActive(false);
+                    SetPlayerReady(playerNum);
 
                     playerController.canMove = true;
                     readyPlayerCount++;

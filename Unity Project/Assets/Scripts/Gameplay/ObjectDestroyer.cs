@@ -9,7 +9,6 @@ public class ObjectDestroyer : MonoBehaviour {
 
 		if (other.tag == "Destroyable Objects") {
 			Destroy (gameObject);
-			Debug.Log ("Destroyed Object");
-		}
+        }
 	}
 }

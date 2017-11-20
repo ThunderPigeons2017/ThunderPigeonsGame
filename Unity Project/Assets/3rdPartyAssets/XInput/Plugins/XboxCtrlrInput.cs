@@ -230,13 +230,13 @@ namespace XboxCtrlrInput
             if (controller == XboxController.All)
             {
                 // Force to check each controller number
-                if (GetButton(button, XboxController.First))
+                if (GetButtonDown(button, XboxController.First))
                     return true;
-                if (GetButton(button, XboxController.Second))
+                if (GetButtonDown(button, XboxController.Second))
                     return true;
-                if (GetButton(button, XboxController.Third))
+                if (GetButtonDown(button, XboxController.Third))
                     return true;
-                if (GetButton(button, XboxController.Fourth))
+                if (GetButtonDown(button, XboxController.Fourth))
                     return true;
 
                 return false;
@@ -340,13 +340,13 @@ namespace XboxCtrlrInput
             if (controller == XboxController.All)
             {
                 // Force to check each controller number
-                if (GetButton(button, XboxController.First))
+                if (GetButtonUp(button, XboxController.First))
                     return true;
-                if (GetButton(button, XboxController.Second))
+                if (GetButtonUp(button, XboxController.Second))
                     return true;
-                if (GetButton(button, XboxController.Third))
+                if (GetButtonUp(button, XboxController.Third))
                     return true;
-                if (GetButton(button, XboxController.Fourth))
+                if (GetButtonUp(button, XboxController.Fourth))
                     return true;
 
                 return false;

@@ -188,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1046167273314106
 GameObject:
   m_ObjectHideFlags: 1
@@ -526,7 +526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1111375507384872
 GameObject:
   m_ObjectHideFlags: 1
@@ -1587,7 +1587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1549964629205736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1652030494697916
 GameObject:
   m_ObjectHideFlags: 1
@@ -1971,7 +1971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1695921198134456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,7 +2469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1958340249733058
 GameObject:
   m_ObjectHideFlags: 1
@@ -4488,19 +4488,21 @@ MonoBehaviour:
   readyButton: 0
   unReadyButton: 1
   yDeathLevel: -4
-  joinString: ' to Join'
-  readyUpString: '  to Ready'
-  readyString: Ready
-  readyText:
-  - {fileID: 114713343262560554}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  canvasReadyButton:
-  - {fileID: 1489454297144656}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  gameNotJoined:
+  - {fileID: 1664621555059534}
+  - {fileID: 1950423419337870}
+  - {fileID: 1384547619142840}
+  - {fileID: 1849833055823742}
+  gameJoined:
+  - {fileID: 1370284951980070}
+  - {fileID: 1951885082329740}
+  - {fileID: 1650503441389346}
+  - {fileID: 1042987007373818}
+  gameReady:
+  - {fileID: 1201865501221234}
+  - {fileID: 1685967254152838}
+  - {fileID: 1536479835108734}
+  - {fileID: 1106206474965794}
   startText: {fileID: 1131217184918420}
   meshPrefabs:
   - {fileID: 1585170913985088, guid: 45e0791cee830dc4c98dbff25e0ebfc3, type: 2}
@@ -5050,7 +5052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 1280 x 720
+  m_Text: 
 --- !u!114 &114402456042001818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5668,23 +5670,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: 1280 x 720
-      m_Image: {fileID: 0}
-    - m_Text: 1360 x 768
-      m_Image: {fileID: 0}
-    - m_Text: 1366 x 768
-      m_Image: {fileID: 0}
-    - m_Text: 1600 x 900
-      m_Image: {fileID: 0}
-    - m_Text: 1280 x 720
-      m_Image: {fileID: 0}
-    - m_Text: 1360 x 768
-      m_Image: {fileID: 0}
-    - m_Text: 1366 x 768
-      m_Image: {fileID: 0}
-    - m_Text: 1600 x 900
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -6834,6 +6820,21 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 500
     output: {fileID: 243775753849725546, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
+    source: {fileID: 0}
+  - name: SFX-SpinAttack
+    clip: {fileID: 8300000, guid: c015d9e38822b7c4ab614a774e9f92b6, type: 3}
+    volume: 50
+    speed: 1
+    priority: 256
+    StereoPan: 0
+    SpatialBlend: 0
+    ReverbZoneMix: 1
+    Loop: 1
+    DopplerLevel: 1
+    Spread: 0
+    minDistance: 1
+    maxDistance: 500
+    output: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52, type: 2}
     source: {fileID: 0}
 --- !u!114 &114840232785567818
 MonoBehaviour:

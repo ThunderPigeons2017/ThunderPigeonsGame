@@ -42,10 +42,13 @@ public class SpinCollision : MonoBehaviour
 
     PlayerController playerController;
 
+    GameManager gameManager;
+
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
         playerController = playerBall.GetComponent<PlayerController>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Start()
@@ -74,8 +77,13 @@ public class SpinCollision : MonoBehaviour
             hitPlayers.Clear();
         }
 
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
+
         // Check for input and punch
-        if (spinning == false && XCI.GetButtonDown(spinButton, (XboxController)playerController.playerNumber) && (FindObjectOfType<GameManager>().gamePause() == false))
+        if (spinning == false && XCI.GetButtonDown(spinButton, (XboxController)playerController.playerNumber) && (gameManager == null || gameManager.gamePause() == false))
         {
             FindObjectOfType<AudioManager>().PlayOneShot("SFX-SpinAttack");
 
@@ -94,6 +102,7 @@ public class SpinCollision : MonoBehaviour
             playerBall.transform.parent.GetComponentInChildren<Animator>().SetTrigger("SpinAttack");
             timer = spinTime;
         }
+        
     }
 
     void OnTriggerStay(Collider other)
