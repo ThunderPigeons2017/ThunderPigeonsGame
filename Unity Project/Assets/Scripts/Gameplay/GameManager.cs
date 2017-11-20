@@ -540,5 +540,11 @@ public class GameManager : MonoBehaviour
                 Application.Quit();
         #endif
     }
+
+    ///This is for the Spin Attack to Cancel out bug
+    public bool gamePause()
+    {
+        return gamePaused;
+    }
 }
 
