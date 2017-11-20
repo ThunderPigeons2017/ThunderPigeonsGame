@@ -502,6 +502,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 114539289899864576, guid: ec91b8e9018605f4c9c9c2490b02c52c,
         type: 2}
       propertyPath: m_Options.m_Options.Array.size
@@ -578,6 +583,67 @@ Prefab:
         type: 2}
       propertyPath: m_Options.m_Options.Array.data[7].m_Text
       value: 1600 x 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].name
+      value: SFX-SpinAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c015d9e38822b7c4ab614a774e9f92b6, type: 3}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].volume
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].priority
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].ReverbZoneMix
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].DopplerLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].minDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].maxDistance
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803499134299290, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: sounds.Array.data[6].output
+      value: 
+      objectReference: {fileID: 243464807763358018, guid: f85a90c8669661a46bfc4ef4770ccd52,
+        type: 2}
+    - target: {fileID: 114393336334580446, guid: ec91b8e9018605f4c9c9c2490b02c52c,
+        type: 2}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}

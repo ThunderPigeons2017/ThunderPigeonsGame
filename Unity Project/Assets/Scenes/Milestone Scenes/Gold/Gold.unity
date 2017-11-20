@@ -681,9 +681,30 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114325579625946500, guid: 6f8b1159de380434189cb67e722a6141,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1160858925}
+    - target: {fileID: 114325579625946500, guid: 6f8b1159de380434189cb67e722a6141,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 114325579625946500, guid: 6f8b1159de380434189cb67e722a6141,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: SFX-SpinAttack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1160858925 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114796552576976654, guid: 6f8b1159de380434189cb67e722a6141,
+    type: 2}
+  m_PrefabInternal: {fileID: 1160858924}
+  m_Script: {fileID: 11500000, guid: defa2797ce350ec448857628cf7532f5, type: 3}
 --- !u!1001 &1167690046
 Prefab:
   m_ObjectHideFlags: 0

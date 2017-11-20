@@ -58,13 +58,5 @@ public class BumperCollision : MonoBehaviour
                 }
             }
         }
-
-        //if player collides with a railing
-        if (other.tag == "Railings")
-        {
-            FindObjectOfType<AudioManager>().Play("SFX-Railing-Breaking");
-        }
-
-        Debug.LogWarning(other.tag);
     }
 }

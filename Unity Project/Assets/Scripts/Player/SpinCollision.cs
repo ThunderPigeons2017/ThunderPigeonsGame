@@ -77,7 +77,7 @@ public class SpinCollision : MonoBehaviour
         // Check for input and punch
         if (spinning == false && XCI.GetButtonDown(spinButton, (XboxController)playerController.playerNumber))
         {
-            FindObjectOfType<AudioManager>().Play("SFX-SpinAttack");
+            FindObjectOfType<AudioManager>().PlayOneShot("SFX-SpinAttack");
 
             // Left stick
             float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerController.playerNumber);
