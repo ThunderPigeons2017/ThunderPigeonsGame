@@ -117,6 +117,8 @@ public class MenuManager : MonoBehaviour
 
     public void StartMainMenu()
     {
+        DespawnPlayers();
+
         menuState = MenuStates.MainMenu;
 
         cameraControl.MoveToMainMenu();
@@ -235,6 +237,17 @@ public class MenuManager : MonoBehaviour
         newLookRotation.LookTowards(Vector3.back * 1000);
 
         playerColourPicker.SetUp(players);
+    }
+
+    public void DespawnPlayers()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (players[i] != null)
+            {
+                Destroy(players[i]);
+            }
+        }
     }
 
 }

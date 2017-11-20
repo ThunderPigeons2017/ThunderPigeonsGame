@@ -163,17 +163,19 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Search for players in the scene
-        GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("PlayerBall");
-        for (int i = 0; i < playersInScene.Length; i++)
+        GameObject[] playerBallsInScene = GameObject.FindGameObjectsWithTag("PlayerBall");
+        for (int i = 0; i < playerBallsInScene.Length; i++)
         {
-            //DontDestroyOnLoad(playersInScene[i]);
-            //playersInScene[i].transform.SetParent(newObject.transform);
+            PlayerController playerController = playerBallsInScene[i].GetComponent<PlayerController>();
 
-            PlayerController playerController = playersInScene[i].GetComponent<PlayerController>();
+            if (playerController == null)
+                continue;
 
-            players[playerController.playerNumber - 1] = playersInScene[i];
+            players[playerController.playerNumber - 1] = playerBallsInScene[i];
 
             RespawnPlayer(playerController.playerNumber);
+
+            playerBallsInScene[i].transform.parent.GetComponentInChildren<PlayerTextManager>().Show();
         }
 
     }

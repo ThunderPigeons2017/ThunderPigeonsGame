@@ -38,7 +38,7 @@ public class CSManager : MonoBehaviour
 
     bool[] readyPlayers = new bool[4];
 
-    private void Awake()
+    void Awake()
     {
         menuManager = GetComponent<MenuManager>();
     }
@@ -46,6 +46,11 @@ public class CSManager : MonoBehaviour
     void Start()
     {
 		startText.SetActive(false);
+    }
+
+    public void ResetValues()
+    {
+        bool[] readyPlayers = new bool[4];
     }
 
     public void UpdateLogic()
@@ -98,16 +103,18 @@ public class CSManager : MonoBehaviour
 
                     canStart = false;
 
-                    //menuManager.SpawnPlayer(playerNum, false); // Constantly respawn the player
-                    //playerController.canMove = false;
+                    menuManager.SpawnPlayer(playerNum, false); // Constantly respawn the player
+                    menuManager.players[playerNum - 1].GetComponentInChildren<Rigidbody>().useGravity = false;
+                    playerController.canMove = false;
                 }
                 else // Player is ready
                 {
+                    menuManager.players[playerNum - 1].GetComponentInChildren<Rigidbody>().useGravity = true;
 
                     readyText[playerNum - 1].text = readyString;
                     canvasReadyButton[playerNum - 1].SetActive(false);
 
-                    //playerController.canMove = true;
+                    playerController.canMove = true;
                     readyPlayerCount++;
                 }
             }
