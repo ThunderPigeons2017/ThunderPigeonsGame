@@ -128,33 +128,86 @@ public class CameraControl : MonoBehaviour
     {
         Vector3 averagePos = new Vector3();                                       //Vector pos 
         int numTargets = 0;                                                       //number of targets
-                
+
         for (int i = 0; i < m_Targets.Length; i++)                                //loops through max number of players
         {
             if (m_Targets[i] == null || !m_Targets[i].isAlive)                    //checks if player is alive
                 continue;
-            
 
-            averagePos += m_Targets[i].gameObject.transform.position;             //if player is alive, get player position
+            //averagePos += m_Targets[i].gameObject.transform.position;             //if player is alive, get player position
             numTargets++;                                                         //add to numTarget counter
         }
 
-        if (numTargets <= 0)                                                      //checks if there are no active players
-            followZone = true;                                                    //sets followzone to true
-        else
-            followZone = false;                                                   //else set followzone to false
+        //if (numTargets <= 0)                                                      //checks if there are no active players
+        //    followZone = true;                                                    //sets followzone to true
+        //else
+        //    followZone = false;                                                   //else set followzone to false
 
 
-        // Add the defaultCamPos to the avg position if followzone is true
-        if (followZone)
+        //// Add the defaultCamPos to the avg position if followzone is true
+        //if (followZone)
+        //{
+        //    //averagePos += (m_Zone.transform.position);                          //previous iteration follows zone if there are no players active
+        //    averagePos += defaultCamPos.transform.position;                       //now it follows a blank game objects position called defaultCamPos
+        //    numTargets++;
+        //}
+
+        //if (numTargets > 0)                                                       //quick checker to ensure that numTargets is not zero, otherwise camera script crashes
+        //    averagePos /= numTargets;
+
+        float distance = 0f;                                                                               //distance to return
+        float currentDistance = 0f;                                                                        //distance current
+
+        for (int i = 0; i < m_Targets.Length; i++)
         {
-            //averagePos += (m_Zone.transform.position);                          //previous iteration follows zone if there are no players active
-            averagePos += defaultCamPos.transform.position;                       //now it follows a blank game objects position called defaultCamPos
-            numTargets++;
+            if (m_Targets[i] == null || !m_Targets[i].isAlive)
+                continue;
+
+            PlayerController playerA = m_Targets[i];
+
+            for (int j = i + 1; j < m_Targets.Length; j++)
+            {
+                if (m_Targets[j] == null || !m_Targets[j].isAlive)
+                    continue;
+
+                PlayerController playerB = m_Targets[j];
+
+                currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
+                if (currentDistance > distance)
+                {
+                    distance = currentDistance;
+                    averagePos = (playerA.transform.position + playerB.transform.position) / 2; // Calculate the pos 
+                }
+            }
+
+            // Check the distance to the zone if we are following the zone
+            if (followZone)
+            {
+                currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);
+                if (currentDistance > distance)
+                {
+                    distance = currentDistance;
+                    averagePos = (playerA.transform.position + m_Zone.transform.position) / 2; // Calculate the pos 
+                }
+            }
+
         }
 
-        if (numTargets > 0)                                                       //quick checker to ensure that numTargets is not zero, otherwise camera script crashes
-            averagePos /= numTargets;
+        if (numTargets == 1)
+        {
+            for (int i = 0; i < m_Targets.Length; i++)                                //loops through max number of players
+            {
+                if (m_Targets[i] == null || !m_Targets[i].isAlive)                    //checks if player is alive
+                    continue;
+
+                return m_Targets[i].gameObject.transform.position;
+            }
+        }
+
+        if (numTargets == 0)
+        {
+            return m_Zone.transform.position;
+        }
 
         return averagePos;                                                        //returns averagePos
     }

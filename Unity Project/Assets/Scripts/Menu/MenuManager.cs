@@ -86,6 +86,29 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        // If the camera is moving, don't update
+        if (cameraControl.moving)
+        {
+            return;
+        }
+        else
+        {
+            switch (menuState)
+            {
+                case MenuStates.MainMenu:
+                    mainMenuUI.SetActive(true);
+                    break;
+                case MenuStates.CharacterSelection:
+                    characterSelectUI.SetActive(true);
+                    break;
+                case MenuStates.Options:
+                    optionsUI.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         if (menuState == MenuStates.CharacterSelection)
         {
             csManager.UpdateLogic();
@@ -126,7 +149,7 @@ public class MenuManager : MonoBehaviour
 
         cameraControl.MoveToMainMenu();
 
-        mainMenuUI.SetActive(true);
+        mainMenuUI.SetActive(false);
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
         Event.SetSelectedGameObject(btn_Play);
@@ -139,7 +162,7 @@ public class MenuManager : MonoBehaviour
         cameraControl.MoveToCharacterSelection();
 
         mainMenuUI.SetActive(false);
-        characterSelectUI.SetActive(true);
+        characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
     }
 
@@ -151,7 +174,7 @@ public class MenuManager : MonoBehaviour
 
         mainMenuUI.SetActive(false);
         characterSelectUI.SetActive(false);
-        optionsUI.SetActive(true);
+        optionsUI.SetActive(false);
         res_DropDown.Hide();
         qlty_DropDown.Hide();
         Event.SetSelectedGameObject(res_DropDown.gameObject);
