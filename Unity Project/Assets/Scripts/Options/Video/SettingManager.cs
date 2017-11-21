@@ -32,16 +32,15 @@ public class SettingManager : MonoBehaviour
 
         foreach (Resolution resolution in resolution)
         {
-            resolutionDropDown.options.Add(new Dropdown.OptionData(resolution.width.ToString() + " x " + resolution.height.ToString()));
+            if ((resolution.width % 16 == 0) && (resolution.height % 9 == 0))
+            {
+                resolutionDropDown.options.Add(new Dropdown.OptionData(resolution.width.ToString() + " x " + resolution.height.ToString()));
+            }
         }
         LoadSettings();
     }
 
-    private void Update()
-    {
-        LoadSettings();
-    }
-
+    
     public void OnFullScreenToggle()
     {
         gameSettings.Fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
@@ -51,7 +50,6 @@ public class SettingManager : MonoBehaviour
     public void OnResolutionChange()
     {
         Screen.SetResolution(resolution[resolutionDropDown.value].width, resolution[resolutionDropDown.value].height, Screen.fullScreen);
-        SaveSettings();
     }
 
     public void OnTextureChange()

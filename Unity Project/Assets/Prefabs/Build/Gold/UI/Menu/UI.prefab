@@ -5222,7 +5222,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9705882, g: 0.04282005, b: 0.04282005, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -5817,7 +5817,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114306804972166444}
         m_MethodName: OnResolutionChange
         m_Mode: 1
         m_Arguments:
@@ -7042,7 +7042,8 @@ MonoBehaviour:
   player4Spawn: {fileID: 4004104674741518}
   pnl_Audio: {fileID: 1084013826058976}
   pnl_Video: {fileID: 1568325332380784}
-  res_DropDown: {fileID: 1584402728163648}
+  res_DropDown: {fileID: 114539289899864576}
+  qlty_DropDown: {fileID: 114870138537043020}
   Sldr_Master: {fileID: 1980515309747826}
   btn_Play: {fileID: 1507238254998448}
 --- !u!114 &114846391230013286
@@ -7233,7 +7234,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114306804972166444}
         m_MethodName: OnTextureChange
         m_Mode: 1
         m_Arguments:

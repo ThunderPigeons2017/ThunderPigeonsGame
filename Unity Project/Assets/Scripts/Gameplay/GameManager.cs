@@ -280,6 +280,7 @@ public class GameManager : MonoBehaviour
 
         gamePaused = true;
 
+        
         optionsPanel.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(true);
         Event.SetSelectedGameObject(btn_Resume);
@@ -289,7 +290,7 @@ public class GameManager : MonoBehaviour
     public void Unpause()
     {
         gamePaused = false;
-
+        Event.SetSelectedGameObject(null);
         optionsPanel.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1; //unpauses game
