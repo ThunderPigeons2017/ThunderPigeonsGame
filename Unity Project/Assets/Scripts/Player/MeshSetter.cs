@@ -12,19 +12,23 @@ public class MeshSetter : MonoBehaviour
 
     ColourSetter colourSetter;
 
+    CSManager csManager;
+
     public enum Character
     {
+        RANDOM,
         BARRY,
         LARRY,
         SALLY,
         GARY
     }
 
-    public Character currentCharacter = Character.BARRY;
+    public Character currentCharacter = Character.RANDOM;
 
     void Awake()
     {
         colourSetter = GetComponent<ColourSetter>();
+        csManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<CSManager>();
     }
 
     void Start()
@@ -33,7 +37,14 @@ public class MeshSetter : MonoBehaviour
         {
             CreateNewMesh();
         }
-	}
+
+        if (currentCharacter == Character.RANDOM)
+        {
+            // Set the mesh to a random one
+            SetMeshPrefab(csManager.meshPrefabs[Random.Range((int)Character.BARRY, (int)Character.GARY)]);
+        }
+
+    }
 
     void CreateNewMesh()
     {

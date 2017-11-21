@@ -38,7 +38,7 @@ public class SpinCollision : MonoBehaviour
 
     bool spinning = false;
 
-    List<GameObject> hitPlayers = new List<GameObject>();
+    List<GameObject> hitObjects = new List<GameObject>();
 
     PlayerController playerController;
 
@@ -74,7 +74,7 @@ public class SpinCollision : MonoBehaviour
         {
             spinning = false;
             spinParticle.Stop();
-            hitPlayers.Clear();
+            hitObjects.Clear();
         }
 
         if (gameManager == null)
@@ -107,16 +107,16 @@ public class SpinCollision : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "PlayerBall") // If its colliding with a player
+        if (other.tag == "PlayerBall" || other.tag == "Destroyable Objects") // If its colliding with a player
         {
             //if (XCI.GetButtonDown(punchButton, (XboxController)playerBall.GetComponent<PlayerController>().playerNumber))
             if (spinning)
             {
                 if (other.gameObject != playerBall) // If its not colliding with this player
                 {
-                    if (!hitPlayers.Contains(other.gameObject))
+                    if (!hitObjects.Contains(other.gameObject))
                     {
-                        hitPlayers.Add(other.gameObject);
+                        hitObjects.Add(other.gameObject);
 
                         Vector3 vecBetween = other.transform.position - playerBall.transform.position; // Get a vector that points from this player to the one we hit
                         vecBetween.y = 0f;
@@ -131,7 +131,10 @@ public class SpinCollision : MonoBehaviour
                         otherRB.AddForce(Vector3.up * knockUpForce, ForceMode.Impulse);
 
                         // Let the other player know its been hit
-                        other.GetComponent<PlayerController>().TakeDamage();
+                        if (other.tag == "PlayerBall")
+                        {
+                            other.GetComponent<PlayerController>().TakeDamage();
+                        }
                     }
                 }
             }

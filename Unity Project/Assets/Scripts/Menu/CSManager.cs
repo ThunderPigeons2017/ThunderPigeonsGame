@@ -26,7 +26,7 @@ public class CSManager : MonoBehaviour
 	GameObject startText;
 
     [SerializeField]
-    GameObject[] meshPrefabs = new GameObject[4];
+    public GameObject[] meshPrefabs = new GameObject[4];
 
     MenuManager menuManager;
 
