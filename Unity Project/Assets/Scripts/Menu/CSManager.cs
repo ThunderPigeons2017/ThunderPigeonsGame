@@ -77,7 +77,6 @@ public class CSManager : MonoBehaviour
         // Loop through each player number
         for (int playerNum = 1; playerNum < 5; playerNum++)
         {
-            PlayerReadyInput(playerNum);
 
             if (menuManager.players[playerNum - 1] == null) // If the player doesn't exist
             {
@@ -96,8 +95,8 @@ public class CSManager : MonoBehaviour
                     }
                     menuManager.StartMainMenu();
                     break;
-                }
 
+                }
             }
             else // The player exists
             {
@@ -119,6 +118,7 @@ public class CSManager : MonoBehaviour
                     menuManager.SpawnPlayer(playerNum, false); // Constantly respawn the player
                     menuManager.players[playerNum - 1].GetComponentInChildren<Rigidbody>().useGravity = false;
                     playerController.canMove = false;
+
                 }
                 else // Player is ready
                 {
@@ -128,8 +128,11 @@ public class CSManager : MonoBehaviour
 
                     playerController.canMove = true;
                     readyPlayerCount++;
+
                 }
             }
+
+            PlayerReadyInput(playerNum);
         }
 
         if (readyPlayerCount > 1 & canStart)

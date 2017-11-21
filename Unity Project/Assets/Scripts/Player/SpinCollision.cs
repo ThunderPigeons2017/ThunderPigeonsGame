@@ -14,8 +14,6 @@ public class SpinCollision : MonoBehaviour
 
     Rigidbody playerBallrb;
 
-    Animator animator;
-
     [Tooltip("How much force to use for the initial dash/charge")]
     [SerializeField]
     float dashForce = 5;
@@ -43,6 +41,8 @@ public class SpinCollision : MonoBehaviour
     PlayerController playerController;
 
     GameManager gameManager;
+
+    Animator animator;
 
     void Awake()
     {
@@ -73,6 +73,10 @@ public class SpinCollision : MonoBehaviour
         else
         {
             spinning = false;
+            // Check if the animator has disappeared
+            if (animator == null)
+                animator = playerBall.transform.parent.GetComponentInChildren<Animator>();
+            animator.SetBool("Spinning", spinning);
             spinParticle.Stop();
             hitObjects.Clear();
         }
@@ -98,8 +102,12 @@ public class SpinCollision : MonoBehaviour
             // Play the spin particles
             spinParticle.Play();
 
+            // Check if the animator has disappeared
+            if (animator == null)
+                animator = playerBall.transform.parent.GetComponentInChildren<Animator>();
             // Start the animation
-            playerBall.transform.parent.GetComponentInChildren<Animator>().SetTrigger("SpinAttack");
+            animator.SetTrigger("SpinAttack");
+            animator.SetBool("Spinning", spinning);
             timer = spinTime;
         }
         

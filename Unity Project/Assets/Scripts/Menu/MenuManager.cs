@@ -111,7 +111,6 @@ public class MenuManager : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
                 Event.SetSelectedGameObject(Sldr_Master);
             }
-
         }
     }
 
