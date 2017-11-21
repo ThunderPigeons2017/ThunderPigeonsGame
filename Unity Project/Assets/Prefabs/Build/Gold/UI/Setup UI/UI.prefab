@@ -2552,12 +2552,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0608334de49cd5a4db4e82aeaf863f17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0ca9ca5af6f7ab458973c99f005144d, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.454
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114005892223322906
@@ -3028,9 +3028,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DampTime: 0.4
-  minimumDistance: 30
-  maximumDistance: 75
-  distanceScale: 0.9
+  minimumDistance: 20
+  maximumDistance: 65
+  distanceScale: 0.8
   followZone: 0
   m_gmObject: {fileID: 1575140672525456}
   indicatorLeft: {fileID: 1517821850889724}
@@ -3997,12 +3997,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4c257feac0745c8489eff861bd22cdea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf2f83ff93d7b2a42a7cab210fc178a9, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.448
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114402810635987510
@@ -5164,12 +5164,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fc35a7580ef531d4e867535ea6a743fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cbcd0d23aafd8804a9992d7b457284b2, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.425
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114605133761352974
@@ -5768,7 +5768,7 @@ MonoBehaviour:
   startTime: 90
   deathYLevel: -3
   drunknessScoreScale: 3
-  maximumDrunkeness: 30
+  maximumDrunkeness: 25
   goToMainMenuButton: 1
   restartGameButton: 4
   players:
@@ -6768,12 +6768,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: cc18e41200069bf4b902f4a7eb9850d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82d16e283ab128342940b749c9363bbe, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.47
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114949926937212182
