@@ -75,9 +75,12 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+#if UNITY_EDITOR
+
+#else
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = (false);
-
+#endif
         StartMainMenu();
         FindObjectOfType<AudioManager>().Play("Audio-Theme");
         FindObjectOfType<AudioManager>().Play("SFX-Ocean");
@@ -86,9 +89,12 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         // If the camera is moving, don't update
+#if UNITY_EDITOR
+
+#else
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = (false);
-
+#endif
         if (cameraControl.moving)
         {
             return;
@@ -164,6 +170,7 @@ public class MenuManager : MonoBehaviour
         mainMenuUI.SetActive(false);
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
+        Event.SetSelectedGameObject(null);
     }
 
     public void StartOptions()
@@ -175,7 +182,7 @@ public class MenuManager : MonoBehaviour
         mainMenuUI.SetActive(false);
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
-        
+        Event.SetSelectedGameObject(null);
     }
 
     public void StartGame()

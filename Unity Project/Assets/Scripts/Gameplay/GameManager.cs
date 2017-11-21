@@ -130,10 +130,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+#if UNITY_EDITOR
 
+#else
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = (false);
-
+#endif
         timer = startTime;
 
         gameWon = false;
@@ -186,9 +188,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
+
+#else
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = (false);
-
+#endif
         //RJ codes pause
         //waits for Start to press or escape then pauses game
         if ((XCI.GetButtonDown(XboxButton.Start, XboxController.All) || (Input.GetKeyDown(KeyCode.Escape)) && options == false))
