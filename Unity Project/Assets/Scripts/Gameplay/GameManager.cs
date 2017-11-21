@@ -130,6 +130,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = (false);
+
         timer = startTime;
 
         gameWon = false;
@@ -182,6 +186,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = (false);
+
         //RJ codes pause
         //waits for Start to press or escape then pauses game
         if ((XCI.GetButtonDown(XboxButton.Start, XboxController.All) || (Input.GetKeyDown(KeyCode.Escape)) && options == false))
@@ -546,6 +553,12 @@ public class GameManager : MonoBehaviour
     public bool gamePause()
     {
         return gamePaused;
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        gamePaused = true;
+        Pause();
     }
 }
 
