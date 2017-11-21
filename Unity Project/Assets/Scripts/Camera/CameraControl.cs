@@ -155,6 +155,22 @@ public class CameraControl : MonoBehaviour
         //if (numTargets > 0)                                                       //quick checker to ensure that numTargets is not zero, otherwise camera script crashes
         //    averagePos /= numTargets;
 
+        if (numTargets == 1)
+        {
+            for (int i = 0; i < m_Targets.Length; i++)                                //loops through max number of players
+            {
+                if (m_Targets[i] == null || !m_Targets[i].isAlive)                    //checks if player is alive
+                    continue;
+
+                return m_Targets[i].gameObject.transform.position;
+            }
+        }
+
+        if (numTargets == 0)
+        {
+            return defaultCamPos.transform.position;
+        }
+
         float distance = 0f;                                                                               //distance to return
         float currentDistance = 0f;                                                                        //distance current
 
@@ -191,22 +207,6 @@ public class CameraControl : MonoBehaviour
                 }
             }
 
-        }
-
-        if (numTargets == 1)
-        {
-            for (int i = 0; i < m_Targets.Length; i++)                                //loops through max number of players
-            {
-                if (m_Targets[i] == null || !m_Targets[i].isAlive)                    //checks if player is alive
-                    continue;
-
-                return m_Targets[i].gameObject.transform.position;
-            }
-        }
-
-        if (numTargets == 0)
-        {
-            return m_Zone.transform.position;
         }
 
         return averagePos;                                                        //returns averagePos
