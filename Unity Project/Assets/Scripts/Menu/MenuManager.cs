@@ -155,7 +155,7 @@ public class MenuManager : MonoBehaviour
 
         cameraControl.MoveToMainMenu();
 
-        mainMenuUI.SetActive(false);
+        mainMenuUI.SetActive(true);
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
         Event.SetSelectedGameObject(btn_Play);

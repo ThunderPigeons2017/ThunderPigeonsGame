@@ -106,8 +106,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject pnl_Video;
     [SerializeField]
-    GameObject res_DropDown;
-    [SerializeField]
     GameObject Sldr_Master;
     [SerializeField]
     GameObject btn_Resume;
@@ -332,7 +330,6 @@ public class GameManager : MonoBehaviour
             pnl_Video.gameObject.SetActive(true);
             pnl_Audio.gameObject.SetActive(false);
             FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
-            Event.SetSelectedGameObject(res_DropDown);
         }
 
         if (XCI.GetButtonDown(audioTab, XboxController.All) || Input.GetKeyDown(KeyCode.V))
