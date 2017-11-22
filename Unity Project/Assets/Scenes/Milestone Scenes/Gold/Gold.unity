@@ -920,7 +920,8 @@ Prefab:
       propertyPath: winScore
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114610624867438822, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6f8b1159de380434189cb67e722a6141, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1215716745
