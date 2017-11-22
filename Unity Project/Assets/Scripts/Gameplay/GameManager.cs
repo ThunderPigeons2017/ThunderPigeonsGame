@@ -179,9 +179,11 @@ public class GameManager : MonoBehaviour
 
             RespawnPlayer(playerController.playerNumber);
 
-            playerBallsInScene[i].transform.parent.GetComponentInChildren<PlayerTextManager>().Show();
+            players[playerController.playerNumber - 1].transform.parent.GetComponentInChildren<Animator>().SetBool("Chosen", false);
         }
 
+
+        ShowPlayersText();
     }
 
     void Update()
@@ -250,24 +252,30 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        UpdateTimer();
+        if (gameWon == false)
+        {
+            UpdateTimer();
 
-        GivePoints();
-        SetPlayerDrunkenness();
+            GivePoints();
+            SetPlayerDrunkenness();
+            // After the scores are added 
+            UpdateScoreBoard();
 
-        // After the scores are added 
-        UpdateScoreBoard();
-
-        CheckForWinningPlayer();
-
-        // If the game has been won
-        if (gameWon)
+            CheckForWinningPlayer();
+        }
+        else // If the game has been won
         {
             // Turn on the messages
             winMessage.SetActive(true);
 
             SetWinMessage();
-            
+
+            if (winningPlayerNumber != 0)
+            {
+                // Make the winning player do the animation
+                players[winningPlayerNumber - 1].transform.parent.GetComponentInChildren<Animator>().SetBool("Chosen", true);
+            }
+
             // If a is pressed 
             if (XCI.GetButtonDown(goToMainMenuButton, XboxController.All))
             {
@@ -295,6 +303,9 @@ public class GameManager : MonoBehaviour
         pauseMenu.gameObject.SetActive(true);
         Event.SetSelectedGameObject(btn_Resume);
         Time.timeScale = 0; //pauses game
+
+        // Show players numbers above them
+        ShowPlayersText();
     }
 
     public void Unpause()
@@ -366,6 +377,9 @@ public class GameManager : MonoBehaviour
         {
             RespawnPlayer(playerNum);
         }
+
+        // Show players numbers above them
+        ShowPlayersText();
     }
 
     void RespawnPlayer(int playerNumber)
@@ -561,6 +575,18 @@ public class GameManager : MonoBehaviour
     {
         gamePaused = true;
         Pause();
+    }
+
+    void ShowPlayersText()
+    {
+        for (int playerNum = 1; playerNum < 5; playerNum++)
+        {
+            if (players[playerNum - 1] == null)
+                continue;
+
+            // Tell the players to show the text
+            players[playerNum - 1].transform.parent.GetComponentInChildren<PlayerTextManager>().Show();
+        }
     }
 }
 
