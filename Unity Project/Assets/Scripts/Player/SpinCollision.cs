@@ -9,8 +9,7 @@ public class SpinCollision : MonoBehaviour
     [SerializeField]
     GameObject playerBall;
 
-    [SerializeField]
-    ParticleSystem spinParticle;
+    TrailRenderer[] spinTrail = new TrailRenderer[2];
 
     Rigidbody playerBallrb;
 
@@ -53,7 +52,6 @@ public class SpinCollision : MonoBehaviour
 
     void Start()
     {
-
         animator = playerBall.transform.parent.GetComponentInChildren<Animator>();
     }
 
@@ -77,7 +75,7 @@ public class SpinCollision : MonoBehaviour
             if (animator == null)
                 animator = playerBall.transform.parent.GetComponentInChildren<Animator>();
             animator.SetBool("Spinning", spinning);
-            spinParticle.Stop();
+            StopTrails();
             hitObjects.Clear();
         }
 
@@ -99,8 +97,8 @@ public class SpinCollision : MonoBehaviour
 
             spinning = true;
 
-            // Play the spin particles
-            spinParticle.Play();
+            // Play the spin trails
+            StartTrails();
 
             // Check if the animator has disappeared
             if (animator == null)
@@ -147,5 +145,25 @@ public class SpinCollision : MonoBehaviour
                 }
             }
         }
+    }
+
+    void StartTrails()
+    {
+        if (spinTrail[0] == null || spinTrail[1] == null)
+        {
+            spinTrail = transform.parent.gameObject.GetComponentsInChildren<TrailRenderer>();
+        }
+        spinTrail[0].enabled = true;
+        spinTrail[1].enabled = true;
+    }
+
+    void StopTrails()
+    {
+        if (spinTrail[0] == null || spinTrail[1] == null)
+        {
+            spinTrail = transform.parent.gameObject.GetComponentsInChildren<TrailRenderer>();
+        }
+        spinTrail[0].enabled = false;
+        spinTrail[1].enabled = false;
     }
 }
