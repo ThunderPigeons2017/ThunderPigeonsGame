@@ -92,6 +92,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Transform pauseMenu;
 
+    [SerializeField]
+    GameObject splashParticlesPrefab;
+
     PlayerColourPicker playerColourPicker;
 
     int winningPlayerNumber = 0;
@@ -230,6 +233,9 @@ public class GameManager : MonoBehaviour
                 // If the player falls below a y level
                 if (playerController.transform.position.y <= deathYLevel && playerController.isAlive == true)
                 {
+                    // Create the splash particles
+                    Instantiate(splashParticlesPrefab, playerController.transform.position, Quaternion.identity);
+
                     // Kill the player
                     FindObjectOfType<AudioManager>().Play("SFX-Splash");
                     FindObjectOfType<AudioManager>().Play("VO_Barry_Death");

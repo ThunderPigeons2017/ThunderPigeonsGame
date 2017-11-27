@@ -28,6 +28,9 @@ public class CSManager : MonoBehaviour
     [SerializeField]
     public GameObject[] meshPrefabs = new GameObject[4];
 
+    [SerializeField]
+    GameObject splashParticlesPrefab;
+
     MenuManager menuManager;
 
     bool[] readyPlayers = new bool[4];
@@ -104,6 +107,9 @@ public class CSManager : MonoBehaviour
                 // If the player fallsoff the ship respawn them
                 if (playerController.transform.position.y <= yDeathLevel)
                 {
+                    // Create the splash particles
+                    Instantiate(splashParticlesPrefab, playerController.transform.position, Quaternion.identity);
+
                     menuManager.SpawnPlayer(playerNum, false);
                 }
 
