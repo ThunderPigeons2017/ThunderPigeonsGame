@@ -75,7 +75,7 @@ public class MenuManager : MonoBehaviour
 
         csManager = GetComponent<CSManager>();
 
-        scrollCredits = creditsUI.GetComponent<ScrollCredits>();
+        scrollCredits = creditsUI.GetComponentInChildren<ScrollCredits>();
 
     }
 
