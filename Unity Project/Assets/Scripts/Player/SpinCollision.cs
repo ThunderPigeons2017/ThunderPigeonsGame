@@ -168,8 +168,9 @@ public class SpinCollision : MonoBehaviour
     {
         if (spinTrail[0] == null || spinTrail[1] == null)
         {
+            // Get the trail objects
             spinTrail = transform.parent.gameObject.GetComponentsInChildren<TrailRenderer>();
-
+            // Set the colour of the trails
             spinTrail[0].GetComponent<Renderer>().material.SetColor("_TintColor", colourSetter.primaryColour);
             spinTrail[1].GetComponent<Renderer>().material.SetColor("_TintColor", colourSetter.primaryColour);
         }

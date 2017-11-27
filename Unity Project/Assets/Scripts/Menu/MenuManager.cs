@@ -18,6 +18,8 @@ public class MenuManager : MonoBehaviour
     GameObject characterSelectUI;
     [SerializeField]
     GameObject optionsUI;
+    [SerializeField]
+    GameObject creditsUI;
 
     [SerializeField]
     EventSystem Event;
@@ -58,7 +60,8 @@ public class MenuManager : MonoBehaviour
     {
         MainMenu,
         CharacterSelection,
-        Options
+        Options,
+        Credits
     }
 
     MenuStates menuState;
@@ -108,42 +111,52 @@ public class MenuManager : MonoBehaviour
                     break;
                 case MenuStates.CharacterSelection:
                     characterSelectUI.SetActive(true);
+
+                    csManager.UpdateLogic();
+
                     break;
                 case MenuStates.Options:
                     optionsUI.SetActive(true);
+                    // Go to the main menu if someone presses backbutton
+                    if (XCI.GetButtonDown(backButton, XboxController.All) || Input.GetKeyDown(KeyCode.B))
+                    {
+                        StartMainMenu();
+                    }
+
+                    if (XCI.GetButtonDown(videoTab, XboxController.All) || Input.GetKeyDown(KeyCode.C))
+                    {
+                        pnl_Video.gameObject.SetActive(true);
+                        pnl_Audio.gameObject.SetActive(false);
+                        FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+
+                    }
+
+                    if (XCI.GetButtonDown(audioTab, XboxController.All) || Input.GetKeyDown(KeyCode.V))
+                    {
+                        pnl_Video.gameObject.SetActive(false);
+                        pnl_Audio.gameObject.SetActive(true);
+                        FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
+                        Event.SetSelectedGameObject(Sldr_Master);
+                    }
+                    break;
+                case MenuStates.Credits:
+                    creditsUI.SetActive(true);
+
+                    // Go to the main menu if someone presses backbutton
+                    if (XCI.GetButtonDown(backButton, XboxController.All) || Input.GetKeyDown(KeyCode.B))
+                    {
+                        StartMainMenu();
+                    }
+
                     break;
                 default:
                     break;
             }
         }
 
-        if (menuState == MenuStates.CharacterSelection)
-        {
-            csManager.UpdateLogic();
-        }
-
         if (menuState == MenuStates.Options)
         {
-            if (XCI.GetButtonDown(backButton, XboxController.All) || Input.GetKeyDown(KeyCode.B))
-            {
-                StartMainMenu();
-            }
 
-            if (XCI.GetButtonDown(videoTab, XboxController.All) || Input.GetKeyDown(KeyCode.C))
-            {
-                pnl_Video.gameObject.SetActive(true);
-                pnl_Audio.gameObject.SetActive(false);
-                FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
-                
-            }
-
-            if (XCI.GetButtonDown(audioTab, XboxController.All) || Input.GetKeyDown(KeyCode.V))
-            {
-                pnl_Video.gameObject.SetActive(false);
-                pnl_Audio.gameObject.SetActive(true);
-                FindObjectOfType<AudioManager>().Play("SFX-Button-Click");
-                Event.SetSelectedGameObject(Sldr_Master);
-            }
         }
     }
 
@@ -158,6 +171,7 @@ public class MenuManager : MonoBehaviour
         mainMenuUI.SetActive(true);
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
+        creditsUI.SetActive(false);
         Event.SetSelectedGameObject(btn_Play);
     }
 
@@ -183,6 +197,14 @@ public class MenuManager : MonoBehaviour
         characterSelectUI.SetActive(false);
         optionsUI.SetActive(false);
         Event.SetSelectedGameObject(null);
+    }
+
+    public void ShowCredits()
+    {
+        menuState = MenuStates.Credits;
+
+        mainMenuUI.SetActive(false);
+        creditsUI.SetActive(false);
     }
 
     public void StartGame()
