@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectDestroyer : MonoBehaviour {
-	
-	// Destroys Objects tagged 'Destroyable Objects' when it enters the Trigger
-	void OnTriggerEnter (Collider other) {
+public class ObjectDestroyer : MonoBehaviour
+{
+    [SerializeField]
+    string tagToDestroy = "";
 
-		if (other.tag == "Destroyable Objects") {
-			Destroy (gameObject);
+    // Destroys Objects with tagToDestroy when it enters the Trigger
+    void OnTriggerEnter(Collider other)
+    {
+		if (other.tag == tagToDestroy)
+        {
+			Destroy(other.gameObject);
         }
 	}
 }

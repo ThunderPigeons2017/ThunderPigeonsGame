@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Wander : MonoBehaviour
 {
     Vector3 targetPos;
@@ -17,16 +16,14 @@ public class Wander : MonoBehaviour
     [SerializeField]
     float speed = 35.0f;
 
-    [SerializeField]
-    Rigidbody rb;
-
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    Vector3 startPos;
+    Quaternion startRot;
 
     void Start ()
     {
+        startPos = transform.position;
+        startRot = transform.rotation;
+
         FindNewTargetPos();
         MoveToTargetPos();
     }
@@ -41,30 +38,37 @@ public class Wander : MonoBehaviour
             // Get a new position
             FindNewTargetPos();
         }
+
+        Vector3 vecBetween = (targetPos - transform.position).normalized;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vecBetween), Time.deltaTime);
     }
 
     void MoveToTargetPos()
     {
-        // Add a force towards the position
-        Vector3 vecBetween = (transform.position - targetPos).normalized;
-        rb.AddForce(vecBetween * speed);
-
-        // Look towards velocity
-        transform.rotation.SetFromToRotation(transform.position, rb.velocity);
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
     }
 
     void FindNewTargetPos()
     {
         Vector3 newPos = new Vector3();
 
-        // Get a copy of our transform
-        Transform tempTransform = transform;
-        // Rotate the copy
-        tempTransform.Rotate(Vector3.up, Random.Range(-wanderAngle, wanderAngle));
+        Quaternion rot = Quaternion.Euler(Vector3.up * Random.Range(-wanderAngle, wanderAngle));
+        Vector3 newForward = rot * transform.forward;
+
         // Get the position at the end of the wander radius
-        newPos = tempTransform.forward * wanderAngle;
+        newPos = newForward * wanderRadius + transform.position;
 
         // Return our new position
         targetPos = newPos;
+    }
+
+    public void Respawn()
+    {
+        transform.position = startPos;
+        transform.rotation = startRot;
+
+        FindNewTargetPos();
+        MoveToTargetPos();
     }
 }

@@ -313,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1238731231002730
 GameObject:
   m_ObjectHideFlags: 1
@@ -971,7 +971,6 @@ GameObject:
   - component: {fileID: 114726730483891372}
   - component: {fileID: 114796552576976654}
   - component: {fileID: 114692996152995798}
-  - component: {fileID: 114610624867438822}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1848,7 +1847,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 18.67
@@ -2386,7 +2385,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 18591fde623b3344e9608961f48ca398, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -3891,20 +3890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
---- !u!114 &114610624867438822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1575140672525456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 654e369cb1b5cbd41af466574d1a8747, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fullscreenToggle: {fileID: 0}
-  resolutionDropDown: {fileID: 0}
-  textureQualityDropdown: {fileID: 0}
 --- !u!114 &114617585490649730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4382,7 +4367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 3
-  winScore: 30
+  winScore: 1
   Event: {fileID: 114645897530461050}
   allowContest: 1
   startTime: 90
@@ -4412,7 +4397,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 224989434807759116}
   pnl_Audio: {fileID: 1870410259539620}
   pnl_Video: {fileID: 1470365130052554}
-  res_DropDown: {fileID: 0}
   Sldr_Master: {fileID: 1118860506244200}
   btn_Resume: {fileID: 1924075052123978}
 --- !u!114 &114741509392521942
