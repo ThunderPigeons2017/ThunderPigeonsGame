@@ -43,11 +43,14 @@ public class SpinCollision : MonoBehaviour
 
     Animator animator;
 
+    ColourSetter colourSetter;
+
     void Awake()
     {
         playerBallrb = playerBall.GetComponent<Rigidbody>();
         playerController = playerBall.GetComponent<PlayerController>();
         gameManager = FindObjectOfType<GameManager>();
+        colourSetter = GetComponentInParent<ColourSetter>();
     }
 
     void Start()
@@ -149,21 +152,26 @@ public class SpinCollision : MonoBehaviour
 
     void StartTrails()
     {
-        if (spinTrail[0] == null || spinTrail[1] == null)
-        {
-            spinTrail = transform.parent.gameObject.GetComponentsInChildren<TrailRenderer>();
-        }
+        FindTrails();
         spinTrail[0].enabled = true;
         spinTrail[1].enabled = true;
     }
 
     void StopTrails()
     {
+        FindTrails();
+        spinTrail[0].enabled = false;
+        spinTrail[1].enabled = false;
+    }
+
+    void FindTrails()
+    {
         if (spinTrail[0] == null || spinTrail[1] == null)
         {
             spinTrail = transform.parent.gameObject.GetComponentsInChildren<TrailRenderer>();
+
+            spinTrail[0].GetComponent<Renderer>().material.SetColor("_TintColor", colourSetter.primaryColour);
+            spinTrail[1].GetComponent<Renderer>().material.SetColor("_TintColor", colourSetter.primaryColour);
         }
-        spinTrail[0].enabled = false;
-        spinTrail[1].enabled = false;
     }
 }

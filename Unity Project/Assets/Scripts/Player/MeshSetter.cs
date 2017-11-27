@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeshSetter : MonoBehaviour
 {
-    [SerializeField]
     GameObject meshParent;
 
     [SerializeField]

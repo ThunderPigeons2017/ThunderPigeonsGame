@@ -195,7 +195,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795374301266968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.4382648, y: 11.17, z: -0.50849533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4765424729677884}
@@ -377,7 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a574f50c90af38849bfd9c9710f42477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshParent: {fileID: 0}
   primaryColour: {r: 0, g: 0, b: 0, a: 0}
   secondaryColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114214316990039554
@@ -408,7 +407,7 @@ MonoBehaviour:
   spinForce: 25
   knockUpForce: 15
   spinButton: 0
-  spinTime: 0.5
+  spinTime: 0.35
 --- !u!114 &114372997048860184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -526,7 +525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0395939e455c224aa48e272a58408da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshParent: {fileID: 0}
   meshPrefab: {fileID: 1585170913985088, guid: 45e0791cee830dc4c98dbff25e0ebfc3, type: 2}
   currentCharacter: 0
 --- !u!114 &114830477648806906

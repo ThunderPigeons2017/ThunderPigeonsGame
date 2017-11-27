@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ColourSetter : MonoBehaviour
 {
-    [SerializeField]
     GameObject meshParent;
 
     Renderer[] meshRenderers;
