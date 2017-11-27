@@ -329,6 +329,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1415382915169740, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006843369828284, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591123858988260, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec91b8e9018605f4c9c9c2490b02c52c, type: 2}
   m_IsPrefabParent: 0
@@ -410,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478072b7279985b4a82489c11c04c7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagToDestroy: 
 --- !u!23 &852374916
 MeshRenderer:
   m_ObjectHideFlags: 0

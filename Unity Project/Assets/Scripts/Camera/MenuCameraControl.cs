@@ -10,7 +10,9 @@ public class MenuCameraControl : MonoBehaviour
     Transform characterSelectTransform;
     [SerializeField]
     Transform optionsTransform;
-    
+    [SerializeField]
+    Transform creditsTransform;
+
     [SerializeField]
     float speed;
 
@@ -69,6 +71,12 @@ public class MenuCameraControl : MonoBehaviour
     {
         moving = true;
         MoveTo(optionsTransform);
+    }
+
+    public void MoveToCredits()
+    {
+        moving = true;
+        MoveTo(creditsTransform);
     }
 
     void MoveTo(Transform target)

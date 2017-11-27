@@ -7,20 +7,42 @@ public class ScrollCredits : MonoBehaviour
     Vector3 startPos;
 
     [SerializeField]
-    float speed;
+    float speed = 50;
 
-	void Start()
+    [SerializeField]
+    float maxTop = -2820;
+
+    [HideInInspector]
+    public bool hasReachedTop;
+
+    RectTransform rectTransform;
+
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
+
+    void Start()
     {
         startPos = transform.position;
 	}
 	
 	public void ScrollUpdate()
     {
-        transform.position += new Vector3(transform.position.x, speed * Time.deltaTime, transform.position.z);
+        if (rectTransform.localPosition.y > maxTop)
+        {
+            hasReachedTop = true;
+        }
+        else
+        {
+            transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+        }
 	}
 
     public void ResetPosition()
     {
         transform.position = startPos;
+
+        hasReachedTop = false;
     }
 }

@@ -20,6 +20,7 @@ public class MenuManager : MonoBehaviour
     GameObject optionsUI;
     [SerializeField]
     GameObject creditsUI;
+    ScrollCredits scrollCredits;
 
     [SerializeField]
     EventSystem Event;
@@ -73,6 +74,8 @@ public class MenuManager : MonoBehaviour
         cameraControl = camera.GetComponent<MenuCameraControl>();
 
         csManager = GetComponent<CSManager>();
+
+        scrollCredits = creditsUI.GetComponent<ScrollCredits>();
 
     }
 
@@ -142,6 +145,14 @@ public class MenuManager : MonoBehaviour
                 case MenuStates.Credits:
                     creditsUI.SetActive(true);
 
+                    scrollCredits.ScrollUpdate();
+
+                    // If the credits are finished
+                    if (scrollCredits.hasReachedTop)
+                    {
+                        StartMainMenu();
+                    }
+
                     // Go to the main menu if someone presses backbutton
                     if (XCI.GetButtonDown(backButton, XboxController.All) || Input.GetKeyDown(KeyCode.B))
                     {
@@ -202,6 +213,10 @@ public class MenuManager : MonoBehaviour
     public void ShowCredits()
     {
         menuState = MenuStates.Credits;
+
+        cameraControl.MoveToCredits();
+
+        scrollCredits.ResetPosition();
 
         mainMenuUI.SetActive(false);
         creditsUI.SetActive(false);
