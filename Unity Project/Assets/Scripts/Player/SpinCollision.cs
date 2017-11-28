@@ -60,13 +60,6 @@ public class SpinCollision : MonoBehaviour
 
     void Update()
     {
-        if (spinning)
-        {
-        }
-        else
-        {
-        }
-
         if (timer >= 0)
         {
             timer -= Time.deltaTime;
@@ -77,7 +70,7 @@ public class SpinCollision : MonoBehaviour
             // Check if the animator has disappeared
             if (animator == null)
                 animator = playerBall.transform.parent.GetComponentInChildren<Animator>();
-            animator.SetBool("Spinning", spinning);
+            //animator.SetBool("Spinning", spinning);
             StopTrails();
             hitObjects.Clear();
         }
@@ -108,7 +101,7 @@ public class SpinCollision : MonoBehaviour
                 animator = playerBall.transform.parent.GetComponentInChildren<Animator>();
             // Start the animation
             animator.SetTrigger("SpinAttack");
-            animator.SetBool("Spinning", spinning);
+            //animator.SetBool("Spinning", spinning);
             timer = spinTime;
         }
         
