@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4693999956683032}
   - component: {fileID: 198667224298247396}
   - component: {fileID: 199467059418132982}
+  - component: {fileID: 114070576892306370}
   m_Layer: 0
   m_Name: Primary_Bubbles
   m_TagString: Untagged
@@ -100,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676254259121872}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.053123474, y: -0.49232864, z: -0.036176264}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4767888382478158}
@@ -173,6 +174,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108507950442708}
   m_Mesh: {fileID: 4300000, guid: dc03ed5745c76c5438e4509c036ff55f, type: 3}
+--- !u!114 &114070576892306370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676254259121872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432c4921322f4284e8b8e6d0c571b36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0, g: 1, b: 1, a: 1}
 --- !u!198 &198324984606293718
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -232,7 +245,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1305727024
+  randomSeed: 232688031
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3494,7 +3507,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2938407
+  randomSeed: 1632770463
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6756,7 +6769,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2129549757
+  randomSeed: 151883216
   InitialModule:
     serializedVersion: 3
     enabled: 1
