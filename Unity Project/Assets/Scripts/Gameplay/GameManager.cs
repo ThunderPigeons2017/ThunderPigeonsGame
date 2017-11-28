@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     EventSystem Event;
 
-    bool gameWon = false;
+    public bool gameWon = false;
 
     [SerializeField]
     bool allowContest = false;
@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] // Each players score objects
     GameObject[] scoreObjects = new GameObject[4];
 
-
     Slider[] sliders = new Slider[4];
 
     [SerializeField]
@@ -78,7 +77,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text winMessageText;
 
-
     [SerializeField]
     [Tooltip("The message to display when a player has won (all lower case x are replaced with the winning player number)")]
     string winMessageString;
@@ -97,7 +95,8 @@ public class GameManager : MonoBehaviour
 
     PlayerColourPicker playerColourPicker;
 
-    int winningPlayerNumber = 0;
+    [HideInInspector]
+    public int winningPlayerNumber = 0;
 
     XboxButton backButton = XboxButton.B;
     XboxButton videoTab = XboxButton.LeftBumper;

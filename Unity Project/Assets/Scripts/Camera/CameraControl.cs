@@ -131,6 +131,12 @@ public class CameraControl : MonoBehaviour
     /// <returns> average position of players or zoom out position </returns>
     private Vector3 FindAveragePosition()
     {
+        if (m_gm.gameWon)                                                                                              //if the game has been won
+        {
+            return m_Targets[m_gm.winningPlayerNumber - 1].transform.position;                                         //return the winning players position
+        }
+
+
         Vector3 averagePos = new Vector3();                                                                            //Vector pos 
         int numTargets = 0;                                                                                            //number of targets
 
