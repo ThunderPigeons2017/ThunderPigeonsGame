@@ -215,9 +215,17 @@ public class CameraControl : MonoBehaviour
     /// <returns> returns biggest distance between players or 0 if all players are notActive </returns>
     public float FindDistance()
     {
+        if (m_gm.gameWon)                                                                                              //if the game has been won
+        {
+            if (m_Targets[m_gm.winningPlayerNumber - 1].isAlive)                                                       //only if that player is alive
+            {
+                return 0;                                                                                              //return 0 so we use the minimum distance
+            }
+        }
+
         float distance = 0f;                                                                                           //distance to return
         float currentDistance = 0f;                                                                                    //distance current
-                                                                                                                       
+
         for (int i = 0; i < m_Targets.Length; i++)                                                                     //Loops through players 
         {                                                                                                              
             if (m_Targets[i] == null || !m_Targets[i].isAlive)                                                         //If target is an active player
