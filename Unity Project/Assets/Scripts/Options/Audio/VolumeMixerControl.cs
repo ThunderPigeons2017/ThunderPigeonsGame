@@ -17,38 +17,29 @@ public class VolumeMixerControl : MonoBehaviour
 
         LoadSettings();
     }
-
-    private void Update()
-    {
-        LoadSettings();
-    }
-
+    
     public void MasterController(float sound)
     {
         masterMixer.SetFloat("MasterVol", sound);
         gameSettings.soundVolume = sound;
-        SaveSettings();
     }
 
     public void MusicController(float msfx)
     {
         masterMixer.SetFloat("MusicVol", msfx);
         gameSettings.musicVolume = msfx;
-        SaveSettings();
     }
 
     public void AmbienceController(float asfx)
     {
         masterMixer.SetFloat("AmbienceVol", asfx);
         gameSettings.ambienceVolume = asfx;
-        SaveSettings();
     }
 
     public void SFXController(float sfx)
     {
         masterMixer.SetFloat("FXVol", sfx);
         gameSettings.effectsVolume = sfx;
-        SaveSettings();
     }
 
     public void SaveSettings()
