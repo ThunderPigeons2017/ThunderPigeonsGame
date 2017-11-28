@@ -157,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4425109720597220}
   - component: {fileID: 108712484244949914}
+  - component: {fileID: 114885696572175270}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4943,6 +4944,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Player x Has Won!
+--- !u!114 &114885696572175270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1134129229047764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620b14d7b56d49d4693067cd8e8ab49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stuff: {fileID: 0}
 --- !u!114 &114902353261655974
 MonoBehaviour:
   m_ObjectHideFlags: 1
