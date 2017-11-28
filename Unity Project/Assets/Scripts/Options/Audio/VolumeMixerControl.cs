@@ -14,8 +14,7 @@ public class VolumeMixerControl : MonoBehaviour
     private void OnEnable()
     {
         gameSettings = new GameSetting();
-
-        LoadSettings();
+        
     }
     
     public void MasterController(float sound)
