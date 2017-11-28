@@ -1,47 +1,51 @@
-﻿/* Group Project Camera Control Codes
- * by RJ Ortega 
+﻿/***********************************************
+ * Rummy Robots
+ * by Thunder Pidgeons
  * 
- * Important: Do not attach this to the Camera object, but instead to a blank object that holds the camera object as its child
- */
-
+ * In-game Camera Control Script
+ ***********************************************/
+//Codes to include basic Unity Functions
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// CameraControl Class Begins
+/// </summary>
 public class CameraControl : MonoBehaviour
 {
 
-    public float m_DampTime = 0.2f;                                             //approximate time for the camera to move to new location
-    public float minimumDistance = 5f;                                          //minimum distance for zoom
-    public float maximumDistance = 75f;                                         //maximum distance for zoom
-    public float distanceScale = 1.5f;                                          //distance zoom scale
-    public bool followZone = true;                                              //checks if zone is to be followed
+    public float m_DampTime = 0.2f;                                                                                    //approximate time for the camera to move to new location
+    public float minimumDistance = 5f;                                                                                 //minimum distance for zoom
+    public float maximumDistance = 75f;                                                                                //maximum distance for zoom
+    public float distanceScale = 1.5f;                                                                                 //distance zoom scale
+    public bool followZone = true;                                                                                     //checks if zone is to be followed
     
-    private PlayerController[] m_Targets = new PlayerController[4];             //array of gaming objects that would be the targets for camera to adjust to
-    private Camera m_Camera;                                                    //reference to the camera attached as child
-    private float m_ZoomSpeed;                                                  //damps zooming, slows it down to make it less jarring
-    private Vector3 m_MoveVelocity;                                             //damps camera movement and panning to avoid jarring camera movements
-    private Vector3 m_DesiredPosition;                                          //position that camera is trying to reach
-    private Vector3 screenPoint;                                                //variable that holds frustrum position
+    private PlayerController[] m_Targets = new PlayerController[4];                                                    //array of gaming objects that would be the targets for camera to adjust to
+    private Camera m_Camera;                                                                                           //reference to the camera attached as child
+    private float m_ZoomSpeed;                                                                                         //damps zooming, slows it down to make it less jarring
+    private Vector3 m_MoveVelocity;                                                                                    //damps camera movement and panning to avoid jarring camera movements
+    private Vector3 m_DesiredPosition;                                                                                 //position that camera is trying to reach
+    private Vector3 screenPoint;                                                                                       //variable that holds frustrum position
    
     [SerializeField]
-    private GameObject m_gmObject;                                              //Instance for game Object
-    private GameObject m_Zone;                                                  //Instance for game zone
-    private GameManager m_gm;                                                   //Instance for Game Manager
-    public GameObject indicatorLeft;                                            //Game Object left arrow
-    public GameObject indicatorRight;                                           //Game Object right arrow
-    public GameObject defaultCamPos;                                            //Game Object default Camera Position
+    private GameObject m_gmObject;                                                                                     //Instance for game Object
+    private GameObject m_Zone;                                                                                         //Instance for game zone
+    private GameManager m_gm;                                                                                          //Instance for Game Manager
+    public GameObject indicatorLeft;                                                                                   //Game Object left arrow
+    public GameObject indicatorRight;                                                                                  //Game Object right arrow
+    public GameObject defaultCamPos;                                                                                   //Game Object default Camera Position
 
     /// <summary>
     /// Awake gets initial values on Initialization
     /// </summary>
     private void Awake()
     {
-        m_Camera = GetComponent<Camera>();	                                    //references camera and gets values
+        m_Camera = GetComponent<Camera>();	                                                                           //references camera and gets values
 
-        m_Zone = GameObject.FindGameObjectWithTag("Zone");                      //gets zone Instance
+        m_Zone = GameObject.FindGameObjectWithTag("Zone");                                                             //gets zone Instance
 
-        m_gm = m_gmObject.GetComponent<GameManager>();                          //gets values for game manager objects
+        m_gm = m_gmObject.GetComponent<GameManager>();                                                                 //gets values for game manager objects
     }
 
     /// <summary>
@@ -49,38 +53,39 @@ public class CameraControl : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)                                                                                    //Loop that runs through and checks for active players
         {
-            if (m_gm.players[i] != null)
+            if (m_gm.players[i] != null)                                                                               //If there is a player present
             {
-                m_Targets[i] = m_gm.players[i].GetComponentInChildren<PlayerController>();                    //checks number of active players
+                m_Targets[i] = m_gm.players[i].GetComponentInChildren<PlayerController>();                             //Sets the player as a target from the game manager
             }
             else
             {
-                m_Targets[i] = null;
+                m_Targets[i] = null;                                                                                   //if there is no player found with the associated number, then set target as "null"
             }
         }
         
-        if (!CanFindZone())                                                                                  //calls function to find if zone is in view of camera
+        if (!CanFindZone())                                                                                            //calls function to find if zone is in view of camera if not then
         {
-            screenPoint = m_Camera.WorldToViewportPoint(m_Zone.transform.position);                           //gets location oz zone in relation to camera frustrum
-            if (screenPoint.x < 0)                                                                            //if zone is out of view and on the left
+            screenPoint = m_Camera.WorldToViewportPoint(m_Zone.transform.position);                                    //gets location oz zone in relation to camera frustrum
+            if (screenPoint.x < 0)                                                                                     //if zone is out of view and on the left
             {
-                indicatorLeft.SetActive(true);
-                indicatorRight.SetActive(false);
+                indicatorLeft.SetActive(true);                                                                         //set left indicator to visible
+                indicatorRight.SetActive(false);                                                                       //and sets right indicator to hidden
             }
-            else                                                                                              //if zone is out of view and on right
+            else                                                                                                       //if zone is out of view and on right
             {
-                indicatorLeft.SetActive(false);
-                indicatorRight.SetActive(true);
+                indicatorLeft.SetActive(false);                                                                        //set left indicator to hidden
+                indicatorRight.SetActive(true);                                                                        //and sets right indicator to visible
             }
         }
-        else                                                                                                  //if zone is in view
+        else                                                                                                           //if zone is in view
         {
-            indicatorLeft.SetActive(false);
-            indicatorRight.SetActive(false);
+            indicatorRight.SetActive(false);                                                                           //sets left indicator as hidden
+            indicatorLeft.SetActive(false);                                                                            //sets right indicator as hidden
         }
-        Move();                                                                 //calls move function to move camera
+
+        Move();                                                                                                        //calls move function to move camera
 
     }
 
@@ -92,9 +97,9 @@ public class CameraControl : MonoBehaviour
     {
         screenPoint = m_Camera.WorldToViewportPoint(m_Zone.transform.position);                                        //gets location oz zone in relation to camera frustrum
         if (screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1)     //checks if location of zone is within frustrum
-            return true;
+            return true;                                                                                               //returns true if zone is in view of camera
         else
-            return false;
+            return false;                                                                                              //returns false if zone is in camera view
     }
 
     /// <summary>
@@ -102,20 +107,20 @@ public class CameraControl : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        m_DesiredPosition = FindAveragePosition();                                //sets desired position to be result of function FindAveragePosition
+        m_DesiredPosition = FindAveragePosition();                                                                     //sets desired position to be result of function FindAveragePosition
 
-        float distance = FindDistance();                                          //Function called to find Distance between players/zone
+        float distance = FindDistance();                                                                               //Function called to find Distance between players/zone
 
-        if (distance <= minimumDistance)                                          //Checks if distance is under minimum distance
+        if (distance <= minimumDistance)                                                                               //Checks if distance is under minimum distance
         {
-            distance = minimumDistance;                                           //sets distance to minimum distance if distance is under minumum
+            distance = minimumDistance;                                                                                //sets distance to minimum distance if distance is under minumum
         }
-        else if (distance >= maximumDistance)                                     //Checks if distance is over maximum distance
+        else if (distance >= maximumDistance)                                                                          //Checks if distance is over maximum distance
         {
-            distance = maximumDistance;                                           //sets distance to maximum distance if distance is over maximum
+            distance = maximumDistance;                                                                                //sets distance to maximum distance if distance is over maximum
         }
         
-        m_DesiredPosition += -m_Camera.transform.forward * distance * distanceScale; //sets zoom distance based on distance value and distance scale
+        m_DesiredPosition += -m_Camera.transform.forward * distance * distanceScale;                                   //sets zoom distance based on distance value and distance scale
 
         m_Camera.transform.position = Vector3.SmoothDamp(m_Camera.transform.position, m_DesiredPosition, ref m_MoveVelocity, m_DampTime); //transforms camera position based on desired position and movement velocity based on MoveVelocity and DampTime
     }
@@ -126,91 +131,74 @@ public class CameraControl : MonoBehaviour
     /// <returns> average position of players or zoom out position </returns>
     private Vector3 FindAveragePosition()
     {
-        Vector3 averagePos = new Vector3();                                       //Vector pos 
-        int numTargets = 0;                                                       //number of targets
+        Vector3 averagePos = new Vector3();                                                                            //Vector pos 
+        int numTargets = 0;                                                                                            //number of targets
 
-        for (int i = 0; i < m_Targets.Length; i++)                                //loops through max number of players
+        for (int i = 0; i < m_Targets.Length; i++)                                                                     //loops through max number of players
         {
-            if (m_Targets[i] == null || !m_Targets[i].isAlive)                    //checks if player is alive
-                continue;
+            if (m_Targets[i] == null || !m_Targets[i].isAlive)                                                         //checks if player is alive
+                continue;                                                                                              
 
-            //averagePos += m_Targets[i].gameObject.transform.position;             //if player is alive, get player position
-            numTargets++;                                                         //add to numTarget counter
+            numTargets++;                                                                                              //add to numTarget counter
         }
-
-        //if (numTargets <= 0)                                                      //checks if there are no active players
-        //    followZone = true;                                                    //sets followzone to true
-        //else
-        //    followZone = false;                                                   //else set followzone to false
-
-
-        //// Add the defaultCamPos to the avg position if followzone is true
-        //if (followZone)
-        //{
-        //    //averagePos += (m_Zone.transform.position);                          //previous iteration follows zone if there are no players active
-        //    averagePos += defaultCamPos.transform.position;                       //now it follows a blank game objects position called defaultCamPos
-        //    numTargets++;
-        //}
-
-        //if (numTargets > 0)                                                       //quick checker to ensure that numTargets is not zero, otherwise camera script crashes
-        //    averagePos /= numTargets;
-
-        if (numTargets == 1)
+        
+        if (numTargets == 1)                                                                                           //if there is a player present
         {
-            for (int i = 0; i < m_Targets.Length; i++)                                //loops through max number of players
-            {
-                if (m_Targets[i] == null || !m_Targets[i].isAlive)                    //checks if player is alive
+            for (int i = 0; i < m_Targets.Length; i++)                                                                 //loops through max number of players
+            {                                                                                                          
+                if (m_Targets[i] == null || !m_Targets[i].isAlive)                                                     //checks if player is alive
                     continue;
 
-                return m_Targets[i].gameObject.transform.position;
+                return m_Targets[i].gameObject.transform.position;                                                     //returns the player position
             }
         }
 
-        if (numTargets == 0)
+        if (numTargets == 0)                                                                                           //if there are no active players in the field
         {
-            return defaultCamPos.transform.position;
+            return defaultCamPos.transform.position;                                                                   //return default cam position as the position to move the camera to
         }
 
-        float distance = 0f;                                                                               //distance to return
-        float currentDistance = 0f;                                                                        //distance current
+        float distance = 0f;                                                                                           //distance to return
+        float currentDistance = 0f;                                                                                    //distance current
+                                                                                                                       
+        for (int i = 0; i < m_Targets.Length; i++)                                                                     //Loops through  and checks for players
+        {                                                                                                              
+            if (m_Targets[i] == null || !m_Targets[i].isAlive)                                                         //if target is alive continue
+                continue;                                                                                              
+                                                                                                                       
+            PlayerController playerA = m_Targets[i];                                                                   //Target is set as playerA
+                                                                                                                       
+            for (int j = i + 1; j < m_Targets.Length; j++)                                                             //Loops through another set of players except for the previous one
+            {                                                                                                          
+                if (m_Targets[j] == null || !m_Targets[j].isAlive)                                                     //if player is active
+                    continue;                                                                                          //continue
+                                                                                                                       
+                PlayerController playerB = m_Targets[j];                                                               //sets that player as playerB
+                                                                                                                       
+                currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);            //Calculate distance between playerA and PlayerB
 
-        for (int i = 0; i < m_Targets.Length; i++)
-        {
-            if (m_Targets[i] == null || !m_Targets[i].isAlive)
-                continue;
+                if (currentDistance > distance)                                                                        //if the new distance is greater than the previous distance
+                {                                                                                                      
+                    distance = currentDistance;                                                                        //set that distance as the new distance
+                    averagePos = (playerA.transform.position + playerB.transform.position) / 2;                        //Calculate the pos as the distance between the two players
+                }                                                                                                      
+            }                                                                                                          
+                                                                                                                       
+            if (followZone)                                                                                            //Check if we are following the zone
+            {                                                                                                          
+                currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);             //Calculate currentDistance between player position and the zone
 
-            PlayerController playerA = m_Targets[i];
-
-            for (int j = i + 1; j < m_Targets.Length; j++)
-            {
-                if (m_Targets[j] == null || !m_Targets[j].isAlive)
-                    continue;
-
-                PlayerController playerB = m_Targets[j];
-
-                currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
-                if (currentDistance > distance)
-                {
-                    distance = currentDistance;
-                    averagePos = (playerA.transform.position + playerB.transform.position) / 2; // Calculate the pos 
-                }
-            }
-
-            // Check the distance to the zone if we are following the zone
-            if (followZone)
-            {
-                currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);
-                if (currentDistance > distance)
-                {
-                    distance = currentDistance;
-                    averagePos = (playerA.transform.position + m_Zone.transform.position) / 2; // Calculate the pos 
-                }
-            }
-
-        }
-
-        return averagePos;                                                        //returns averagePos
-    }
+                if (currentDistance > distance)                                                                        //if currentDistance is greater than the previous distance
+                {                                                                                                      
+                    distance = currentDistance;                                                                        //set distance as the currentDistance
+                    averagePos = (playerA.transform.position + m_Zone.transform.position) / 2;                         //Calculate the pos
+                }                                                                                                      
+            }                                                                                                          
+                                                                                                                       
+        }                                                                                                              
+                                                                                                                       
+        return averagePos;                                                                                             //returns averagePos
+    }                                                                                                                  
 
     /// <summary>
     /// Function Finds Distance between targets
@@ -218,51 +206,50 @@ public class CameraControl : MonoBehaviour
     /// <returns> returns biggest distance between players or 0 if all players are notActive </returns>
     public float FindDistance()
     {
-        float distance = 0f;                                                                               //distance to return
-        float currentDistance = 0f;                                                                        //distance current
+        float distance = 0f;                                                                                           //distance to return
+        float currentDistance = 0f;                                                                                    //distance current
+                                                                                                                       
+        for (int i = 0; i < m_Targets.Length; i++)                                                                     //Loops through players 
+        {                                                                                                              
+            if (m_Targets[i] == null || !m_Targets[i].isAlive)                                                         //If target is an active player
+                continue;                                                                                              
+                                                                                                                       
+            PlayerController playerA = m_Targets[i];                                                                   //PlayerA is set as a target
+                                                                                                                       
+            for (int j = i + 1; j < m_Targets.Length; j++)                                                             //Loops through and compares distance between other players
+            {                                                                                                          
+                if (m_Targets[j] == null || !m_Targets[j].isAlive)                                                     //checks if other players are active
+                    continue;                                                                                          
+                                                                                                                       
+                PlayerController playerB = m_Targets[j];                                                               //PlayerB is set as other target for comparison
+                                                                                                                       
+                currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);            //set currentDistance as the distance between PlayerA and PlayerB
 
-        for (int i = 0; i < m_Targets.Length; i++)
-        {
-            if (m_Targets[i] == null || !m_Targets[i].isAlive)
-                continue;
-
-            PlayerController playerA = m_Targets[i];
-
-            for (int j = i + 1; j < m_Targets.Length; j++)
-            {
-                if (m_Targets[j] == null || !m_Targets[j].isAlive)
-                    continue;
-
-                PlayerController playerB = m_Targets[j];
-
-                currentDistance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
-                if (currentDistance > distance)
-                {
-                    distance = currentDistance;
-                }
+                if (currentDistance > distance)                                                                        //if currentDistance is greater than the distance
+                {                                                                                                      
+                    distance = currentDistance;                                                                        //then set the distance as the currentDistance
+                }                                                                                                      
             }
 
-            // Check the distance to the zone if we are following the zone
-            if (followZone)
-            {
-                currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);
-                if (currentDistance > distance)
-                {
-                    distance = currentDistance;
-                }
-            }
-
+            if (followZone)                                                                                            //Check if we are following the zone
+            {                                                                                                          
+                currentDistance = Vector3.Distance(playerA.transform.position, m_Zone.transform.position);             //if following zone, set currentDistance as the distance between PlayerA and the zone
+                if (currentDistance > distance)                                                                        //check if currentDistance is greater than distance
+                {                                                                                                      
+                    distance = currentDistance;                                                                        //if yes then set distance as currentDistance
+                }                                                                                                      
+            }                                                                                                          
         }
+        return distance;                                                                                               // Return the max distance we found
+    }                                                                                                                  
 
-        // Return the max distance we found
-        return distance;
-    }
-
-    public void SetStartPositionAndSize()
-    {
-        FindAveragePosition();
-
-        transform.position = m_DesiredPosition;
-    }
-
-}
+    /// <summary>
+    /// Function to Set Start Position And Size
+    /// </summary>
+    public void SetStartPositionAndSize()                                                                              
+    {                                                                                                                  
+        FindAveragePosition();                                                                                         //Call FindAveragePosition Function
+                                                                                                                       
+        transform.position = m_DesiredPosition;                                                                        //set Camera position to the desired position
+    }                                                                                                                  
+}                                                                                                                      
