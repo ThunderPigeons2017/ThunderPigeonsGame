@@ -4522,6 +4522,10 @@ MonoBehaviour:
   pnl_Video: {fileID: 1470365130052554}
   Sldr_Master: {fileID: 1118860506244200}
   btn_Resume: {fileID: 1924075052123978}
+  maxCheatSpawns: 40
+  cheatPrefab: {fileID: 1886112196268920, guid: fa24f749bb144ae4eabf3412045ac63b,
+    type: 2}
+  cheatTransform: {fileID: 0}
 --- !u!114 &114741509392521942
 MonoBehaviour:
   m_ObjectHideFlags: 1

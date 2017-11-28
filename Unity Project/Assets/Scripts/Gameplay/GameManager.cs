@@ -112,6 +112,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject btn_Resume;
 
+    [SerializeField]
+    int maxCheatSpawns = 10;
+    int currentCheatSpawns = 0;
+
+    public GameObject cheatPrefab;
+    public Transform cheatTransform;
+
     void Awake()
     {
         zone = GameObject.FindGameObjectWithTag("Zone");
@@ -591,6 +598,23 @@ public class GameManager : MonoBehaviour
 
             // Tell the players to show the text
             players[playerNum - 1].transform.parent.GetComponentInChildren<PlayerTextManager>().Show();
+        }
+    }
+
+    public void Cheat()
+    {
+        InvokeRepeating("MakeCheatHappen", 0f, .5f);
+        
+
+    }
+
+    void MakeCheatHappen()
+    {
+        Instantiate(cheatPrefab, cheatTransform.position, Quaternion.identity);
+        currentCheatSpawns++;
+        if (currentCheatSpawns >= maxCheatSpawns)
+        {
+            CancelInvoke("MakeCheatHappen");
         }
     }
 }
