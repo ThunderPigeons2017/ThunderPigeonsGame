@@ -133,7 +133,10 @@ public class CameraControl : MonoBehaviour
     {
         if (m_gm.gameWon)                                                                                              //if the game has been won
         {
-            return m_Targets[m_gm.winningPlayerNumber - 1].transform.position;                                         //return the winning players position
+            if (m_Targets[m_gm.winningPlayerNumber - 1].isAlive)                                                       //only if that player is alive
+            {
+                return m_Targets[m_gm.winningPlayerNumber - 1].transform.position;                                     //return the winning players position
+            }
         }
 
 

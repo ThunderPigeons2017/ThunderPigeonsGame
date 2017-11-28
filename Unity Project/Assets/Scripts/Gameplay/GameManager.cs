@@ -615,6 +615,7 @@ public class GameManager : MonoBehaviour
         if (currentCheatSpawns >= maxCheatSpawns)
         {
             CancelInvoke("MakeCheatHappen");
+            currentCheatSpawns = 0;
         }
     }
 }
