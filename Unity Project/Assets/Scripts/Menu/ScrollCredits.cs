@@ -24,7 +24,7 @@ public class ScrollCredits : MonoBehaviour
 
     void Start()
     {
-        startPos = transform.position;
+        startPos = rectTransform.position;
 	}
 	
 	public void ScrollUpdate()
@@ -35,13 +35,13 @@ public class ScrollCredits : MonoBehaviour
         }
         else
         {
-            transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+            rectTransform.position += new Vector3(0, speed * Time.deltaTime, 0);
         }
 	}
 
     public void ResetPosition()
     {
-        transform.position = startPos;
+        rectTransform.position = startPos;
 
         hasReachedTop = false;
     }
